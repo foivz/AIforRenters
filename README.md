@@ -1,35 +1,33 @@
-# Inicijalne upute za prijavu projekta iz Programskog inženjerstva
+# AI for Renters APP
+Software product made @ Faculty of Organization and Informatics, University of Zagreb in collaboration with [Arbona](https://www.arbona.hr) company with mentorship of Mr Hrvoje Galić from Arbona, and Asst.prof. Zlatko Stapić, PhD from FOI.
 
-Poštovane kolegice i kolege, 
 
-čestitamo vam jer ste uspješno prijavili svoj projektni tim na kolegiju Programsko inženjerstvo, te je za vas automatski kreiran repozitorij koji ćete koristiti za verzioniranje vašega koda, ali i za pisanje dokumentacije.
+## Project team
 
-Ovaj dokument (README.md) predstavlja **osobnu iskaznicu vašeg projekta**. Vaš prvi zadatak, ukoliko niste odabrali da želite raditi na projektu sa gospodarstvom je **prijaviti vlastiti projektni prijedlog** na način da ćete prijavu vašeg projekta, sukladno uputama danim u ovom tekstu, napisati upravo u ovaj dokument, umjesto ovoga teksta.
+Name and surname | E-mail adress (FOI) | Student ID | Github username
+------------     | ------------------- | -----      | ---------------------
+Mario Pernar     |    mpernar@foi.hr   | 000000000  | mpernar
+Lidija Pitić     |    lpitic@foi.hr    |            | lpitic
+Josip Rosandić   |    jrosandic@foi.hr |            | jrosandic
+Zdenko Pečeňa    |     zpecena@foi.hr  |            | zpecena
 
-Za upute o sintaksi koju možete koristiti u ovom dokumentu i kod pisanje vaše projektne dokumentacije pogledajte [ovaj link](https://guides.github.com/features/mastering-markdown/).
+## Domain description
+The general idea of the system is to be able to automatically respond to the requests sent through different channels (e.g. web form, e-mail, ...) and to give an answer in regards with the property availability for the requested time slot. The availability is checked in the database, and if the time slot is not free the system should propose a different time slot. The system should provide the means of defining the response template in English language.
 
-Nakon vaše prijave bit će vam dodijeljen mentor s kojim ćete tijekom semestra raditi na ovom projektu. A sada, vrijeme je da prijavite vaš projekt. Za prijavu vašeg projektnog prijedloga molimo vas koristite **predložak** koji je naveden u nastavku, a započnite tako da kliknete na *olovku* u desnom gornjem kutu ovoga dokumenta :) 
+## Project specification
+* Centralized database
+* API to store and retrieve the data
+* Module/s to receive requests from users
+* AI module to send responses
+* Desktop app to monitor the status and health of the system and requests made by users
+* Mobile and/or web app (with similar features as the desktop one)
 
-# Naziv projekta
-(u redak iznad navedite kratki proizvoljni naziv projekta prikladan akademskoj zajednici, a ovaj tekst obrišite)
 
-## Projektni tim
 
-Ime i prezime | E-mail adresa (FOI) | JMBAG | Github korisničko ime
-------------  | ------------------- | ----- | ---------------------
-Ime i prezime | mojaadresa@foi.hr | 000000000 | githubuser
-Ime i prezime | ... | ... | ...
-
-## Opis domene
-Umjesto ovih uputa opišite domenu ili problem koji pokrivate vašim  projektom. Domena može biti proizvoljna, ali obratite pozornost da sukladno ishodima učenja, domena omogući primjenu zahtijevanih koncepata kako je to navedeno u sljedećem poglavlju. Priložite odgovarajuće skice gdje je to prikladno.
-
-## Specifikacija projekta
-Umjesto ovih uputa opišite zahtjeve za funkcionalnošću programskog proizvoda. Pobrojite osnovne funkcionalnosti i za svaku naznačite ime odgovornog člana tima. Opišite buduću arhitekturu programskog proizvoda. Obratite pozornost da bi arhitektura trebala biti višeslojna s odvojenom (dislociranom) bazom podatka. Također uzmite u obzir da bi svaki član tima treba biti odgovorana za otprilike 3 funkcionalnosti, te da bi opterećenje članova tima trebalo biti ujednačeno. Priložite odgovarajuće dijagrame i skice gdje je to prikladno. Funkcionalnosti sustava bobrojite u tablici ispod koristeći predložak koji slijedi:
-
-Oznaka | Naziv | Kratki opis | Odgovorni član tima
+Symbol | Name | Short desc. | Responsible 
 ------ | ----- | ----------- | -------------------
 F01 | Login | Za pristup dnevniku potrebnba je autentikacija korisnika pomoću login funkcionalnosti. Korisnik se logira s podacima koji su mu dodijeljeni prilikom ... | Zlatko Stapić
 F02 | Pregled dnevnika | .... | ...
 
-## Tehnologije i oprema
+## Technologies and tools
 Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
