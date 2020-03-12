@@ -6,8 +6,8 @@ Software product made @ Faculty of Organization and Informatics, University of Z
 
 Name and surname | E-mail adress (FOI) | Student ID | Github username
 ------------     | ------------------- | -----      | ---------------------
-Mario Pernar     |    mpernar@foi.hr   | 000000000  | mpernar
-Lidija Pitić     |    lpitic@foi.hr    |            | lpitic
+Mario Pernar     |    mpernar@foi.hr   | 0016131362 | mpernar
+Lidija Pitić     |    lpitic@foi.hr    | 0016132354 | lpitic
 Josip Rosandić   |    jrosandic@foi.hr |            | jrosandic
 Zdenko Pečeňa    |     zpecena@foi.hr  |            | zpecena
 
