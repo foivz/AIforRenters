@@ -8,7 +8,7 @@ Name and surname | E-mail adress (FOI) | Student ID | Github username
 ------------     | ------------------- | -----      | ---------------------
 Mario Pernar     |    mpernar@foi.hr   | 0016131362 | mpernar
 Lidija Pitić     |    lpitic@foi.hr    | 0016132354 | lpitic
-Josip Rosandić   |    jrosandic@foi.hr |            | jrosandic
+Josip Rosandić   |    jrosandic@foi.hr | 0016129731 | jrosandic
 Zdenko Pečeňa    |     zpecena@foi.hr  |            | zpecena
 
 ## Domain description
@@ -26,8 +26,11 @@ The general idea of the system is to be able to automatically respond to the req
 
 Symbol | Name | Short desc. | Responsible 
 ------ | ----- | ----------- | -------------------
-F01 | Login | Za pristup dnevniku potrebnba je autentikacija korisnika pomoću login funkcionalnosti. Korisnik se logira s podacima koji su mu dodijeljeni prilikom ... | Zlatko Stapić
-F02 | Pregled dnevnika | .... | ...
+F01 | ... | ... | ...
+F02 | ... | .... | ...
 
 ## Technologies and tools
-Umjesto ovih uputa jasno popišite sve tehnologije, alate i opremu koju ćete koristiti pri implementaciji vašeg rješenja. Ne zaboravite planirati korištenje tehnologija u aktivnostima kao što su projektni menadžment ili priprema dokumentacije. Tehnologije koje ćete koristiti bi trebale biti javno dostupne, a ako ih ne budemo obrađivali na vježbama u vašoj dokumentaciji ćete morati navesti način preuzimanja, instaliranja i korištenja onih tehnologija koje su neopbodne kako bi se vaš programski proizvod preveo i pokrenuo. Pazite da svi alati koje ćete koristiti moraju imati odgovarajuću licencu.
+Microsoft Visual Studio 2019
+Microsoft SQL Server Studio 2018
+Visual Paradigm Online
+Microsoft Office Word 
