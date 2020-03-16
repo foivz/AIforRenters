@@ -30,7 +30,7 @@ F01 | ... | ... | ...
 F02 | ... | .... | ...
 
 ## Technologies and tools
-Microsoft Visual Studio 2019
-Microsoft SQL Server Studio 2018
-Visual Paradigm Online
-Microsoft Office Word 
+* Microsoft Visual Studio 2019
+* Microsoft SQL Server Studio 2018
+* Visual Paradigm Online
+* Microsoft Office Word 
