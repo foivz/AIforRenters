@@ -1,0 +1,6 @@
+C:\Users\Mario\source\repos\AIForRenters\AIForRentersLib\bin\Debug\AIForRentersLib.dll
+C:\Users\Mario\source\repos\AIForRenters\AIForRentersLib\bin\Debug\AIForRentersLib.pdb
+C:\Users\Mario\source\repos\AIForRenters\AIForRentersLib\obj\Debug\AIForRentersLib.csprojAssemblyReference.cache
+C:\Users\Mario\source\repos\AIForRenters\AIForRentersLib\obj\Debug\AIForRentersLib.csproj.CoreCompileInputs.cache
+C:\Users\Mario\source\repos\AIForRenters\AIForRentersLib\obj\Debug\AIForRentersLib.dll
+C:\Users\Mario\source\repos\AIForRenters\AIForRentersLib\obj\Debug\AIForRentersLib.pdb
