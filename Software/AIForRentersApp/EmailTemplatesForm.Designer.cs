@@ -35,6 +35,8 @@
             this.buttonAddTemplate = new System.Windows.Forms.Button();
             this.textBoxTemplateName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.buttonProperties = new System.Windows.Forms.Button();
+            this.buttonRequests = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmailTemplates)).BeginInit();
             this.SuspendLayout();
             // 
@@ -97,11 +99,33 @@
             this.label1.TabIndex = 6;
             this.label1.Text = "Template name";
             // 
+            // buttonProperties
+            // 
+            this.buttonProperties.Location = new System.Drawing.Point(818, 77);
+            this.buttonProperties.Name = "buttonProperties";
+            this.buttonProperties.Size = new System.Drawing.Size(121, 48);
+            this.buttonProperties.TabIndex = 8;
+            this.buttonProperties.Text = "Properties / units";
+            this.buttonProperties.UseVisualStyleBackColor = true;
+            this.buttonProperties.Click += new System.EventHandler(this.buttonProperties_Click);
+            // 
+            // buttonRequests
+            // 
+            this.buttonRequests.Location = new System.Drawing.Point(818, 23);
+            this.buttonRequests.Name = "buttonRequests";
+            this.buttonRequests.Size = new System.Drawing.Size(121, 48);
+            this.buttonRequests.TabIndex = 9;
+            this.buttonRequests.Text = "Requests / responses";
+            this.buttonRequests.UseVisualStyleBackColor = true;
+            this.buttonRequests.Click += new System.EventHandler(this.buttonRequests_Click);
+            // 
             // EmailTemplatesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(829, 684);
+            this.ClientSize = new System.Drawing.Size(951, 684);
+            this.Controls.Add(this.buttonProperties);
+            this.Controls.Add(this.buttonRequests);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxTemplateName);
             this.Controls.Add(this.richTextBoxEditEmailTemplate);
@@ -110,7 +134,10 @@
             this.Controls.Add(this.buttonEditTemplate);
             this.Controls.Add(this.dataGridViewEmailTemplates);
             this.Name = "EmailTemplatesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Email templates";
+            this.Load += new System.EventHandler(this.EmailTemplatesForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.EmailTemplatesForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmailTemplates)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -126,5 +153,7 @@
         private System.Windows.Forms.Button buttonAddTemplate;
         private System.Windows.Forms.TextBox textBoxTemplateName;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button buttonProperties;
+        private System.Windows.Forms.Button buttonRequests;
     }
 }
