@@ -43,6 +43,7 @@
             this.buttonRequests = new System.Windows.Forms.Button();
             this.buttonEmailTemplates = new System.Windows.Forms.Button();
             this.buttonEditUnit = new System.Windows.Forms.Button();
+            this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBoxUnitName
@@ -113,7 +114,7 @@
             // 
             // buttonDeleteUnit
             // 
-            this.buttonDeleteUnit.Location = new System.Drawing.Point(140, 255);
+            this.buttonDeleteUnit.Location = new System.Drawing.Point(38, 255);
             this.buttonDeleteUnit.Name = "buttonDeleteUnit";
             this.buttonDeleteUnit.Size = new System.Drawing.Size(81, 23);
             this.buttonDeleteUnit.TabIndex = 4;
@@ -168,12 +169,21 @@
             // 
             // buttonEditUnit
             // 
-            this.buttonEditUnit.Location = new System.Drawing.Point(231, 255);
+            this.buttonEditUnit.Location = new System.Drawing.Point(129, 255);
             this.buttonEditUnit.Name = "buttonEditUnit";
             this.buttonEditUnit.Size = new System.Drawing.Size(81, 23);
             this.buttonEditUnit.TabIndex = 4;
             this.buttonEditUnit.Text = "Edit unit";
             this.buttonEditUnit.UseVisualStyleBackColor = true;
+            // 
+            // buttonSaveChanges
+            // 
+            this.buttonSaveChanges.Location = new System.Drawing.Point(218, 255);
+            this.buttonSaveChanges.Name = "buttonSaveChanges";
+            this.buttonSaveChanges.Size = new System.Drawing.Size(93, 23);
+            this.buttonSaveChanges.TabIndex = 4;
+            this.buttonSaveChanges.Text = "Save changes";
+            this.buttonSaveChanges.UseVisualStyleBackColor = true;
             // 
             // UnitsForm
             // 
@@ -192,6 +202,7 @@
             this.Controls.Add(this.textBoxUnitName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxUnits);
+            this.Controls.Add(this.buttonSaveChanges);
             this.Controls.Add(this.buttonEditUnit);
             this.Controls.Add(this.buttonDeleteUnit);
             this.Controls.Add(this.buttonAddUnit);
@@ -222,5 +233,6 @@
         private System.Windows.Forms.Button buttonRequests;
         private System.Windows.Forms.Button buttonEmailTemplates;
         private System.Windows.Forms.Button buttonEditUnit;
+        private System.Windows.Forms.Button buttonSaveChanges;
     }
 }

@@ -41,11 +41,11 @@
             // 
             // buttonSend
             // 
-            this.buttonSend.Location = new System.Drawing.Point(1013, 480);
+            this.buttonSend.Location = new System.Drawing.Point(980, 480);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(75, 23);
+            this.buttonSend.Size = new System.Drawing.Size(108, 23);
             this.buttonSend.TabIndex = 3;
-            this.buttonSend.Text = "Send";
+            this.buttonSend.Text = "Send response";
             this.buttonSend.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -85,7 +85,7 @@
             // 
             // buttonEditResponse
             // 
-            this.buttonEditResponse.Location = new System.Drawing.Point(910, 480);
+            this.buttonEditResponse.Location = new System.Drawing.Point(877, 480);
             this.buttonEditResponse.Name = "buttonEditResponse";
             this.buttonEditResponse.Size = new System.Drawing.Size(97, 23);
             this.buttonEditResponse.TabIndex = 2;
