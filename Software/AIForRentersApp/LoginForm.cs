@@ -17,12 +17,32 @@ namespace AIForRentersApp
             InitializeComponent();
         }
 
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(LoginForm_KeyDown);
+        }
+
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
             this.Hide();
-            MainForm mainForm = new MainForm();
-            mainForm.ShowDialog();
+            FormRequests formRequests = new FormRequests();
+            formRequests.ShowDialog();
             this.Close();
+        }
+
+        private void LoginForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F1)
+            {
+                if (e.Handled)
+                {
+                    return;
+                }
+                HelpForm helpForm = new HelpForm();
+                helpForm.ShowDialog();
+                e.Handled = true;
+            }
         }
     }
 }

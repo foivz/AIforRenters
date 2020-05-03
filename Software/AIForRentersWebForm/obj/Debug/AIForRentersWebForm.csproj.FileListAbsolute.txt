@@ -1,76 +1,74 @@
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\AIForRentersWebForm.dll.config
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\AIForRentersWebForm.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\AIForRentersWebForm.pdb
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\csc.exe
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\csc.exe.config
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\csc.rsp
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\csi.exe
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\csi.exe.config
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\csi.rsp
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.CSharp.Core.targets
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.Managed.Core.targets
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.VisualBasic.Core.targets
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\Microsoft.Win32.Primitives.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.AppContext.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Collections.Immutable.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Console.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Diagnostics.StackTrace.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Globalization.Calendars.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.IO.Compression.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.IO.Compression.ZipFile.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.IO.FileSystem.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.IO.FileSystem.Primitives.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Net.Http.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Net.Sockets.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Reflection.Metadata.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.Algorithms.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.Encoding.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.Primitives.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Text.Encoding.CodePages.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Threading.Tasks.Extensions.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.ValueTuple.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Xml.ReaderWriter.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Xml.XmlDocument.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Xml.XPath.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\System.Xml.XPath.XDocument.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\vbc.exe
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\vbc.exe.config
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\vbc.rsp
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\VBCSCompiler.exe
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\roslyn\VBCSCompiler.exe.config
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Antlr3.Runtime.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\AspNet.ScriptManager.bootstrap.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\AspNet.ScriptManager.jQuery.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.AspNet.FriendlyUrls.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.ScriptManager.MSAjax.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.ScriptManager.WebForms.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Newtonsoft.Json.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\System.Web.Optimization.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\WebGrease.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\System.Web.Optimization.xml
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Newtonsoft.Json.xml
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Antlr3.Runtime.pdb
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.AspNet.FriendlyUrls.xml
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csprojAssemblyReference.cache
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csproj.CoreCompileInputs.cache
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csproj.CopyComplete
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.pdb
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\AIForRentersLib.dll
-C:\Users\Mario\source\repos\AIForRenters\AIForRentersWebForm\bin\AIForRentersLib.pdb
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\AIForRentersWebForm.dll.config
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\AIForRentersWebForm.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\AIForRentersWebForm.pdb
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\csc.exe
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\csc.exe.config
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\csc.rsp
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\csi.exe
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\csi.exe.config
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\csi.rsp
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.AppContext.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Collections.Immutable.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Console.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Globalization.Calendars.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.IO.Compression.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.IO.FileSystem.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Net.Http.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Net.Sockets.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Reflection.Metadata.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.ValueTuple.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Xml.XPath.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\vbc.exe
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\vbc.exe.config
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\vbc.rsp
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\VBCSCompiler.exe
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\roslyn\VBCSCompiler.exe.config
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Antlr3.Runtime.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\AspNet.ScriptManager.bootstrap.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\AspNet.ScriptManager.jQuery.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.AspNet.FriendlyUrls.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.AspNet.Web.Optimization.WebForms.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.ScriptManager.MSAjax.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.ScriptManager.WebForms.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.Web.Infrastructure.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Newtonsoft.Json.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\System.Web.Optimization.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\WebGrease.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\System.Web.Optimization.xml
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Newtonsoft.Json.xml
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Antlr3.Runtime.pdb
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.AspNet.FriendlyUrls.xml
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csprojAssemblyReference.cache
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csproj.CoreCompileInputs.cache
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csproj.CopyComplete
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.pdb

@@ -34,20 +34,26 @@
             this.textBoxPropertyName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonDeleteProperty = new System.Windows.Forms.Button();
+            this.textBoxPropertyLocation = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.buttonEmailTemplates = new System.Windows.Forms.Button();
+            this.buttonRequests = new System.Windows.Forms.Button();
+            this.buttonEditProperty = new System.Windows.Forms.Button();
+            this.buttonSaveChanges = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // buttonAddProperty
             // 
-            this.buttonAddProperty.Location = new System.Drawing.Point(93, 302);
+            this.buttonAddProperty.Location = new System.Drawing.Point(212, 299);
             this.buttonAddProperty.Name = "buttonAddProperty";
-            this.buttonAddProperty.Size = new System.Drawing.Size(100, 23);
+            this.buttonAddProperty.Size = new System.Drawing.Size(100, 46);
             this.buttonAddProperty.TabIndex = 2;
             this.buttonAddProperty.Text = "Add new property";
             this.buttonAddProperty.UseVisualStyleBackColor = true;
             // 
             // buttonShowListOfUnits
             // 
-            this.buttonShowListOfUnits.Location = new System.Drawing.Point(197, 230);
+            this.buttonShowListOfUnits.Location = new System.Drawing.Point(333, 201);
             this.buttonShowListOfUnits.Name = "buttonShowListOfUnits";
             this.buttonShowListOfUnits.Size = new System.Drawing.Size(115, 23);
             this.buttonShowListOfUnits.TabIndex = 3;
@@ -65,7 +71,7 @@
             // 
             // textBoxPropertyName
             // 
-            this.textBoxPropertyName.Location = new System.Drawing.Point(93, 276);
+            this.textBoxPropertyName.Location = new System.Drawing.Point(109, 299);
             this.textBoxPropertyName.Name = "textBoxPropertyName";
             this.textBoxPropertyName.Size = new System.Drawing.Size(100, 20);
             this.textBoxPropertyName.TabIndex = 1;
@@ -73,7 +79,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 279);
+            this.label1.Location = new System.Drawing.Point(22, 302);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(75, 13);
             this.label1.TabIndex = 5;
@@ -81,26 +87,89 @@
             // 
             // buttonDeleteProperty
             // 
-            this.buttonDeleteProperty.Location = new System.Drawing.Point(78, 230);
+            this.buttonDeleteProperty.Location = new System.Drawing.Point(76, 230);
             this.buttonDeleteProperty.Name = "buttonDeleteProperty";
             this.buttonDeleteProperty.Size = new System.Drawing.Size(115, 23);
             this.buttonDeleteProperty.TabIndex = 4;
             this.buttonDeleteProperty.Text = "Delete property";
             this.buttonDeleteProperty.UseVisualStyleBackColor = true;
             // 
+            // textBoxPropertyLocation
+            // 
+            this.textBoxPropertyLocation.Location = new System.Drawing.Point(109, 325);
+            this.textBoxPropertyLocation.Name = "textBoxPropertyLocation";
+            this.textBoxPropertyLocation.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPropertyLocation.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(11, 328);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(86, 13);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Property location";
+            // 
+            // buttonEmailTemplates
+            // 
+            this.buttonEmailTemplates.Location = new System.Drawing.Point(333, 66);
+            this.buttonEmailTemplates.Name = "buttonEmailTemplates";
+            this.buttonEmailTemplates.Size = new System.Drawing.Size(121, 48);
+            this.buttonEmailTemplates.TabIndex = 6;
+            this.buttonEmailTemplates.Text = "Email templates";
+            this.buttonEmailTemplates.UseVisualStyleBackColor = true;
+            this.buttonEmailTemplates.Click += new System.EventHandler(this.buttonEmailTemplates_Click);
+            // 
+            // buttonRequests
+            // 
+            this.buttonRequests.Location = new System.Drawing.Point(333, 12);
+            this.buttonRequests.Name = "buttonRequests";
+            this.buttonRequests.Size = new System.Drawing.Size(121, 48);
+            this.buttonRequests.TabIndex = 7;
+            this.buttonRequests.Text = "Requests / responses";
+            this.buttonRequests.UseVisualStyleBackColor = true;
+            this.buttonRequests.Click += new System.EventHandler(this.buttonRequests_Click);
+            // 
+            // buttonEditProperty
+            // 
+            this.buttonEditProperty.Location = new System.Drawing.Point(197, 230);
+            this.buttonEditProperty.Name = "buttonEditProperty";
+            this.buttonEditProperty.Size = new System.Drawing.Size(115, 23);
+            this.buttonEditProperty.TabIndex = 4;
+            this.buttonEditProperty.Text = "Edit property";
+            this.buttonEditProperty.UseVisualStyleBackColor = true;
+            // 
+            // buttonSaveChanges
+            // 
+            this.buttonSaveChanges.Location = new System.Drawing.Point(197, 259);
+            this.buttonSaveChanges.Name = "buttonSaveChanges";
+            this.buttonSaveChanges.Size = new System.Drawing.Size(115, 23);
+            this.buttonSaveChanges.TabIndex = 4;
+            this.buttonSaveChanges.Text = "Save changes";
+            this.buttonSaveChanges.UseVisualStyleBackColor = true;
+            // 
             // PropertiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 345);
+            this.ClientSize = new System.Drawing.Size(466, 361);
+            this.Controls.Add(this.buttonEmailTemplates);
+            this.Controls.Add(this.buttonRequests);
+            this.Controls.Add(this.textBoxPropertyLocation);
             this.Controls.Add(this.textBoxPropertyName);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.listBoxProperties);
+            this.Controls.Add(this.buttonSaveChanges);
+            this.Controls.Add(this.buttonEditProperty);
             this.Controls.Add(this.buttonDeleteProperty);
             this.Controls.Add(this.buttonShowListOfUnits);
             this.Controls.Add(this.buttonAddProperty);
             this.Name = "PropertiesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Properties";
+            this.Load += new System.EventHandler(this.PropertiesForm_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PropertiesForm_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +182,11 @@
         private System.Windows.Forms.TextBox textBoxPropertyName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonDeleteProperty;
+        private System.Windows.Forms.TextBox textBoxPropertyLocation;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button buttonEmailTemplates;
+        private System.Windows.Forms.Button buttonRequests;
+        private System.Windows.Forms.Button buttonEditProperty;
+        private System.Windows.Forms.Button buttonSaveChanges;
     }
 }

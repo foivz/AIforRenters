@@ -34,16 +34,18 @@
             this.dataGridViewIncomingRequests = new System.Windows.Forms.DataGridView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.buttonEditResponse = new System.Windows.Forms.Button();
+            this.buttonProperties = new System.Windows.Forms.Button();
+            this.buttonEmailTemplates = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIncomingRequests)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonSend
             // 
-            this.buttonSend.Location = new System.Drawing.Point(1013, 480);
+            this.buttonSend.Location = new System.Drawing.Point(980, 480);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(75, 23);
+            this.buttonSend.Size = new System.Drawing.Size(108, 23);
             this.buttonSend.TabIndex = 3;
-            this.buttonSend.Text = "Send";
+            this.buttonSend.Text = "Send response";
             this.buttonSend.UseVisualStyleBackColor = true;
             // 
             // label2
@@ -83,27 +85,51 @@
             // 
             // buttonEditResponse
             // 
-            this.buttonEditResponse.Location = new System.Drawing.Point(910, 480);
+            this.buttonEditResponse.Location = new System.Drawing.Point(877, 480);
             this.buttonEditResponse.Name = "buttonEditResponse";
             this.buttonEditResponse.Size = new System.Drawing.Size(97, 23);
             this.buttonEditResponse.TabIndex = 2;
             this.buttonEditResponse.Text = "Edit response";
             this.buttonEditResponse.UseVisualStyleBackColor = true;
             // 
+            // buttonProperties
+            // 
+            this.buttonProperties.Location = new System.Drawing.Point(1110, 40);
+            this.buttonProperties.Name = "buttonProperties";
+            this.buttonProperties.Size = new System.Drawing.Size(121, 48);
+            this.buttonProperties.TabIndex = 3;
+            this.buttonProperties.Text = "Properties / units";
+            this.buttonProperties.UseVisualStyleBackColor = true;
+            this.buttonProperties.Click += new System.EventHandler(this.buttonProperties_Click);
+            // 
+            // buttonEmailTemplates
+            // 
+            this.buttonEmailTemplates.Location = new System.Drawing.Point(1110, 94);
+            this.buttonEmailTemplates.Name = "buttonEmailTemplates";
+            this.buttonEmailTemplates.Size = new System.Drawing.Size(121, 48);
+            this.buttonEmailTemplates.TabIndex = 3;
+            this.buttonEmailTemplates.Text = "Email templates";
+            this.buttonEmailTemplates.UseVisualStyleBackColor = true;
+            this.buttonEmailTemplates.Click += new System.EventHandler(this.buttonEmailTemplates_Click);
+            // 
             // FormRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 578);
+            this.ClientSize = new System.Drawing.Size(1243, 578);
             this.Controls.Add(this.buttonEditResponse);
             this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.buttonEmailTemplates);
+            this.Controls.Add(this.buttonProperties);
             this.Controls.Add(this.buttonSend);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewIncomingRequests);
             this.Name = "FormRequests";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Requests";
+            this.Load += new System.EventHandler(this.FormRequests_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FormRequests_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIncomingRequests)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -118,6 +144,8 @@
         private System.Windows.Forms.DataGridView dataGridViewIncomingRequests;
         private System.Windows.Forms.RichTextBox richTextBox1;
         private System.Windows.Forms.Button buttonEditResponse;
+        private System.Windows.Forms.Button buttonProperties;
+        private System.Windows.Forms.Button buttonEmailTemplates;
     }
 }
 
