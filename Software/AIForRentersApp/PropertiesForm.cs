@@ -60,5 +60,9 @@ namespace AIForRentersApp
                 e.Handled = true;
             }
         }
+        public override string ToString()
+        {
+            return "PropertiesForm";
+        }
     }
 }

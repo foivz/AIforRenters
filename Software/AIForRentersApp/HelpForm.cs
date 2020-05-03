@@ -31,12 +31,12 @@ namespace AIForRentersApp
         {
             foreach (var item in Application.OpenForms)
             {
-                if (item == LoginForm.ActiveForm)
+                if (item.ToString() == "LoginForm")
                 {
                     groupBoxName.Text = "Login";
                     labelContent.Text = "You must enter your email and password in the given text boxes and \nthen click the 'Log in' button.";
                 }
-                if (item == FormRequests.ActiveForm)
+                else if (item.ToString() == "RequestsForm")
                 {
                     groupBoxName.Text = "Requests";
                     labelContent.Text = "Here you can see incoming requests and if you click on one of them you can see the \nautomatic" +
@@ -45,7 +45,7 @@ namespace AIForRentersApp
                         " 'Properties / units' button and see your properties \nand units. Also you can click on 'Email templates' button " +
                         " to see your templates.";
                 }
-                if (item == PropertiesForm.ActiveForm)
+                else if (item.ToString() == "PropertiesForm")
                 {
                     groupBoxName.Text = "Properties";
                     labelContent.Text = "Here you can see the list of your properties. You can enter new property by entering property" +
@@ -57,7 +57,7 @@ namespace AIForRentersApp
                         " your incoming requests and automatic \nresponses. Also you can click on 'Email templates' button to see your" +
                         " templates.";
                 }
-                if (item == UnitsForm.ActiveForm)
+                else if (item.ToString() == "UnitsForm")
                 {
                     groupBoxName.Text = "Units";
                     labelContent.Text = "Here you can see the list of your units that are bound to the property. You can see to \nwhich" +
@@ -70,7 +70,7 @@ namespace AIForRentersApp
                         " and \nautomatic responses. Also you can click on 'Email templates' button to see your templates or \nyou can click" +
                         " on the 'Properties / units' button to return to your properties.";
                 }
-                if (item == EmailTemplatesForm.ActiveForm)
+                else if (item.ToString() == "EmailTemplatesForm")
                 {
                     groupBoxName.Text = "Email templates";
                     labelContent.Text = "Here you can see your templates for creating automatic responses and if you click on one of \nthem" +
