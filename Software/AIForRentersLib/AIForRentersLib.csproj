@@ -52,7 +52,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Availability.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="EmailRequest.cs" />
+    <Compile Include="EmailTemplate.cs" />
+    <Compile Include="ExtractData.cs" />
+    <Compile Include="FetchEmail.cs" />
+    <Compile Include="IRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Property.cs" />
+    <Compile Include="Request.cs" />
+    <Compile Include="Response.cs" />
+    <Compile Include="Unit.cs" />
+    <Compile Include="WebFormRequest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

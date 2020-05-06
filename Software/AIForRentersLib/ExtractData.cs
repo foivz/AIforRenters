@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AIForRentersLib
 {
-    public class FetchEmail
+    public class ExtractData
     {
-        public string FetchEmailFromServer()
+        public EmailRequest ExtractDataFromEmail(string emailText)
         {
             return null;
         }
