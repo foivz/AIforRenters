@@ -54,16 +54,21 @@
   <ItemGroup>
     <Compile Include="Availability.cs" />
     <Compile Include="Client.cs" />
+    <Compile Include="Database.cs" />
     <Compile Include="EmailRequest.cs" />
     <Compile Include="EmailTemplate.cs" />
+    <Compile Include="EmailTemplateRepository.cs" />
     <Compile Include="ExtractData.cs" />
     <Compile Include="FetchEmail.cs" />
     <Compile Include="IRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.cs" />
+    <Compile Include="PropertyRepository.cs" />
     <Compile Include="Request.cs" />
+    <Compile Include="RequestRepository.cs" />
     <Compile Include="Response.cs" />
     <Compile Include="Unit.cs" />
+    <Compile Include="UnitRepository.cs" />
     <Compile Include="WebFormRequest.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -57,6 +57,7 @@
             this.buttonEditTemplate.TabIndex = 4;
             this.buttonEditTemplate.Text = "Edit template";
             this.buttonEditTemplate.UseVisualStyleBackColor = true;
+            this.buttonEditTemplate.Click += new System.EventHandler(this.buttonEditTemplate_Click);
             // 
             // richTextBoxEditEmailTemplate
             // 
@@ -74,6 +75,7 @@
             this.buttonSaveChanges.TabIndex = 5;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
+            this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
             // 
             // buttonAddTemplate
             // 
@@ -83,6 +85,7 @@
             this.buttonAddTemplate.TabIndex = 3;
             this.buttonAddTemplate.Text = "Add new template";
             this.buttonAddTemplate.UseVisualStyleBackColor = true;
+            this.buttonAddTemplate.Click += new System.EventHandler(this.buttonAddTemplate_Click);
             // 
             // textBoxTemplateName
             // 
@@ -128,6 +131,7 @@
             this.buttonDeleteTemplate.TabIndex = 4;
             this.buttonDeleteTemplate.Text = "Delete template";
             this.buttonDeleteTemplate.UseVisualStyleBackColor = true;
+            this.buttonDeleteTemplate.Click += new System.EventHandler(this.buttonDeleteTemplate_Click);
             // 
             // EmailTemplatesForm
             // 

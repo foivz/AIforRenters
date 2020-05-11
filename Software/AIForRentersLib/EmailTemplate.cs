@@ -19,6 +19,10 @@ namespace AIForRentersLib
             Content = content;
         }
 
+        public EmailTemplate()
+        {
+        }
+
         public void EditEmailTemplate(EmailTemplate emailTemplate)
         {
 

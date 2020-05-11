@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIForRentersLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,11 +13,12 @@ namespace AIForRentersApp
 {
     public partial class FormRequests : Form
     {
+        
         public FormRequests()
         {
             InitializeComponent();
         }
-
+        
         private void FormRequests_Load(object sender, EventArgs e)
         {
             this.KeyPreview = true;
@@ -37,6 +39,17 @@ namespace AIForRentersApp
             EmailTemplatesForm emailTemplatesForm = new EmailTemplatesForm();
             emailTemplatesForm.ShowDialog();
             this.Close();
+        }
+
+        private void buttonEditResponse_Click(object sender, EventArgs e)
+        {
+            richTextBoxResponse.Enabled = true;
+            richTextBoxResponse.Focus();
+        }
+
+        private void buttonSend_Click(object sender, EventArgs e)
+        {
+            //Method for sending email to client
         }
 
         private void FormRequests_KeyDown(object sender, KeyEventArgs e)

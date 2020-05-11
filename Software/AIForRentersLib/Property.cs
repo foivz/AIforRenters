@@ -20,6 +20,10 @@ namespace AIForRentersLib
             Location = location;
         }
 
+        public Property()
+        {
+        }
+
         public void DeleteProperty(Property property)
         {
 

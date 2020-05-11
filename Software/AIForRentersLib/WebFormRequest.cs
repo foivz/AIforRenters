@@ -14,5 +14,9 @@ namespace AIForRentersLib
         {
             Comment = comment;
         }
+
+        public WebFormRequest()
+        {
+        }
     }
 }

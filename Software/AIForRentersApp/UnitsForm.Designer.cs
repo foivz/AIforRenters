@@ -30,7 +30,6 @@
         {
             this.textBoxUnitName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.listBoxUnits = new System.Windows.Forms.ListBox();
             this.buttonAddUnit = new System.Windows.Forms.Button();
             this.textBoxPropertyName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -44,11 +43,13 @@
             this.buttonEmailTemplates = new System.Windows.Forms.Button();
             this.buttonEditUnit = new System.Windows.Forms.Button();
             this.buttonSaveChanges = new System.Windows.Forms.Button();
+            this.dataGridViewUnits = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnits)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxUnitName
             // 
-            this.textBoxUnitName.Location = new System.Drawing.Point(93, 284);
+            this.textBoxUnitName.Location = new System.Drawing.Point(355, 287);
             this.textBoxUnitName.Name = "textBoxUnitName";
             this.textBoxUnitName.Size = new System.Drawing.Size(100, 20);
             this.textBoxUnitName.TabIndex = 1;
@@ -56,28 +57,21 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(32, 287);
+            this.label1.Location = new System.Drawing.Point(294, 290);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(55, 13);
             this.label1.TabIndex = 7;
             this.label1.Text = "Unit name";
             // 
-            // listBoxUnits
-            // 
-            this.listBoxUnits.FormattingEnabled = true;
-            this.listBoxUnits.Location = new System.Drawing.Point(12, 37);
-            this.listBoxUnits.Name = "listBoxUnits";
-            this.listBoxUnits.Size = new System.Drawing.Size(300, 212);
-            this.listBoxUnits.TabIndex = 0;
-            // 
             // buttonAddUnit
             // 
-            this.buttonAddUnit.Location = new System.Drawing.Point(199, 337);
+            this.buttonAddUnit.Location = new System.Drawing.Point(461, 337);
             this.buttonAddUnit.Name = "buttonAddUnit";
             this.buttonAddUnit.Size = new System.Drawing.Size(100, 23);
             this.buttonAddUnit.TabIndex = 3;
             this.buttonAddUnit.Text = "Add new unit";
             this.buttonAddUnit.UseVisualStyleBackColor = true;
+            this.buttonAddUnit.Click += new System.EventHandler(this.buttonAddUnit_Click);
             // 
             // textBoxPropertyName
             // 
@@ -98,7 +92,7 @@
             // 
             // textBoxUnitCapacity
             // 
-            this.textBoxUnitCapacity.Location = new System.Drawing.Point(93, 310);
+            this.textBoxUnitCapacity.Location = new System.Drawing.Point(355, 313);
             this.textBoxUnitCapacity.Name = "textBoxUnitCapacity";
             this.textBoxUnitCapacity.Size = new System.Drawing.Size(100, 20);
             this.textBoxUnitCapacity.TabIndex = 2;
@@ -106,7 +100,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(18, 313);
+            this.label3.Location = new System.Drawing.Point(280, 316);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(69, 13);
             this.label3.TabIndex = 8;
@@ -114,16 +108,17 @@
             // 
             // buttonDeleteUnit
             // 
-            this.buttonDeleteUnit.Location = new System.Drawing.Point(38, 255);
+            this.buttonDeleteUnit.Location = new System.Drawing.Point(288, 255);
             this.buttonDeleteUnit.Name = "buttonDeleteUnit";
             this.buttonDeleteUnit.Size = new System.Drawing.Size(81, 23);
             this.buttonDeleteUnit.TabIndex = 4;
             this.buttonDeleteUnit.Text = "Delete unit";
             this.buttonDeleteUnit.UseVisualStyleBackColor = true;
+            this.buttonDeleteUnit.Click += new System.EventHandler(this.buttonDeleteUnit_Click);
             // 
             // textBoxUnitPrice
             // 
-            this.textBoxUnitPrice.Location = new System.Drawing.Point(93, 337);
+            this.textBoxUnitPrice.Location = new System.Drawing.Point(355, 340);
             this.textBoxUnitPrice.Name = "textBoxUnitPrice";
             this.textBoxUnitPrice.Size = new System.Drawing.Size(100, 20);
             this.textBoxUnitPrice.TabIndex = 2;
@@ -131,7 +126,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(35, 340);
+            this.label4.Location = new System.Drawing.Point(297, 343);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(52, 13);
             this.label4.TabIndex = 8;
@@ -139,7 +134,7 @@
             // 
             // buttonProperties
             // 
-            this.buttonProperties.Location = new System.Drawing.Point(332, 91);
+            this.buttonProperties.Location = new System.Drawing.Point(603, 91);
             this.buttonProperties.Name = "buttonProperties";
             this.buttonProperties.Size = new System.Drawing.Size(121, 48);
             this.buttonProperties.TabIndex = 10;
@@ -149,7 +144,7 @@
             // 
             // buttonRequests
             // 
-            this.buttonRequests.Location = new System.Drawing.Point(332, 37);
+            this.buttonRequests.Location = new System.Drawing.Point(603, 37);
             this.buttonRequests.Name = "buttonRequests";
             this.buttonRequests.Size = new System.Drawing.Size(121, 48);
             this.buttonRequests.TabIndex = 11;
@@ -159,7 +154,7 @@
             // 
             // buttonEmailTemplates
             // 
-            this.buttonEmailTemplates.Location = new System.Drawing.Point(332, 145);
+            this.buttonEmailTemplates.Location = new System.Drawing.Point(603, 145);
             this.buttonEmailTemplates.Name = "buttonEmailTemplates";
             this.buttonEmailTemplates.Size = new System.Drawing.Size(121, 48);
             this.buttonEmailTemplates.TabIndex = 10;
@@ -169,27 +164,38 @@
             // 
             // buttonEditUnit
             // 
-            this.buttonEditUnit.Location = new System.Drawing.Point(129, 255);
+            this.buttonEditUnit.Location = new System.Drawing.Point(379, 255);
             this.buttonEditUnit.Name = "buttonEditUnit";
             this.buttonEditUnit.Size = new System.Drawing.Size(81, 23);
             this.buttonEditUnit.TabIndex = 4;
             this.buttonEditUnit.Text = "Edit unit";
             this.buttonEditUnit.UseVisualStyleBackColor = true;
+            this.buttonEditUnit.Click += new System.EventHandler(this.buttonEditUnit_Click);
             // 
             // buttonSaveChanges
             // 
-            this.buttonSaveChanges.Location = new System.Drawing.Point(218, 255);
+            this.buttonSaveChanges.Location = new System.Drawing.Point(468, 255);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
             this.buttonSaveChanges.Size = new System.Drawing.Size(93, 23);
             this.buttonSaveChanges.TabIndex = 4;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
+            this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
+            // 
+            // dataGridViewUnits
+            // 
+            this.dataGridViewUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewUnits.Location = new System.Drawing.Point(15, 37);
+            this.dataGridViewUnits.Name = "dataGridViewUnits";
+            this.dataGridViewUnits.Size = new System.Drawing.Size(546, 212);
+            this.dataGridViewUnits.TabIndex = 12;
             // 
             // UnitsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(465, 381);
+            this.ClientSize = new System.Drawing.Size(736, 373);
+            this.Controls.Add(this.dataGridViewUnits);
             this.Controls.Add(this.buttonEmailTemplates);
             this.Controls.Add(this.buttonProperties);
             this.Controls.Add(this.buttonRequests);
@@ -201,7 +207,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBoxUnitName);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.listBoxUnits);
             this.Controls.Add(this.buttonSaveChanges);
             this.Controls.Add(this.buttonEditUnit);
             this.Controls.Add(this.buttonDeleteUnit);
@@ -211,6 +216,7 @@
             this.Text = "Units ";
             this.Load += new System.EventHandler(this.UnitsForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.UnitsForm_KeyDown);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewUnits)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,7 +226,6 @@
 
         private System.Windows.Forms.TextBox textBoxUnitName;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox listBoxUnits;
         private System.Windows.Forms.Button buttonAddUnit;
         private System.Windows.Forms.TextBox textBoxPropertyName;
         private System.Windows.Forms.Label label2;
@@ -234,5 +239,6 @@
         private System.Windows.Forms.Button buttonEmailTemplates;
         private System.Windows.Forms.Button buttonEditUnit;
         private System.Windows.Forms.Button buttonSaveChanges;
+        private System.Windows.Forms.DataGridView dataGridViewUnits;
     }
 }

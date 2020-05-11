@@ -32,7 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridViewIncomingRequests = new System.Windows.Forms.DataGridView();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxResponse = new System.Windows.Forms.RichTextBox();
             this.buttonEditResponse = new System.Windows.Forms.Button();
             this.buttonProperties = new System.Windows.Forms.Button();
             this.buttonEmailTemplates = new System.Windows.Forms.Button();
@@ -47,6 +47,7 @@
             this.buttonSend.TabIndex = 3;
             this.buttonSend.Text = "Send response";
             this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
             // label2
             // 
@@ -68,20 +69,23 @@
             // 
             // dataGridViewIncomingRequests
             // 
+            this.dataGridViewIncomingRequests.AllowUserToAddRows = false;
+            this.dataGridViewIncomingRequests.AllowUserToDeleteRows = false;
             this.dataGridViewIncomingRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewIncomingRequests.Location = new System.Drawing.Point(12, 40);
             this.dataGridViewIncomingRequests.Name = "dataGridViewIncomingRequests";
+            this.dataGridViewIncomingRequests.ReadOnly = true;
             this.dataGridViewIncomingRequests.Size = new System.Drawing.Size(1076, 191);
             this.dataGridViewIncomingRequests.TabIndex = 0;
             // 
-            // richTextBox1
+            // richTextBoxResponse
             // 
-            this.richTextBox1.Enabled = false;
-            this.richTextBox1.Location = new System.Drawing.Point(12, 284);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(1076, 190);
-            this.richTextBox1.TabIndex = 1;
-            this.richTextBox1.Text = "";
+            this.richTextBoxResponse.Enabled = false;
+            this.richTextBoxResponse.Location = new System.Drawing.Point(12, 284);
+            this.richTextBoxResponse.Name = "richTextBoxResponse";
+            this.richTextBoxResponse.Size = new System.Drawing.Size(1076, 190);
+            this.richTextBoxResponse.TabIndex = 1;
+            this.richTextBoxResponse.Text = "";
             // 
             // buttonEditResponse
             // 
@@ -91,6 +95,7 @@
             this.buttonEditResponse.TabIndex = 2;
             this.buttonEditResponse.Text = "Edit response";
             this.buttonEditResponse.UseVisualStyleBackColor = true;
+            this.buttonEditResponse.Click += new System.EventHandler(this.buttonEditResponse_Click);
             // 
             // buttonProperties
             // 
@@ -118,7 +123,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 530);
             this.Controls.Add(this.buttonEditResponse);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.richTextBoxResponse);
             this.Controls.Add(this.buttonEmailTemplates);
             this.Controls.Add(this.buttonProperties);
             this.Controls.Add(this.buttonSend);
@@ -142,7 +147,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dataGridViewIncomingRequests;
-        private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.RichTextBox richTextBoxResponse;
         private System.Windows.Forms.Button buttonEditResponse;
         private System.Windows.Forms.Button buttonProperties;
         private System.Windows.Forms.Button buttonEmailTemplates;

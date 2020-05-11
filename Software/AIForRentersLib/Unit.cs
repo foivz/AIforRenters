@@ -22,6 +22,10 @@ namespace AIForRentersLib
             Price = price;
         }
 
+        public Unit()
+        {
+        }
+
         public void DeleteUnit(Unit unit)
         {
 

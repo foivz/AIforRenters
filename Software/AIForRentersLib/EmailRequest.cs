@@ -13,5 +13,9 @@ namespace AIForRentersLib
         {
             
         }
+
+        public EmailRequest()
+        {
+        }
     }
 }

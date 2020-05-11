@@ -32,5 +32,10 @@ namespace AIForRentersLib
             NumberOfPeople = numberOfPeople;
             Email = email;
         }
+
+        public Request()
+        {
+
+        }
     }
 }
