@@ -27,16 +27,13 @@ The general idea of the system is to be able to automatically respond to the req
 Symbol | Name | Short description | Responsible 
 ------ | ----- | -----------| -------------------
 F01    | Login   | Login with user credentials| Lidija Pitić
-F02    | Web Form | Web Form design and implementation of fetching data| Lidija Pitić
-F03    | Fetching e-mail | Fetching e-mail from e-mail server and forwarding it to the next module | Lidija Pitić
-F04    | [AI] Extracting data | Extracting keywords from e-mail text and forwarding it to the next module | Josip Rosandić
-F05    | API1 - processing form data | Receiving data from web form and shaping it into proper response | Zdenko Pečena
-F06    | API2 - processing data from email | Processing e-mail data and shaping it into proper response | Zdenko Pečena
-F07    | API3 - DB | Communication with database | Josip Rosandić
-F08    | WinForm1 - Win Forms app for user | Win Forms app with templates and possibility for problems resolution | Mario Pernar
-F09    | WinForm2 - CRUD properties | Creating and deleting properties and units | Mario Pernar
-F10    | WinForm3 - CRUD templates | Creating and deleting email templates | Mario Pernar
-F11    | Database | Database implementation | Mario Pernar
+F02    | Web Form | Web Form design and implementation of sending JSON data to e-mail server | Lidija Pitić
+F03    | Fetching e-mail | Fetching e-mail from e-mail server, forming ReceivedData object and forwarding object to the next module | Lidija Pitić
+F04    | [AI] Extracting data | Extracting keywords from e-mail text, forming ProcessedData object and forwarding it to the next module | Josip Rosandić
+F05    | Communication with database | Entity Framework data layer for communication with DB | Zdenko Pečena
+F06    | Analisys of ProcessedData regarding database context data  | Searching database context for appropriate result according to ProcessedData and fetching result | Zdenko Pečena
+F07    | WinForm1 - Win Forms app for user | Win Forms app with templates and possibility for problems resolution | Mario Pernar
+F08    | Database | Database implementation | Mario Pernar
 
 ## Technologies and tools
 * Microsoft Visual Studio 2019
