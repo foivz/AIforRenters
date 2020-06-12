@@ -25,6 +25,8 @@ namespace AIForRentersApp
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(UnitsForm_KeyDown);
 
+            textBoxPropertyName.Text = chosenProperty.Name;
+
             DisplayUnits();
         }
 

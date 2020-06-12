@@ -15,7 +15,7 @@ namespace AIForRentersLib
                 Property newProperty = new Property
                 {
                     Name = propertyName,
-                    Location = propertyName
+                    Location = propertyLocation
                 };
 
                 context.Properties.Add(newProperty);

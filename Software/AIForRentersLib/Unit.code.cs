@@ -12,6 +12,8 @@ namespace AIForRentersLib
         {
             using (var context = new SE20E01_DBEntities())
             {
+                context.Properties.Attach(chosenProperty);
+
                 Unit newUnit = new Unit
                 {
                     Name = unitName,
