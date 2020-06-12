@@ -13,7 +13,6 @@ namespace AIForRentersApp
 {
     public partial class PropertiesForm : Form
     {
-        private PropertyRepository propertyRepository = new PropertyRepository();
         public PropertiesForm()
         {
             InitializeComponent();
@@ -24,17 +23,17 @@ namespace AIForRentersApp
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(PropertiesForm_KeyDown);
 
-            DisplayProperties(propertyRepository.GetProperties());
+            DisplayProperties();
         }
 
         private void buttonShowListOfUnits_Click(object sender, EventArgs e)
         {
+            Property chosenProperty = GetSelectedProperty();
+
             this.Hide();
-            UnitsForm unitsForm = new UnitsForm();
+            UnitsForm unitsForm = new UnitsForm(chosenProperty);
             unitsForm.ShowDialog();
             this.Close();
-
-            DisplayProperties(propertyRepository.GetProperties());
         }
 
         private void buttonRequests_Click(object sender, EventArgs e)
@@ -43,8 +42,6 @@ namespace AIForRentersApp
             FormRequests formRequests = new FormRequests();
             formRequests.ShowDialog();
             this.Close();
-
-            DisplayProperties(propertyRepository.GetProperties());
         }
 
         private void buttonEmailTemplates_Click(object sender, EventArgs e)
@@ -53,8 +50,6 @@ namespace AIForRentersApp
             EmailTemplatesForm emailTemplatesForm = new EmailTemplatesForm();
             emailTemplatesForm.ShowDialog();
             this.Close();
-
-            DisplayProperties(propertyRepository.GetProperties());
         }
 
         private void PropertiesForm_KeyDown(object sender, KeyEventArgs e)
@@ -71,16 +66,63 @@ namespace AIForRentersApp
             }
         }
 
-        private void DisplayProperties(List<Property> properties)
+        private void buttonDeleteProperty_Click(object sender, EventArgs e)
         {
-            dataGridViewProperties.DataSource = properties.ToList();
+            Property chosenProperty = GetSelectedProperty();
+
+            chosenProperty.DeleteProperty(chosenProperty);
+
+            DisplayProperties();
+        }
+
+        private void buttonEditProperty_Click(object sender, EventArgs e)
+        {
+            Property chosenProperty = GetSelectedProperty();
+
+            textBoxPropertyName.Text = chosenProperty.Name;
+            textBoxPropertyLocation.Text = chosenProperty.Location;
+        }
+
+        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        {
+            Property chosenProperty = GetSelectedProperty();
+
+            string propertyName = textBoxPropertyName.Text;
+            string propertyLocation = textBoxPropertyLocation.Text;
+
+            chosenProperty.EditProperty(chosenProperty, propertyName, propertyLocation);
+
+            DisplayProperties();
+        }
+
+        private void buttonAddProperty_Click(object sender, EventArgs e)
+        {
+            Property property = new Property();
+
+            string propertyName = textBoxPropertyName.Text;
+            string propertyLocation = textBoxPropertyLocation.Text;
+
+            property.AddProperty(propertyName, propertyLocation);
+
+            DisplayProperties();
+        }
+
+        private void DisplayProperties()
+        {
+            Property property = new Property();
+
+            dataGridViewProperties.DataSource = property.DisplayProperties();
+            dataGridViewProperties.Columns["PropertyID"].Visible = false;
+            dataGridViewProperties.Columns["Requests"].Visible = false;
+            dataGridViewProperties.Columns["Units"].Visible = false;
         }
 
         private Property GetSelectedProperty()
         {
             if (dataGridViewProperties.CurrentRow != null)
             {
-                return dataGridViewProperties.CurrentRow.DataBoundItem as Property;
+                Property chosenProperty = dataGridViewProperties.CurrentRow.DataBoundItem as Property;
+                return chosenProperty;
             }
             return null;
         }
@@ -88,44 +130,6 @@ namespace AIForRentersApp
         public override string ToString()
         {
             return "PropertiesForm";
-        }
-
-        private void buttonDeleteProperty_Click(object sender, EventArgs e)
-        {
-            Property selectedProperty = GetSelectedProperty();
-            propertyRepository.Delete(selectedProperty);
-
-            DisplayProperties(propertyRepository.GetProperties());
-        }
-
-        private void buttonEditProperty_Click(object sender, EventArgs e)
-        {
-            Property selectedProperty = GetSelectedProperty();
-
-            textBoxPropertyName.Text = selectedProperty.Name;
-            textBoxPropertyLocation.Text = selectedProperty.Location;
-        }
-
-        private void buttonSaveChanges_Click(object sender, EventArgs e)
-        {
-            Property selectedProperty = GetSelectedProperty();
-            selectedProperty.Name = textBoxPropertyName.Text;
-            selectedProperty.Location = textBoxPropertyLocation.Text;
-            propertyRepository.Update(selectedProperty);
-
-            DisplayProperties(propertyRepository.GetProperties());
-        }
-
-        private void buttonAddProperty_Click(object sender, EventArgs e)
-        {
-            Property newProperty = new Property
-            {
-                Name = textBoxPropertyName.Text,
-                Location = textBoxPropertyLocation.Text
-            };
-            propertyRepository.Insert(newProperty);
-
-            DisplayProperties(propertyRepository.GetProperties());
         }
     }
 }

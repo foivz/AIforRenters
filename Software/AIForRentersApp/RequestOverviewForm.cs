@@ -23,6 +23,8 @@ namespace AIForRentersApp
         {
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(FormRequests_KeyDown);
+
+            DisplayRequests();
         }
 
         private void buttonProperties_Click(object sender, EventArgs e)
@@ -64,6 +66,18 @@ namespace AIForRentersApp
                 helpForm.ShowDialog();
                 e.Handled = true;
             }
+        }
+
+        private void DisplayRequests()
+        {
+            Request request = new Request();
+
+            dataGridViewIncomingRequests.DataSource = request.DisplayRequests();
+            dataGridViewIncomingRequests.Columns["RequestID"].Visible = false;
+            dataGridViewIncomingRequests.Columns["PropertyID"].Visible = false;
+            dataGridViewIncomingRequests.Columns["UnitID"].Visible = false;
+            dataGridViewIncomingRequests.Columns["ClientID"].Visible = false;
+            dataGridViewIncomingRequests.Columns["EmailTemplateID"].Visible = false;
         }
 
         public override string ToString()

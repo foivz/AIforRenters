@@ -35,6 +35,12 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
       <HintPath>..\packages\Portable.BouncyCastle.1.8.5\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MailKit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
       <HintPath>..\packages\MailKit.2.6.0\lib\net46\MailKit.dll</HintPath>
     </Reference>
@@ -42,7 +48,9 @@
       <HintPath>..\packages\MimeKit.2.6.0\lib\net46\MimeKit.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -52,27 +60,77 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Availability.cs" />
-    <Compile Include="Client.cs" />
-    <Compile Include="Database.cs" />
-    <Compile Include="EmailRequest.cs" />
-    <Compile Include="EmailTemplate.cs" />
-    <Compile Include="EmailTemplateRepository.cs" />
-    <Compile Include="ExtractData.cs" />
-    <Compile Include="FetchEmail.cs" />
-    <Compile Include="IRequest.cs" />
+    <Compile Include="AIForRentersEntityModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AIForRentersEntityModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AIForRentersEntityModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AIForRentersEntityModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AIForRentersEntityModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Availability.code.cs" />
+    <Compile Include="Availability.cs">
+      <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AvailabilityValidator.cs" />
+    <Compile Include="Client.code.cs" />
+    <Compile Include="Client.cs">
+      <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailFetcher.cs" />
+    <Compile Include="EmailSender.cs" />
+    <Compile Include="EmailTemplate.code.cs" />
+    <Compile Include="EmailTemplate.cs">
+      <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Property.cs" />
-    <Compile Include="PropertyRepository.cs" />
-    <Compile Include="Request.cs" />
-    <Compile Include="RequestRepository.cs" />
-    <Compile Include="Response.cs" />
-    <Compile Include="Unit.cs" />
-    <Compile Include="UnitRepository.cs" />
-    <Compile Include="WebFormRequest.cs" />
+    <Compile Include="Property.code.cs" />
+    <Compile Include="Property.cs">
+      <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ReceivedData.cs" />
+    <Compile Include="Request.code.cs" />
+    <Compile Include="Request.cs">
+      <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ResponseProcessor.cs" />
+    <Compile Include="Unit.code.cs" />
+    <Compile Include="Unit.cs">
+      <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="AIForRentersEntityModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AIForRentersEntityModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="AIForRentersEntityModel.edmx.diagram">
+      <DependentUpon>AIForRentersEntityModel.edmx</DependentUpon>
+    </None>
+    <None Include="App.Config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AIForRentersEntityModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AIForRentersEntityModel.Context.cs</LastGenOutput>
+      <DependentUpon>AIForRentersEntityModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="AIForRentersEntityModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AIForRentersEntityModel.edmx</DependentUpon>
+      <LastGenOutput>AIForRentersEntityModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

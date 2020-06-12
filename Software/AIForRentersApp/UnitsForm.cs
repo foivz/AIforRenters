@@ -13,10 +13,11 @@ namespace AIForRentersApp
 {
     public partial class UnitsForm : Form
     {
-        private UnitRepository unitRepository = new UnitRepository();
-        public UnitsForm()
+        private Property chosenProperty;
+        public UnitsForm(Property property)
         {
             InitializeComponent();
+            chosenProperty = property;
         }
 
         private void UnitsForm_Load(object sender, EventArgs e)
@@ -24,7 +25,7 @@ namespace AIForRentersApp
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(UnitsForm_KeyDown);
 
-            DisplayUnits(unitRepository.GetUnits());
+            DisplayUnits();
         }
 
         private void buttonRequests_Click(object sender, EventArgs e)
@@ -33,8 +34,6 @@ namespace AIForRentersApp
             FormRequests formRequests = new FormRequests();
             formRequests.ShowDialog();
             this.Close();
-
-            DisplayUnits(unitRepository.GetUnits());
         }
 
         private void buttonProperties_Click(object sender, EventArgs e)
@@ -43,8 +42,6 @@ namespace AIForRentersApp
             PropertiesForm formProperties = new PropertiesForm();
             formProperties.ShowDialog();
             this.Close();
-
-            DisplayUnits(unitRepository.GetUnits());
         }
 
         private void buttonEmailTemplates_Click(object sender, EventArgs e)
@@ -53,49 +50,6 @@ namespace AIForRentersApp
             EmailTemplatesForm emailTemplatesForm = new EmailTemplatesForm();
             emailTemplatesForm.ShowDialog();
             this.Close();
-
-            DisplayUnits(unitRepository.GetUnits());
-        }
-
-        private void buttonAddUnit_Click(object sender, EventArgs e)
-        {
-            Unit newUnit = new Unit
-            {
-                Name = textBoxUnitName.Text,
-                Capacity = int.Parse(textBoxUnitCapacity.Text),
-                Price = double.Parse(textBoxUnitPrice.Text)
-            };
-
-            unitRepository.Insert(newUnit);
-
-            DisplayUnits(unitRepository.GetUnits());
-        }
-
-        private void buttonSaveChanges_Click(object sender, EventArgs e)
-        {
-            Unit selectedUnit =  GetSelectedUnit();
-            selectedUnit.Name = textBoxUnitName.Text;
-            selectedUnit.Capacity = int.Parse(textBoxUnitCapacity.Text);
-            selectedUnit.Price = double.Parse(textBoxUnitPrice.Text);
-            unitRepository.Update(selectedUnit);
-
-            DisplayUnits(unitRepository.GetUnits());
-        }
-
-        private void buttonEditUnit_Click(object sender, EventArgs e)
-        {
-            Unit selectedUnit = GetSelectedUnit();
-            textBoxUnitName.Text = selectedUnit.Name;
-            textBoxUnitCapacity.Text = selectedUnit.Capacity.ToString();
-            textBoxUnitPrice.Text = selectedUnit.Price.ToString();
-        }
-
-        private void buttonDeleteUnit_Click(object sender, EventArgs e)
-        {
-            Unit selectedUnit = GetSelectedUnit();
-            unitRepository.Delete(selectedUnit);
-
-            DisplayUnits(unitRepository.GetUnits());
         }
 
         private void UnitsForm_KeyDown(object sender, KeyEventArgs e)
@@ -112,16 +66,69 @@ namespace AIForRentersApp
             }
         }
 
-        private void DisplayUnits(List<Unit> units)
+        private void buttonAddUnit_Click(object sender, EventArgs e)
         {
-            dataGridViewUnits.DataSource = units.ToList();
+            
+            Unit unit = new Unit();
+
+            string unitName = textBoxUnitName.Text;
+            int unitCapacity = int.Parse(textBoxUnitCapacity.Text);
+            double unitPrice = double.Parse(textBoxUnitPrice.Text);
+
+            unit.AddUnit(chosenProperty, unitName, unitCapacity, unitPrice);
+
+            DisplayUnits();
+        }
+
+        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        {
+            Unit chosenUnit = GetSelectedUnit();
+
+            string unitName = textBoxUnitName.Text;
+            int unitCapacity = int.Parse(textBoxUnitCapacity.Text);
+            double unitPrice = double.Parse(textBoxUnitPrice.Text);
+
+            chosenUnit.EditUnit(chosenUnit, unitName, unitCapacity, unitPrice);
+
+            DisplayUnits();
+        }
+
+        private void buttonEditUnit_Click(object sender, EventArgs e)
+        {
+            Unit chosenUnit = GetSelectedUnit();
+
+            textBoxUnitName.Text = chosenUnit.Name;
+            textBoxUnitCapacity.Text = chosenUnit.Capacity.ToString();
+            textBoxUnitPrice.Text = chosenUnit.Price.ToString();
+        }
+
+        private void buttonDeleteUnit_Click(object sender, EventArgs e)
+        {
+            Unit chosenUnit = GetSelectedUnit();
+
+            chosenUnit.DeleteUnit(chosenUnit);
+
+            DisplayUnits();
+        }
+
+        private void DisplayUnits()
+        {
+            Unit unit = new Unit();
+
+            dataGridViewUnits.DataSource = unit.DisplayUnits();
+            dataGridViewUnits.Columns["UnitID"].Visible = false;
+            dataGridViewUnits.Columns["PropertyID"].Visible = false;
+            dataGridViewUnits.Columns["Availabilities"].Visible = false;
+            dataGridViewUnits.Columns["Property"].Visible = false;
+            dataGridViewUnits.Columns["Requests"].Visible = false;
         }
 
         private Unit GetSelectedUnit()
         {
             if (dataGridViewUnits.CurrentRow != null)
             {
-                return dataGridViewUnits.CurrentRow.DataBoundItem as Unit;
+                Unit chosenUnit = dataGridViewUnits.CurrentRow.DataBoundItem as Unit;
+                return chosenUnit;
             }
             return null;
         }

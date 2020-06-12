@@ -52,3 +52,8 @@ C:\Users\Josip Rosandic\Documents\GitHub\PIProjekt\r20--jrosandic-mpernar-lpitic
 C:\Users\Josip Rosandic\Documents\GitHub\PIProjekt\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\obj\Debug\AIForRentersApp.csproj.CopyComplete
 C:\Users\Josip Rosandic\Documents\GitHub\PIProjekt\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\obj\Debug\AIForRentersApp.exe
 C:\Users\Josip Rosandic\Documents\GitHub\PIProjekt\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\obj\Debug\AIForRentersApp.pdb
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\bin\Debug\EntityFramework.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\bin\Debug\AIForRentersLib.dll.config
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\bin\Debug\EntityFramework.xml
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\bin\Debug\EntityFramework.SqlServer.dll
+D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersApp\bin\Debug\EntityFramework.SqlServer.xml
