@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIForRentersLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -23,14 +24,6 @@ namespace AIForRentersApp
             this.KeyDown += new KeyEventHandler(LoginForm_KeyDown);
         }
 
-        private void buttonLogIn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            FormRequests formRequests = new FormRequests();
-            formRequests.ShowDialog();
-            this.Close();
-        }
-
         private void LoginForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -42,6 +35,37 @@ namespace AIForRentersApp
                 HelpForm helpForm = new HelpForm();
                 helpForm.ShowDialog();
                 e.Handled = true;
+            }
+        }
+
+        private void buttonLogIn_Click(object sender, EventArgs e)
+        {
+            string emailAddress = textBoxEmail.Text;
+            string password = textBoxPassword.Text;
+
+            Sender.Email = emailAddress;
+
+            DialogResult result = 0;
+
+            try
+            {
+                Login.Authentication(emailAddress, password);
+            }
+            catch (LoginException ex)
+            {
+                result = MessageBox.Show(ex.Poruka);
+            }
+
+            if (result != DialogResult.OK)
+            {
+                this.Hide();
+                FormRequests formRequests = new FormRequests();
+                formRequests.ShowDialog();
+                this.Close();
+            }
+            else
+            {
+                textBoxPassword.ResetText();
             }
         }
 
