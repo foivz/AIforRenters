@@ -72,3 +72,5 @@ D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosa
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csproj.CopyComplete
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.dll
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.pdb
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.dll
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.pdb
