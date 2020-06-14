@@ -59,6 +59,7 @@ namespace AIForRentersApp
 
         private void buttonRefreshRequests_Click(object sender, EventArgs e)
         {
+            ResponseProcessor.ProcessData(EmailFetcher.ShapeReceivedData());
             DisplayRequests();
         }
 

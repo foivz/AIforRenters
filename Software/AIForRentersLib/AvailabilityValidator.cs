@@ -10,7 +10,7 @@ namespace AIForRentersLib
 {
     public static class AvailabilityValidator
     {
-        public static bool CheckForAvailability(Request request)
+        public static bool CheckForAvailability(List<Request> requests)
         {
             return true;
         }
