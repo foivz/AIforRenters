@@ -53,12 +53,13 @@ namespace AIForRentersLib
             }
         }
 
-        public List<Unit> DisplayUnits()
+        public List<Unit> DisplayUnits(Property chosenProperty)
         {
             List<Unit> units = new List<Unit>();
             using (var context = new SE20E01_DBEntities())
             {
                 var query = from unit in context.Units
+                            where unit.Property.PropertyID == chosenProperty.PropertyID
                             select unit;
 
                 units = query.ToList();

@@ -117,7 +117,7 @@ namespace AIForRentersApp
         {
             Unit unit = new Unit();
 
-            dataGridViewUnits.DataSource = unit.DisplayUnits();
+            dataGridViewUnits.DataSource = unit.DisplayUnits(chosenProperty);
             dataGridViewUnits.Columns["UnitID"].Visible = false;
             dataGridViewUnits.Columns["PropertyID"].Visible = false;
             dataGridViewUnits.Columns["Availabilities"].Visible = false;
