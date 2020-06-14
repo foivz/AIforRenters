@@ -47,14 +47,14 @@
             <asp:Label ID="Label8" runat="server" Text="Email"></asp:Label><br />
             <asp:TextBox ID="emailTextBox" runat="server"></asp:TextBox><br /><br />
 
-            <asp:Label ID="Label9" runat="server" Text="Number of people"></asp:Label><br />
-            <asp:DropDownList ID="numberOfPeopleDropDownList" runat="server"></asp:DropDownList><br /><br />
-
             <asp:Label ID="Label7" runat="server" Text="Property"></asp:Label><br />
-            <asp:DropDownList ID="propertiesDropDown" runat="server"></asp:DropDownList><br /><br />
+            <asp:DropDownList ID="propertiesDropDown" runat="server" OnSelectedIndexChanged="propertiesDropDown_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList><br /><br />
 
             <asp:Label ID="Label3" runat="server" Text="Unit"></asp:Label><br />
-            <asp:DropDownList ID="unitsDropDown" runat="server"></asp:DropDownList><br /><br />
+            <asp:DropDownList ID="unitsDropDown" runat="server" OnSelectedIndexChanged="unitsDropDown_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList><br /><br />
+
+            <asp:Label ID="Label9" runat="server" Text="Number of people"></asp:Label><br />
+            <asp:DropDownList ID="numberOfPeopleDropDownList" runat="server"></asp:DropDownList><br /><br />
 
             <div class="calendar">
                 <div class="calendar from">
@@ -67,9 +67,6 @@
                     <asp:Calendar ID="dateToCalendar" runat="server"></asp:Calendar><br /><br />
                 </div>
             </div><br/>
-
-            <asp:Label ID="Label6" runat="server" Text="Comment"></asp:Label><br />
-            <asp:TextBox ID="commentTextBox" runat="server"></asp:TextBox><br /><br />
 
             <asp:Button ID="sendRequestButton" runat="server" Text="Send request" OnClick="sendRequestButton_Click" />
         </div>

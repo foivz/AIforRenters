@@ -28,64 +28,22 @@ D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosa
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\EntityFramework.SqlServer.dll
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\EntityFramework.xml
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\AIForRentersLib.dll.config
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\AIForRentersLib.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\AIForRentersLib.pdb
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\BouncyCastle.Crypto.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\EntityFramework.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\MailKit.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\MimeKit.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\BouncyCastle.Crypto.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\EntityFramework.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\MailKit.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\MimeKit.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csprojAssemblyReference.cache
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csproj.CoreCompileInputs.cache
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csproj.CopyComplete
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.pdb
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Options.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Primitives.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Definitions.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.DateTime.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.Number.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.NumberWithUnit.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Collections.Immutable.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.ValueTuple.dll
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Options.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Primitives.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Collections.Immutable.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.ValueTuple.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Abstractions.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Memory.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Options.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Primitives.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Definitions.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.DateTime.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.Number.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Recognizers.Text.NumberWithUnit.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\OpenPop.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Collections.Immutable.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.ValueTuple.dll
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Abstractions.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Caching.Memory.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.DependencyInjection.Abstractions.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Options.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\Microsoft.Extensions.Primitives.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Collections.Immutable.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\System.ValueTuple.xml
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\AIForRentersLib.dll.config
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\AIForRentersLib.dll
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\AIForRentersLib.pdb
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\BouncyCastle.Crypto.dll
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\EntityFramework.dll
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\EntityFramework.SqlServer.dll
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\MailKit.dll
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\MimeKit.dll
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\BouncyCastle.Crypto.xml
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\EntityFramework.xml
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\EntityFramework.SqlServer.xml
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\MailKit.xml
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\MimeKit.xml
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csprojAssemblyReference.cache
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csproj.CoreCompileInputs.cache
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csproj.CopyComplete
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.dll
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.pdb
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\OpenPop.dll

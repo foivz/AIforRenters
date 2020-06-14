@@ -51,7 +51,10 @@ namespace AIForRentersApp
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
-            //Method for sending email to client
+            Request selectedRequest = GetSelectedRequest();
+            EmailTemplate emailTemplate = selectedRequest.EmailTemplate;
+
+            EmailSender.SendEmail(emailTemplate, selectedRequest);
         }
 
         private void buttonRefreshRequests_Click(object sender, EventArgs e)
@@ -88,6 +91,15 @@ namespace AIForRentersApp
         public override string ToString()
         {
             return "RequestsForm";
+        }
+
+        private Request GetSelectedRequest()
+        {
+            if (dataGridViewIncomingRequests.CurrentRow != null)
+            {
+                return dataGridViewIncomingRequests.CurrentRow.DataBoundItem as Request;
+            }
+            return null;
         }
     }
 }
