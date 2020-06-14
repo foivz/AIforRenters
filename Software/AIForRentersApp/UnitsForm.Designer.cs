@@ -184,7 +184,8 @@
             // 
             // dataGridViewUnits
             // 
-            this.dataGridViewUnits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewUnits.AllowUserToAddRows = false;
+            this.dataGridViewUnits.AllowUserToDeleteRows = false;
             this.dataGridViewUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewUnits.Location = new System.Drawing.Point(15, 37);
             this.dataGridViewUnits.Name = "dataGridViewUnits";

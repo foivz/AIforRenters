@@ -147,7 +147,8 @@
             // 
             // dataGridViewProperties
             // 
-            this.dataGridViewProperties.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewProperties.AllowUserToAddRows = false;
+            this.dataGridViewProperties.AllowUserToDeleteRows = false;
             this.dataGridViewProperties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewProperties.Location = new System.Drawing.Point(12, 12);
             this.dataGridViewProperties.Name = "dataGridViewProperties";
