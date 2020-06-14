@@ -72,6 +72,7 @@
             // 
             this.dataGridViewIncomingRequests.AllowUserToAddRows = false;
             this.dataGridViewIncomingRequests.AllowUserToDeleteRows = false;
+            this.dataGridViewIncomingRequests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewIncomingRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewIncomingRequests.Location = new System.Drawing.Point(12, 40);
             this.dataGridViewIncomingRequests.Name = "dataGridViewIncomingRequests";
