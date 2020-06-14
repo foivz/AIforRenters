@@ -44,6 +44,7 @@ namespace AIForRentersApp
             string password = textBoxPassword.Text;
 
             Sender.Email = emailAddress;
+            Sender.Password = password;
 
             DialogResult result = 0;
 

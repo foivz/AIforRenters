@@ -48,10 +48,10 @@
             <asp:TextBox ID="emailTextBox" runat="server"></asp:TextBox><br /><br />
 
             <asp:Label ID="Label7" runat="server" Text="Property"></asp:Label><br />
-            <asp:DropDownList ID="propertiesDropDown" runat="server" OnSelectedIndexChanged="propertiesDropDown_SelectedIndexChanged"></asp:DropDownList><br /><br />
+            <asp:DropDownList ID="propertiesDropDown" runat="server" OnSelectedIndexChanged="propertiesDropDown_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList><br /><br />
 
             <asp:Label ID="Label3" runat="server" Text="Unit"></asp:Label><br />
-            <asp:DropDownList ID="unitsDropDown" runat="server" OnSelectedIndexChanged="unitsDropDown_SelectedIndexChanged"></asp:DropDownList><br /><br />
+            <asp:DropDownList ID="unitsDropDown" runat="server" OnSelectedIndexChanged="unitsDropDown_SelectedIndexChanged" AutoPostBack="True"></asp:DropDownList><br /><br />
 
             <asp:Label ID="Label9" runat="server" Text="Number of people"></asp:Label><br />
             <asp:DropDownList ID="numberOfPeopleDropDownList" runat="server"></asp:DropDownList><br /><br />

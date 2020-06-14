@@ -9,5 +9,6 @@ namespace AIForRentersLib
     public static class Sender
     {
         public static string Email { get; set; }
+        public static string Password { get; set; }
     }
 }

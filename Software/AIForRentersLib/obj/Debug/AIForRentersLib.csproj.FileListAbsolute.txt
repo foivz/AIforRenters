@@ -46,3 +46,4 @@ D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AI
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csproj.CopyComplete
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.dll
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\obj\Debug\AIForRentersLib.pdb
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersLib\bin\Debug\OpenPop.dll

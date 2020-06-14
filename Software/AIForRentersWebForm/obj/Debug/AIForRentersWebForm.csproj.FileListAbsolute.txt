@@ -159,3 +159,4 @@ D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AI
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersWebForm\bin\MimeKit.xml
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersWebForm\bin\BouncyCastle.Crypto.xml
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersWebForm\obj\Debug\AIForRentersWebForm.csproj.CopyComplete
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersWebForm\bin\OpenPop.dll

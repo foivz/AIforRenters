@@ -8,7 +8,7 @@ namespace AIForRentersLib
 {
     public static class ResponseProcessor
     {
-        public static Request ProcessData(ReceivedData receivedData)
+        public static Request ProcessData(List<ReceivedData> receivedData)
         {
             return null;
         }

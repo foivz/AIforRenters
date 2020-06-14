@@ -86,3 +86,4 @@ D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AI
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersApp\bin\Debug\MailKit.xml
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersApp\bin\Debug\MimeKit.xml
 D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersApp\bin\Debug\BouncyCastle.Crypto.xml
+D:\Lidija Pitic\Documents\Faks\6. semestar\PI\Projekt\AI for renters\Software\AIForRentersApp\bin\Debug\OpenPop.dll

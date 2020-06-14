@@ -18,6 +18,8 @@ namespace AIForRentersLib
 
             smtpClient.Connect(uri);
 
+            smtpClient.Authenticate(Sender.Email, Sender.Password);
+
             MimeMessage generatedEmail = GenerateEmail(emailTemplate, request);
 
             smtpClient.Send(generatedEmail);
