@@ -19,17 +19,17 @@ namespace AIForRentersLib
         /// <returns>
         /// New request object of class Request with its attributes.
         /// </returns>
-        public static List<Request> ProcessData(List<ReceivedData> receivedData)
+        public static void ProcessData(List<ReceivedData> receivedData)
         {
             List<Request> newRequests = new List<Request>();
 
             foreach (ReceivedData receivedDataItem in receivedData)
             {
                 // Client e-mail adress
-                string emailAdress = ""; // = receivedDataItem.EmailAdress;
+                string emailAdress  = receivedDataItem.EmailAddress;
 
                 // Client e-mail subject
-                string emailSubject = ""; // = receivedDataItem.EmailSubject;
+                string emailSubject = receivedDataItem.EmailSubject;
 
                 // Client name and surname
                 string emailSenderNameAndSurname = ""; // = receivedDataItem.ClientNameAndSurname;
@@ -38,32 +38,78 @@ namespace AIForRentersLib
                 string surname = nameAndSurnameSplitted[1];
 
                 //Email body
-                string emailBody = ""; // = receivedDataItem.EmailBody;
+                string emailBody = receivedDataItem.EmailBody;
 
                 // Processed email body data (Date and number of people)
                 DateTime dateFrom = DateTime.Parse(ExtractDateFrom(emailBody));
                 DateTime dateTo = DateTime.Parse(ExtractDateTo(emailBody));
                 int numberOfPeople = ExtractNumberOfPeople(emailBody);
 
+                Property selectedProperty = GetProperty(emailSubject);
+                Unit selectedUnit = GetUnit(emailSubject);
+                Client newClient = new Client()
+                {
+                    Name = name,
+                    Surname = surname,
+                    Email = emailAdress
+                };
+                EmailTemplate newTemplate = new EmailTemplate()
+                {
+                    Name = "",
+                    TemplateContent = ""
+                };
+
                 Request newRequest = new Request()
                 {
-                    //Property 
-                    //Unit
+                    Property = selectedProperty,
+                    Unit = selectedUnit,
                     FromDate = dateFrom,
                     ToDate = dateTo,
                     NumberOfPeople = numberOfPeople,
-                    Client = new Client()
-                    {
-                        Name = name,
-                        Surname = surname,
-                        Email = emailAdress
-                    },
-                    Confirmed = false
+                    Client = newClient,
+                    Confirmed = false,
+                    EmailTemplate = newTemplate
                 };
 
-                newRequests.Add(newRequest);
+                using (var context = new SE20E01_DBEntities())
+                {
+                    context.Properties.Attach(selectedProperty);
+                    context.Units.Attach(selectedUnit);
+                    context.EmailTemplates.Add(newTemplate);
+
+                    context.Clients.Add(newClient);
+
+                    context.Requests.Add(newRequest);
+
+                    context.SaveChanges();
+                }
             }
-            return newRequests;
+        }
+
+        private static Property GetProperty(string emailSubject)
+        {
+            Property selectedProperty;
+
+            using (var context = new SE20E01_DBEntities())
+            {
+                selectedProperty = context.Properties.First(p => p.Units.Any(u => u.Name == emailSubject));
+            }
+            return selectedProperty;
+        }
+
+        private static Unit GetUnit(string emailSubject)
+        {
+            Unit selectedUnit;
+
+            using (var context = new SE20E01_DBEntities())
+            {
+                var queryUnit = from unit in context.Units
+                                where unit.Name == emailSubject
+                                select unit;
+
+                selectedUnit = queryUnit.Single();
+            }
+            return selectedUnit;
         }
 
         private static int ExtractNumberOfPeople(string testEmailString)
