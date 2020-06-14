@@ -19,22 +19,48 @@ namespace AIForRentersLib
         /// <returns>
         /// New request object of class Request with its attributes.
         /// </returns>
-        public static Request ProcessData(ReceivedData receivedData)
+        public static Request ProcessData(List<ReceivedData> receivedData)
         {
-            string emailBody = "I need a reservation for eleven people from 20. June until 27. June Best regards!"; // = receivedData.EmailBody;
-
-            DateTime dateFrom = DateTime.Parse(ExtractDateFrom(emailBody));
-            DateTime dateTo = DateTime.Parse(ExtractDateTo(emailBody));
-            int numberOfPeople = ExtractNumberOfPeople(emailBody);
-
-            Request newRequest = new Request()
+            foreach (ReceivedData receivedDataItem in receivedData)
             {
-                FromDate = dateFrom,
-                ToDate = dateTo,
-                NumberOfPeople = numberOfPeople
-            };
+                // Client e-mail adress
+                string emailAdress = ""; // = receivedDataItem.EmailAdress;
 
-            return newRequest;
+                // Client e-mail subject
+                string emailSubject = ""; // = receivedDataItem.EmailSubject;
+
+                // Client name and surname
+                string emailSenderNameAndSurname = ""; // = receivedDataItem.ClientNameAndSurname;
+                var nameAndSurnameSplitted = emailSenderNameAndSurname.Split(' ');
+                string name = nameAndSurnameSplitted[0];
+                string surname = nameAndSurnameSplitted[1];
+
+                //Email body
+                string emailBody = ""; // = receivedDataItem.EmailBody;
+
+                // Processed email body data (Date and number of people)
+                DateTime dateFrom = DateTime.Parse(ExtractDateFrom(emailBody));
+                DateTime dateTo = DateTime.Parse(ExtractDateTo(emailBody));
+                int numberOfPeople = ExtractNumberOfPeople(emailBody);
+
+                Request newRequest = new Request()
+                {
+                    //Property 
+                    //Unit
+                    FromDate = dateFrom,
+                    ToDate = dateTo,
+                    NumberOfPeople = numberOfPeople,
+                    Client = new Client()
+                    {
+                        Name = name,
+                        Surname = surname,
+                        Email = emailAdress
+                    },
+                    Confirmed = false
+                };
+                return newRequest;
+            }
+            return null;
         }
 
 
