@@ -23,11 +23,8 @@ namespace AIForRentersWebForm
         protected void sendRequestButton_Click(object sender, EventArgs e)
         {
 
-            //AIForRentersLib.Unit selectedUnit = GetUnit();
-           //Property selectedProperty = GetProperty();
-
-            int unitID = int.Parse(GetSelectedUnit());
-            int propertyID = int.Parse(GetSelectedProperty());
+            AIForRentersLib.Unit selectedUnit = GetUnit();
+            Property selectedProperty = GetProperty();
 
             string clientName = nameTextBox.Text;
             string clientSurname = surnameTextBox.Text;
@@ -38,17 +35,15 @@ namespace AIForRentersWebForm
 
             Client newClient = CreateClient(clientName, clientSurname, clientEmail);
 
-            Request newRequest = CreateRequest(newClient, propertyID, unitID, numberOfPeople, fromDate, toDate);
+            Request newRequest = CreateRequest(newClient, selectedProperty, selectedUnit, numberOfPeople, fromDate, toDate);
 
             using (var context = new SE20E01_DBEntities())
             {
-                //context.Properties.Attach(selectedProperty);
-                //context.Units.Attach(selectedUnit);
+                context.Properties.Attach(selectedProperty);
+                context.Units.Attach(selectedUnit);
 
-                context.Clients.Attach(newClient);
                 context.Clients.Add(newClient);
 
-                context.Requests.Attach(newRequest);
                 context.Requests.Add(newRequest);
 
                 context.SaveChanges();
@@ -202,17 +197,22 @@ namespace AIForRentersWebForm
             return selectedUnit;
         }
 
-        private Request CreateRequest(Client newClient, int selectedProperty, int selectedUnit, int numberOfPeople, DateTime fromDate, DateTime toDate)
+        private Request CreateRequest(Client newClient, Property selectedProperty, AIForRentersLib.Unit selectedUnit, int numberOfPeople, DateTime fromDate, DateTime toDate)
         {
             Request newRequest = new Request();
 
             newRequest.Client = newClient;
-            newRequest.PropertyID = selectedProperty;
-            newRequest.UnitID = selectedUnit;
+            newRequest.Property = selectedProperty;
+            newRequest.Unit = selectedUnit;
             newRequest.NumberOfPeople = numberOfPeople;
             newRequest.FromDate = fromDate;
             newRequest.ToDate = toDate;
             newRequest.Confirmed = false;
+            newRequest.EmailTemplate = new EmailTemplate
+            {
+                Name = "",
+                TemplateContent = ""
+            };
 
             return newRequest;
         }

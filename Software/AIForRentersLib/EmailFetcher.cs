@@ -34,12 +34,14 @@ namespace AIForRentersLib
                 // Most servers give the latest message the highest number
                 for (int i = messageCount; i > 0; i--)
                 {
-                    string clientAddress = client.GetMessage(i).Headers.From.Address;
+                    string clientNameSurname = client.GetMessage(i).Headers.From.DisplayName;
                     string emailSubject = client.GetMessage(i).Headers.Subject;
+                    string clientAddress = client.GetMessage(i).Headers.From.Address;
                     string emailBody = client.GetMessage(i).MessagePart.GetBodyAsText();
 
                     ReceivedData newReceivedData = new ReceivedData
                     {
+                        ClientNameSurname = clientNameSurname,
                         EmailAddress = clientAddress,
                         EmailSubject = emailSubject,
                         EmailBody = emailBody
