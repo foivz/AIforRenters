@@ -21,7 +21,7 @@ namespace AIForRentersLib
         /// </returns>
         public static Request ProcessData(ReceivedData receivedData)
         {
-            string emailBody = ""; // = receivedData.EmailBody;
+            string emailBody = "I need a reservation for eleven people from 20. June until 27. June Best regards!"; // = receivedData.EmailBody;
 
             DateTime dateFrom = DateTime.Parse(ExtractDateFrom(emailBody));
             DateTime dateTo = DateTime.Parse(ExtractDateTo(emailBody));
