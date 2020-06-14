@@ -43,6 +43,7 @@
             // 
             // dataGridViewEmailTemplates
             // 
+            this.dataGridViewEmailTemplates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewEmailTemplates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewEmailTemplates.Location = new System.Drawing.Point(12, 23);
             this.dataGridViewEmailTemplates.Name = "dataGridViewEmailTemplates";
