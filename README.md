@@ -16,12 +16,10 @@ The general idea of the system is to be able to automatically respond to the req
 
 ## Project specification
 * Centralized database
-* API to store and retrieve the data
 * Module/s to receive requests from users
+* Module/s to process user data
 * AI module to send responses
 * Desktop app to monitor the status and health of the system and requests made by users
-* Mobile and/or web app (with similar features as the desktop one)
-
 
 
 Symbol | Name | Short description | Responsible 
