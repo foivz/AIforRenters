@@ -72,12 +72,14 @@
             // 
             this.dataGridViewIncomingRequests.AllowUserToAddRows = false;
             this.dataGridViewIncomingRequests.AllowUserToDeleteRows = false;
+            this.dataGridViewIncomingRequests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridViewIncomingRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewIncomingRequests.Location = new System.Drawing.Point(12, 40);
             this.dataGridViewIncomingRequests.Name = "dataGridViewIncomingRequests";
             this.dataGridViewIncomingRequests.ReadOnly = true;
             this.dataGridViewIncomingRequests.Size = new System.Drawing.Size(1076, 191);
             this.dataGridViewIncomingRequests.TabIndex = 0;
+            this.dataGridViewIncomingRequests.SelectionChanged += new System.EventHandler(this.dataGridViewIncomingRequests_SelectionChanged);
             // 
             // richTextBoxResponse
             // 

@@ -48,6 +48,8 @@ namespace AIForRentersWebForm
 
                 context.SaveChanges();
             }
+
+            ScriptManager.RegisterStartupScript(Page, typeof(Page), "Popup", "alert('Your request has been sent successfully!')", true);
         }
 
         protected void propertiesDropDown_SelectedIndexChanged(object sender, EventArgs e)

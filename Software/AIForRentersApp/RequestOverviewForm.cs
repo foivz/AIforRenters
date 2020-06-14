@@ -77,6 +77,12 @@ namespace AIForRentersApp
             }
         }
 
+        private void dataGridViewIncomingRequests_SelectionChanged(object sender, EventArgs e)
+        {
+            Request selectedRequest = GetSelectedRequest();
+            richTextBoxResponse.Text = selectedRequest.EmailTemplate.TemplateContent;
+        }
+
         private void DisplayRequests()
         {
             Request request = new Request();
