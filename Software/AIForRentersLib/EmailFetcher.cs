@@ -37,7 +37,7 @@ namespace AIForRentersLib
                     string clientNameSurname = client.GetMessage(i).Headers.From.DisplayName;
                     string emailSubject = client.GetMessage(i).Headers.Subject;
                     string clientAddress = client.GetMessage(i).Headers.From.Address;
-                    string emailBody = client.GetMessage(i).MessagePart.GetBodyAsText();
+                    string emailBody = "I want to reserve one room from 15. July until 29. July!";//client.GetMessage(i).MessagePart.GetBodyAsText();
 
                     ReceivedData newReceivedData = new ReceivedData
                     {

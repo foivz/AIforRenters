@@ -1,6 +1,7 @@
 ﻿using Microsoft.Recognizers.Text;
 using Microsoft.Recognizers.Text.DateTime;
 using Microsoft.Recognizers.Text.Number;
+using Org.BouncyCastle.Math.EC.Rfc7748;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,7 +33,7 @@ namespace AIForRentersLib
                 string emailSubject = receivedDataItem.EmailSubject;
 
                 // Client name and surname
-                string emailSenderNameAndSurname = ""; // = receivedDataItem.ClientNameAndSurname;
+                string emailSenderNameAndSurname = receivedDataItem.ClientNameSurname;
                 var nameAndSurnameSplitted = emailSenderNameAndSurname.Split(' ');
                 string name = nameAndSurnameSplitted[0];
                 string surname = nameAndSurnameSplitted[1];
@@ -93,6 +94,11 @@ namespace AIForRentersLib
             using (var context = new SE20E01_DBEntities())
             {
                 selectedProperty = context.Properties.First(p => p.Units.Any(u => u.Name == emailSubject));
+                /*
+                selectedProperty = (from p in context.Properties
+                                   where p.Units.Any(u => u.Name == emailSubject)
+                                   select p) as Property;
+                */
             }
             return selectedProperty;
         }
