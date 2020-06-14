@@ -54,6 +54,11 @@ namespace AIForRentersApp
             //Method for sending email to client
         }
 
+        private void buttonRefreshRequests_Click(object sender, EventArgs e)
+        {
+            DisplayRequests();
+        }
+
         private void FormRequests_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)

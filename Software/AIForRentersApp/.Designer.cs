@@ -36,6 +36,7 @@
             this.buttonEditResponse = new System.Windows.Forms.Button();
             this.buttonProperties = new System.Windows.Forms.Button();
             this.buttonEmailTemplates = new System.Windows.Forms.Button();
+            this.buttonRefreshRequests = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIncomingRequests)).BeginInit();
             this.SuspendLayout();
             // 
@@ -117,6 +118,16 @@
             this.buttonEmailTemplates.UseVisualStyleBackColor = true;
             this.buttonEmailTemplates.Click += new System.EventHandler(this.buttonEmailTemplates_Click);
             // 
+            // buttonRefreshRequests
+            // 
+            this.buttonRefreshRequests.Location = new System.Drawing.Point(1110, 183);
+            this.buttonRefreshRequests.Name = "buttonRefreshRequests";
+            this.buttonRefreshRequests.Size = new System.Drawing.Size(121, 48);
+            this.buttonRefreshRequests.TabIndex = 3;
+            this.buttonRefreshRequests.Text = "Refresh requests";
+            this.buttonRefreshRequests.UseVisualStyleBackColor = true;
+            this.buttonRefreshRequests.Click += new System.EventHandler(this.buttonRefreshRequests_Click);
+            // 
             // FormRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -124,6 +135,7 @@
             this.ClientSize = new System.Drawing.Size(1243, 530);
             this.Controls.Add(this.buttonEditResponse);
             this.Controls.Add(this.richTextBoxResponse);
+            this.Controls.Add(this.buttonRefreshRequests);
             this.Controls.Add(this.buttonEmailTemplates);
             this.Controls.Add(this.buttonProperties);
             this.Controls.Add(this.buttonSend);
@@ -151,6 +163,7 @@
         private System.Windows.Forms.Button buttonEditResponse;
         private System.Windows.Forms.Button buttonProperties;
         private System.Windows.Forms.Button buttonEmailTemplates;
+        private System.Windows.Forms.Button buttonRefreshRequests;
     }
 }
 
