@@ -19,8 +19,10 @@ namespace AIForRentersLib
         /// <returns>
         /// New request object of class Request with its attributes.
         /// </returns>
-        public static Request ProcessData(List<ReceivedData> receivedData)
+        public static List<Request> ProcessData(List<ReceivedData> receivedData)
         {
+            List<Request> newRequests = new List<Request>();
+
             foreach (ReceivedData receivedDataItem in receivedData)
             {
                 // Client e-mail adress
@@ -58,11 +60,11 @@ namespace AIForRentersLib
                     },
                     Confirmed = false
                 };
-                return newRequest;
-            }
-            return null;
-        }
 
+                newRequests.Add(newRequest);
+            }
+            return newRequests;
+        }
 
         private static int ExtractNumberOfPeople(string testEmailString)
         {
