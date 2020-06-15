@@ -37,4 +37,5 @@ F08    | Database | Database implementation | Mario Pernar
 * Microsoft Visual Studio 2019
 * Microsoft SQL Server Studio 2018
 * Visual Paradigm Online
-* Microsoft Office Word 
+* DrawIO
+* GitHub code versioning system
