@@ -20,6 +20,7 @@ The general idea of the system is to be able to automatically respond to the req
 * Module/s to process user data
 * AI module to send responses
 * Desktop app to monitor the status and health of the system and requests made by users
+* Web form as one of the data channels 
 
 
 Symbol | Name | Short description | Responsible 
