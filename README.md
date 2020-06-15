@@ -39,6 +39,6 @@ F08    | Database | Database implementation | Mario Pernar
 * Visual Paradigm Online
 * DrawIO
 * GitHub code versioning system
-•	Microsoft .NET Framework
-•	Microsoft.Recognizer.Text module
+* Microsoft .NET Framework
+*	Microsoft.Recognizer.Text module
 
