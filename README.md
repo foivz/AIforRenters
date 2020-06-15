@@ -25,7 +25,7 @@ The general idea of the system is to be able to automatically respond to the req
 Symbol | Name | Short description | Responsible 
 ------ | ----- | -----------| -------------------
 F01    | Login   | Login with user credentials| Lidija Pitić
-F02    | Web Form | Web Form design and implementation | Mario Pernar, Josip Rosandić
+F02    | Web Form | Web Form design and implementation | Lidija Pitić, Josip Rosandić
 F03    | Fetching e-mail | Fetching e-mail from e-mail server, forming ReceivedData object and forwarding object to the next module | Lidija Pitić
 F04    | [AI] Extracting data | Extracting keywords from e-mail text, forming ProcessedData object and forwarding it to the next module | Josip Rosandić
 F05    | Communication with database | Entity Framework data layer for communication with DB | Mario Pernar
