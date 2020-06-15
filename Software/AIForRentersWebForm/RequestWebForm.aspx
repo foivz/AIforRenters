@@ -60,6 +60,7 @@
             margin: 5px 0 0 0;
             border-radius: 5px;
             border: 1px solid rgba(127, 140, 141,0.3);
+            cursor: pointer;
         }
 
         .dropDownStyle:focus {
@@ -69,14 +70,16 @@
             border-radius: 5px;
             border: 1px solid rgba(127, 140, 141,0.3);
             box-shadow: 0 12px 16px 0 rgba(127, 140, 141,0.2), 0 17px 50px 0 rgba(127, 140, 141,0.2);
+            cursor: pointer;
         }
 
         #sendRequestButton{
             background-color: rgba(127, 140, 141,1.0);
             border: none;
             border-radius: 5px;
-            color: white;
+            border: 1px solid rgba(127, 140, 141,1.0);
             padding: 15px 32px;
+            color: white;
             text-align: center;
             text-decoration: none;
             display: inline-block;
@@ -88,17 +91,17 @@
 
         #sendRequestButton:hover{
             background-color: white;
-            border: 1px solid rgba(127, 140, 141,1.0);
             border-radius: 5px;
-            color: rgba(127, 140, 141,1.0);
+            border: 1px solid rgba(127, 140, 141,1.0);
             padding: 15px 32px;
+            color: #2f3640;
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             cursor: pointer;
             box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
-            transition-duration: 0.4s;
+            transition-duration: 0.5s;
         }
 
         .calendarStyle {
@@ -127,12 +130,18 @@
 
          footer{
              text-align: center;
+             padding: 20px 0px 20px 0px;
+         }
+
+         footer a{
+             text-decoration:none;
+             color: #40739e;
          }
     </style>
 </head>
-<body style="background-image: url('https://www.cadsoft.com/wp-content/uploads/2016/04/White-Geometric-background-01.png'); background-size:cover;">
-    <h1 style="text-align: center; font-size: 50px; font-weight: 200;">AI for Renters web form</h1>
-    <h1 style="text-align: center">Request for accomodation unit</h1>
+<body style="background-image: url('images/background-texture.png'); background-size:cover;">
+    <h1 style="text-align: center; font-size: 50px; font-weight: 200; color:#2f3640;">AI for Renters web form</h1>
+    <h1 style="text-align: center; color:#2f3640;">Request for accomodation unit</h1>
     <form id="form1" runat="server">
         <div class="auto-style1">
             <asp:Label CssClass="labelStyle" ID="Label1" runat="server" Text="Name"></asp:Label><br />
@@ -169,8 +178,11 @@
         </div>
     </form>
     <footer>
-        <p>This app is made by team of students from University of Zagreb - Faculty of organization and informatics.</p>
+        <p>This app is made by team of students from University of Zagreb - <a href="https://www.foi.unizg.hr">Faculty of organization and informatics</a></p>
+        <p>in cooperation with <a href="https://www.arbona.hr">Arbona - digital marketing company</a>.</p>
         <p>&copy 2020. FOI - Software Engineering</p>
+        <a href="https://www.foi.unizg.hr"><img src="images/foi-logo.png" style="width: 115px; height: 75px;" alt="Alternate Text" /></a>
+        <a href="https://www.arbona.hr"><img src="images/arbona-logo.png" style="width: 160px; height: 80px;" alt="Alternate Text" /></a>
     </footer>
 </body>
 </html>
