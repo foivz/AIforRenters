@@ -1,4 +1,5 @@
-﻿using Microsoft.Recognizers.Text;
+﻿using AIForRentersLib.Exceptions;
+using Microsoft.Recognizers.Text;
 using Microsoft.Recognizers.Text.DateTime;
 using Microsoft.Recognizers.Text.Number;
 using Org.BouncyCastle.Math.EC.Rfc7748;
@@ -25,7 +26,7 @@ namespace AIForRentersLib
             foreach (ReceivedData receivedDataItem in receivedData)
             {
                 // Client e-mail adress
-                string emailAdress  = receivedDataItem.EmailAddress;
+                string emailAddress  = receivedDataItem.EmailAddress;
 
                 // Client e-mail subject
                 string emailSubject = receivedDataItem.EmailSubject;
@@ -40,18 +41,65 @@ namespace AIForRentersLib
                 string emailBody = receivedDataItem.EmailBody;
 
                 // Processed email body data (Date and number of people)
-                DateTime dateFrom = DateTime.Parse(ExtractDateFrom(emailBody));
-                DateTime dateTo = DateTime.Parse(ExtractDateTo(emailBody));
-                int numberOfPeople = ExtractNumberOfPeople(emailBody);
+                int numberOfPeople = 0;
+                Property selectedProperty = null;
+                Unit selectedUnit = null;
+                DateTime dateFrom = DateTime.Now;
+                DateTime dateTo = DateTime.Now;
 
-                Property selectedProperty = GetProperty(emailSubject);
-                Unit selectedUnit = GetUnit(emailSubject, numberOfPeople);
+                try
+                {
+                    numberOfPeople = ExtractNumberOfPeople(emailBody);
+                    dateTo = DateTime.Parse(ExtractDateTo(emailBody, emailAddress));
+                    dateFrom = DateTime.Parse(ExtractDateFrom(emailBody, emailAddress));
+                }
+                catch (Exception ex)
+                {
+                    if (ex is EmailContentException || ex is InvalidOperationException || ex is FormatException)
+                    {
+                        string subject = "Insufficient data";
+                        string body = "Dear customer, \n\nwe are sorry to inform you that you have provided insufficient data in your email request! \nPlease resend your request with all necessary data! \n\nSincerely, \nAIForRenters";
+                        EmailSender.SendEmail(subject, body, emailAddress);
+                    }
+                    return;
+                }
+
+                try
+                {
+                    selectedProperty = GetProperty(emailSubject);
+                }
+                catch (Exception ex)
+                {
+                    if (ex is EmailContentException || ex is InvalidOperationException)
+                    {
+                        string subject = "Invalid property";
+                        string body = "Dear customer, \n\nyou have sent invalid or nonexistent property name in email subject! \nPlease resend your request with valid property name in email subject! \n\nSincerely, \nAIForRenters";
+                        EmailSender.SendEmail(subject, body, emailAddress);
+                    }
+                    return;
+                }
+
+                try
+                {
+                    selectedUnit = GetUnit(emailSubject, numberOfPeople);
+                }
+                catch (Exception ex)
+                {
+                    if (ex is EmailContentException || ex is InvalidOperationException)
+                    {
+                        string subject = "Unavailable unit";
+                        string body = "Dear customer, \n\nwe are sorry to inform you that there are no available units that have a capacity for the number of people you requested! \n\nSincerely, \nAIForRenters";
+                        EmailSender.SendEmail(subject, body, emailAddress);
+                    }
+                    return;
+                }
+
                 double priceUponRequest = selectedUnit.Price;
                 Client newClient = new Client()
                 {
                     Name = name,
                     Surname = surname,
-                    Email = emailAdress
+                    Email = emailAddress
                 };
 
                 Request newRequest = new Request()
@@ -88,13 +136,6 @@ namespace AIForRentersLib
 
             using (var context = new SE20E01_DBEntities())
             {
-                //selectedProperty = context.Properties.First(p => p.Units.Any(u => u.Name == emailSubject));
-                /*
-                selectedProperty = (from p in context.Properties
-                                   where p.Units.Any(u => u.Name == emailSubject)
-                                   select p) as Property;
-                */
-
                 var queryProperty = from property in context.Properties
                                 where property.Name == emailSubject
                                 select property;
@@ -122,26 +163,48 @@ namespace AIForRentersLib
         private static int ExtractNumberOfPeople(string testEmailString)
         {
             var result = NumberRecognizer.RecognizeNumber(testEmailString, Culture.English);
+            
             int.TryParse(result.First().Resolution["value"].ToString(), out int value);
+            
+            if (value.ToString() == null)
+            {
+                throw new EmailContentException("");
+            }
             return value;
         }
 
-        public static string ExtractDateFrom(string emailBody)
+        public static string ExtractDateFrom(string emailBody, string emailAddress)
         {
             string dateFrom = ExtractDates(emailBody).ToList<string>().ToArray()[2];
+
+            if (dateFrom == null)
+            {
+                throw new EmailContentException("");
+            }
             return dateFrom;
         }
 
-        public static string ExtractDateTo(string emailBody)
+        public static string ExtractDateTo(string emailBody, string emailAddress)
         {
             string dateTo = ExtractDates(emailBody).ToList<string>().ToArray()[3];
+
+            if (dateTo == null)
+            {
+                throw new EmailContentException("");
+            }
             return dateTo;
         }
 
         public static Dictionary<string, string>.ValueCollection ExtractDates(string emailBody)
         {
+            if (emailBody == null)
+            {
+                throw new EmailContentException("");
+            }
             var result = DateTimeRecognizer.RecognizeDateTime(emailBody, Culture.English);
+            
             var extractFirstLayer = result.First().Resolution.Values.First() as List<Dictionary<string, string>>;
+            
             var dictionaryAsValueCollection = extractFirstLayer.First().Values;
             return dictionaryAsValueCollection;
         }

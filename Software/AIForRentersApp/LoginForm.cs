@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -53,9 +54,16 @@ namespace AIForRentersApp
             {
                 Login.Authentication(emailAddress, password);
             }
-            catch (LoginException ex)
+            catch (Exception ex)
             {
-                result = MessageBox.Show(ex.ExceptionMessage);
+                if (ex is LoginException exception)
+                {
+                    result = MessageBox.Show(exception.ExceptionMessage);
+                }
+                else if (ex is SocketException)
+                {
+                    result = MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");
+                }
             }
 
             if (result != DialogResult.OK)

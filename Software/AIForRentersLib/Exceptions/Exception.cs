@@ -46,5 +46,15 @@ namespace AIForRentersLib.Exceptions
         }
     }
 
+    public class EmailContentException : ApplicationException
+    {
+        public string ExceptionMessage { get; set; }
+
+        public EmailContentException(string exceptionMessage)
+        {
+            ExceptionMessage = exceptionMessage;
+        }
+    }
+
 
 }

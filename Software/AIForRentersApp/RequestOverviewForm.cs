@@ -1,10 +1,12 @@
 ﻿using AIForRentersLib;
+using OpenPop.Pop3.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +28,8 @@ namespace AIForRentersApp
 
             buttonEditResponse.Enabled = false;
             buttonSend.Enabled = false;
+
+            RefreshRequests();
 
             DisplayRequests();
         }
@@ -56,12 +60,25 @@ namespace AIForRentersApp
         {
             Request selectedRequest = GetSelectedRequest();
 
-            EmailSender.SendEmail(selectedRequest);
+            try
+            {
+                EmailSender.SendEmail(selectedRequest);
+            }
+            catch (Exception ex)
+            {
+                if (ex is SocketException)
+                {
+                    MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");
+                }
+                return;
+            }
+            
         }
 
         private void buttonRefreshRequests_Click(object sender, EventArgs e)
         {
-            ResponseProcessor.ProcessData(EmailFetcher.ShapeReceivedData());
+            RefreshRequests();
+
             DisplayRequests();
         }
 
@@ -92,6 +109,22 @@ namespace AIForRentersApp
         {
             Request selectedRequest = GetSelectedRequest();
             richTextBoxResponse.Text = selectedRequest.ResponseBody;
+        }
+
+        private void RefreshRequests()
+        {
+            try
+            {
+                ResponseProcessor.ProcessData(EmailFetcher.ShapeReceivedData());
+            }
+            catch (Exception ex)
+            {
+                if (ex is PopServerNotFoundException || ex is SocketException)
+                {
+                    MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");
+                }
+                return;
+            }
         }
 
         private void DisplayRequests()
