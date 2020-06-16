@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIForRentersLib.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,15 @@ namespace AIForRentersLib
     {
         public void AddProperty(string propertyName, string propertyLocation)
         {
+            if (propertyName == "")
+            {
+                throw new PropertyException("You have to input property name!");
+            }
+            if (propertyLocation == "")
+            {
+                throw new PropertyException("You have to input property location!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 Property newProperty = new Property
@@ -25,6 +35,19 @@ namespace AIForRentersLib
 
         public void EditProperty(Property property, string propertyName, string propertyLocation)
         {
+            if (property == null)
+            {
+                throw new PropertyException("You have to select a property!");
+            }
+            if (propertyName == "")
+            {
+                throw new PropertyException("You have to input property name!");
+            }
+            if (propertyLocation == "")
+            {
+                throw new PropertyException("You have to input property location!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 context.Properties.Attach(property);
@@ -38,12 +61,25 @@ namespace AIForRentersLib
 
         public void DeleteProperty(Property property)
         {
+            if (property == null)
+            {
+                throw new PropertyException("You have to select a property!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 context.Properties.Attach(property);
                 context.Properties.Remove(property);
 
-                context.SaveChanges();
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (System.Data.Entity.Infrastructure.DbUpdateException)
+                {
+                    throw new PropertyException("You cannot delete this property because it contains units!");
+                }
+                
             }
         }
 

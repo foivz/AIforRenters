@@ -1,4 +1,5 @@
 ﻿using AIForRentersLib;
+using AIForRentersLib.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,6 +23,11 @@ namespace AIForRentersApp
         {
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(PropertiesForm_KeyDown);
+
+            buttonSaveChanges.Enabled = false;
+            buttonDeleteProperty.Enabled = false;
+            buttonEditProperty.Enabled = false;
+            buttonShowListOfUnits.Enabled = false;
 
             DisplayProperties();
         }
@@ -70,17 +76,32 @@ namespace AIForRentersApp
         {
             Property chosenProperty = GetSelectedProperty();
 
-            chosenProperty.DeleteProperty(chosenProperty);
+            try
+            {
+                chosenProperty.DeleteProperty(chosenProperty);
+            }
+            catch (PropertyException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
 
             DisplayProperties();
         }
 
         private void buttonEditProperty_Click(object sender, EventArgs e)
         {
-            Property chosenProperty = GetSelectedProperty();
+            try
+            {
+                Property chosenProperty = GetSelectedProperty();
 
-            textBoxPropertyName.Text = chosenProperty.Name;
-            textBoxPropertyLocation.Text = chosenProperty.Location;
+                textBoxPropertyName.Text = chosenProperty.Name;
+                textBoxPropertyLocation.Text = chosenProperty.Location;
+            }
+            catch (PropertyException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
+            
         }
 
         private void buttonSaveChanges_Click(object sender, EventArgs e)
@@ -90,7 +111,14 @@ namespace AIForRentersApp
             string propertyName = textBoxPropertyName.Text;
             string propertyLocation = textBoxPropertyLocation.Text;
 
-            chosenProperty.EditProperty(chosenProperty, propertyName, propertyLocation);
+            try
+            {
+                chosenProperty.EditProperty(chosenProperty, propertyName, propertyLocation);
+            }
+            catch (PropertyException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
 
             DisplayProperties();
         }
@@ -102,9 +130,27 @@ namespace AIForRentersApp
             string propertyName = textBoxPropertyName.Text;
             string propertyLocation = textBoxPropertyLocation.Text;
 
-            property.AddProperty(propertyName, propertyLocation);
+            try
+            {
+                property.AddProperty(propertyName, propertyLocation);
+            }
+            catch (PropertyException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
 
             DisplayProperties();
+        }
+
+        private void dataGridViewProperties_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewProperties.CurrentRow != null)
+            {
+                buttonSaveChanges.Enabled = true;
+                buttonDeleteProperty.Enabled = true;
+                buttonEditProperty.Enabled = true;
+                buttonShowListOfUnits.Enabled = true;
+            }
         }
 
         private void DisplayProperties()
@@ -124,7 +170,10 @@ namespace AIForRentersApp
                 Property chosenProperty = dataGridViewProperties.CurrentRow.DataBoundItem as Property;
                 return chosenProperty;
             }
-            return null;
+            else
+            {
+                throw new PropertyException("You have to select a property!");
+            }
         }
 
         public override string ToString()

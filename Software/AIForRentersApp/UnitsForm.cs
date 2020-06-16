@@ -1,4 +1,5 @@
 ﻿using AIForRentersLib;
+using AIForRentersLib.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -25,6 +26,9 @@ namespace AIForRentersApp
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(UnitsForm_KeyDown);
 
+            buttonDeleteUnit.Enabled = false;
+            buttonEditUnit.Enabled = false;
+            buttonSaveChanges.Enabled = false;
             textBoxPropertyName.Text = chosenProperty.Name;
 
             DisplayUnits();
@@ -70,15 +74,21 @@ namespace AIForRentersApp
 
         private void buttonAddUnit_Click(object sender, EventArgs e)
         {
-            
             Unit unit = new Unit();
 
             string unitName = textBoxUnitName.Text;
             int unitCapacity = int.Parse(textBoxUnitCapacity.Text);
             double unitPrice = double.Parse(textBoxUnitPrice.Text);
 
-            unit.AddUnit(chosenProperty, unitName, unitCapacity, unitPrice);
-
+            try
+            {
+                unit.AddUnit(chosenProperty, unitName, unitCapacity, unitPrice);
+            }
+            catch (UnitException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
+            
             DisplayUnits();
         }
 
@@ -90,25 +100,46 @@ namespace AIForRentersApp
             int unitCapacity = int.Parse(textBoxUnitCapacity.Text);
             double unitPrice = double.Parse(textBoxUnitPrice.Text);
 
-            chosenUnit.EditUnit(chosenUnit, unitName, unitCapacity, unitPrice);
+            try
+            {
+                chosenUnit.EditUnit(chosenUnit, unitName, unitCapacity, unitPrice);
+            }
+            catch (UnitException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
 
             DisplayUnits();
         }
 
         private void buttonEditUnit_Click(object sender, EventArgs e)
         {
-            Unit chosenUnit = GetSelectedUnit();
+            try
+            {
+                Unit chosenUnit = GetSelectedUnit();
 
-            textBoxUnitName.Text = chosenUnit.Name;
-            textBoxUnitCapacity.Text = chosenUnit.Capacity.ToString();
-            textBoxUnitPrice.Text = chosenUnit.Price.ToString();
+                textBoxUnitName.Text = chosenUnit.Name;
+                textBoxUnitCapacity.Text = chosenUnit.Capacity.ToString();
+                textBoxUnitPrice.Text = chosenUnit.Price.ToString();
+            }
+            catch (UnitException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
         }
 
         private void buttonDeleteUnit_Click(object sender, EventArgs e)
         {
             Unit chosenUnit = GetSelectedUnit();
 
-            chosenUnit.DeleteUnit(chosenUnit);
+            try
+            {
+                chosenUnit.DeleteUnit(chosenUnit);
+            }
+            catch (UnitException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
 
             DisplayUnits();
         }
@@ -132,12 +163,25 @@ namespace AIForRentersApp
                 Unit chosenUnit = dataGridViewUnits.CurrentRow.DataBoundItem as Unit;
                 return chosenUnit;
             }
-            return null;
+            else
+            {
+                throw new UnitException("You have to select a unit!");
+            }
         }
 
         public override string ToString()
         {
             return "UnitsForm";
+        }
+
+        private void dataGridViewUnits_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewUnits.CurrentRow != null)
+            {
+                buttonDeleteUnit.Enabled = true;
+                buttonEditUnit.Enabled = true;
+                buttonSaveChanges.Enabled = true;
+            }
         }
     }
 }

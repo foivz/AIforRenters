@@ -20,25 +20,25 @@
             <PropertyRef Name="ClientID" />
           </Key>
           <Property Name="ClientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="text" Nullable="false" />
-          <Property Name="Surname" Type="text" Nullable="false" />
-          <Property Name="Email" Type="text" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="EmailTemplate">
           <Key>
             <PropertyRef Name="EmailTemplateID" />
           </Key>
           <Property Name="EmailTemplateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="text" Nullable="false" />
-          <Property Name="TemplateContent" Type="text" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="TemplateContent" Type="varchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Property">
           <Key>
             <PropertyRef Name="PropertyID" />
           </Key>
           <Property Name="PropertyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="text" Nullable="false" />
-          <Property Name="Location" Type="text" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Location" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="Request">
           <Key>
@@ -47,19 +47,21 @@
           <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="FromDate" Type="date" Nullable="false" />
           <Property Name="ToDate" Type="date" Nullable="false" />
+          <Property Name="PriceUponRequest" Type="float" Nullable="false" />
           <Property Name="Confirmed" Type="bit" Nullable="false" />
           <Property Name="NumberOfPeople" Type="int" Nullable="false" />
+          <Property Name="ResponseSubject" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResponseBody" Type="varchar(max)" Nullable="false" />
           <Property Name="PropertyID" Type="int" Nullable="false" />
           <Property Name="UnitID" Type="int" Nullable="false" />
           <Property Name="ClientID" Type="int" Nullable="false" />
-          <Property Name="EmailTemplateID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Unit">
           <Key>
             <PropertyRef Name="UnitID" />
           </Key>
           <Property Name="UnitID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Name" Type="text" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Capacity" Type="int" Nullable="false" />
           <Property Name="Price" Type="float" Nullable="false" />
           <Property Name="PropertyID" Type="int" Nullable="false" />
@@ -85,18 +87,6 @@
             </Principal>
             <Dependent Role="Request">
               <PropertyRef Name="ClientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_EmailTemplate">
-          <End Role="EmailTemplate" Type="Self.EmailTemplate" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EmailTemplate">
-              <PropertyRef Name="EmailTemplateID" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="EmailTemplateID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -151,10 +141,6 @@
             <End Role="Client" EntitySet="Client" />
             <End Role="Request" EntitySet="Request" />
           </AssociationSet>
-          <AssociationSet Name="FK_Request_EmailTemplate" Association="Self.FK_Request_EmailTemplate">
-            <End Role="EmailTemplate" EntitySet="EmailTemplate" />
-            <End Role="Request" EntitySet="Request" />
-          </AssociationSet>
           <AssociationSet Name="FK_Request_Property" Association="Self.FK_Request_Property">
             <End Role="Property" EntitySet="Property" />
             <End Role="Request" EntitySet="Request" />
@@ -189,9 +175,9 @@
             <PropertyRef Name="ClientID" />
           </Key>
           <Property Name="ClientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Surname" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Requests" Relationship="Self.FK_Request_Client" FromRole="Client" ToRole="Request" />
         </EntityType>
         <EntityType Name="EmailTemplate">
@@ -199,17 +185,16 @@
             <PropertyRef Name="EmailTemplateID" />
           </Key>
           <Property Name="EmailTemplateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="TemplateContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="Requests" Relationship="Self.FK_Request_EmailTemplate" FromRole="EmailTemplate" ToRole="Request" />
         </EntityType>
         <EntityType Name="Property">
           <Key>
             <PropertyRef Name="PropertyID" />
           </Key>
           <Property Name="PropertyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Location" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Requests" Relationship="Self.FK_Request_Property" FromRole="Property" ToRole="Request" />
           <NavigationProperty Name="Units" Relationship="Self.FK_Unit_Property" FromRole="Property" ToRole="Unit" />
         </EntityType>
@@ -220,14 +205,15 @@
           <Property Name="RequestID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FromDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="PriceUponRequest" Type="Double" Nullable="false" />
           <Property Name="Confirmed" Type="Boolean" Nullable="false" />
           <Property Name="NumberOfPeople" Type="Int32" Nullable="false" />
+          <Property Name="ResponseSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ResponseBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="PropertyID" Type="Int32" Nullable="false" />
           <Property Name="UnitID" Type="Int32" Nullable="false" />
           <Property Name="ClientID" Type="Int32" Nullable="false" />
-          <Property Name="EmailTemplateID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Client" Relationship="Self.FK_Request_Client" FromRole="Request" ToRole="Client" />
-          <NavigationProperty Name="EmailTemplate" Relationship="Self.FK_Request_EmailTemplate" FromRole="Request" ToRole="EmailTemplate" />
           <NavigationProperty Name="Property" Relationship="Self.FK_Request_Property" FromRole="Request" ToRole="Property" />
           <NavigationProperty Name="Unit" Relationship="Self.FK_Request_Unit" FromRole="Request" ToRole="Unit" />
         </EntityType>
@@ -236,7 +222,7 @@
             <PropertyRef Name="UnitID" />
           </Key>
           <Property Name="UnitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Capacity" Type="Int32" Nullable="false" />
           <Property Name="Price" Type="Double" Nullable="false" />
           <Property Name="PropertyID" Type="Int32" Nullable="false" />
@@ -265,18 +251,6 @@
             </Principal>
             <Dependent Role="Request">
               <PropertyRef Name="ClientID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Request_EmailTemplate">
-          <End Role="EmailTemplate" Type="Self.EmailTemplate" Multiplicity="1" />
-          <End Role="Request" Type="Self.Request" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="EmailTemplate">
-              <PropertyRef Name="EmailTemplateID" />
-            </Principal>
-            <Dependent Role="Request">
-              <PropertyRef Name="EmailTemplateID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -329,10 +303,6 @@
           </AssociationSet>
           <AssociationSet Name="FK_Request_Client" Association="Self.FK_Request_Client">
             <End Role="Client" EntitySet="Clients" />
-            <End Role="Request" EntitySet="Requests" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Request_EmailTemplate" Association="Self.FK_Request_EmailTemplate">
-            <End Role="EmailTemplate" EntitySet="EmailTemplates" />
             <End Role="Request" EntitySet="Requests" />
           </AssociationSet>
           <AssociationSet Name="FK_Request_Property" Association="Self.FK_Request_Property">
@@ -399,12 +369,14 @@
                 <ScalarProperty Name="RequestID" ColumnName="RequestID" />
                 <ScalarProperty Name="FromDate" ColumnName="FromDate" />
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+                <ScalarProperty Name="PriceUponRequest" ColumnName="PriceUponRequest" />
                 <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
                 <ScalarProperty Name="NumberOfPeople" ColumnName="NumberOfPeople" />
+                <ScalarProperty Name="ResponseSubject" ColumnName="ResponseSubject" />
+                <ScalarProperty Name="ResponseBody" ColumnName="ResponseBody" />
                 <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
                 <ScalarProperty Name="UnitID" ColumnName="UnitID" />
                 <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-                <ScalarProperty Name="EmailTemplateID" ColumnName="EmailTemplateID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

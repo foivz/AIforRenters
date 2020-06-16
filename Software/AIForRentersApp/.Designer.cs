@@ -79,6 +79,7 @@
             this.dataGridViewIncomingRequests.ReadOnly = true;
             this.dataGridViewIncomingRequests.Size = new System.Drawing.Size(1076, 191);
             this.dataGridViewIncomingRequests.TabIndex = 0;
+            this.dataGridViewIncomingRequests.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewIncomingRequests_CellClick);
             this.dataGridViewIncomingRequests.SelectionChanged += new System.EventHandler(this.dataGridViewIncomingRequests_SelectionChanged);
             // 
             // richTextBoxResponse

@@ -13,7 +13,7 @@ namespace AIForRentersLib
             List<Request> requests = new List<Request>();
             using (var context = new SE20E01_DBEntities()) 
             {
-                var query = from request in context.Requests.Include("Client").Include("Property").Include("Unit").Include("EmailTemplate")
+                var query = from request in context.Requests.Include("Client").Include("Property").Include("Unit")
                             select request;
 
                 requests = query.ToList();

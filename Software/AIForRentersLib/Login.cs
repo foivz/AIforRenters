@@ -1,4 +1,5 @@
-﻿using MailKit.Net.Smtp;
+﻿using AIForRentersLib.Exceptions;
+using MailKit.Net.Smtp;
 using MailKit.Security;
 using System;
 using System.Collections.Generic;
@@ -8,20 +9,16 @@ using System.Threading.Tasks;
 
 namespace AIForRentersLib
 {
-    public class LoginException : ApplicationException
-    {
-        public string Poruka { get; set; }
-
-        public LoginException(string poruka)
-        {
-            Poruka = poruka;
-        }
-    }
-
     public static class Login
     {
         public static void Authentication(string emailAddress, string password)
         {
+
+            if (emailAddress == "")
+            {
+                throw new LoginException("Enter your credentials!");
+            }
+
             SmtpClient smtpClient = new SmtpClient();
 
             Uri uri = GetUri(emailAddress);

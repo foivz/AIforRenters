@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIForRentersLib.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,23 @@ namespace AIForRentersLib
     {
         public void AddUnit(Property chosenProperty, string unitName, int unitCapacity, double unitPrice)
         {
+            if (chosenProperty == null)
+            {
+                throw new UnitException("There is no property assigned to this unit!");
+            }
+            if (unitName == "")
+            {
+                throw new PropertyException("You have to input unit name!");
+            }
+            if (unitCapacity.ToString() == "")
+            {
+                throw new PropertyException("You have to input unit capacity!");
+            }
+            if (unitPrice.ToString() == "")
+            {
+                throw new PropertyException("You have to input unit price!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 context.Properties.Attach(chosenProperty);
@@ -30,6 +48,23 @@ namespace AIForRentersLib
 
         public void EditUnit(Unit unit, string unitName, int unitCapacity, double unitPrice)
         {
+            if (unit == null)
+            {
+                throw new UnitException("You have to select a unit!");
+            }
+            if (unitName == "")
+            {
+                throw new PropertyException("You have to input unit name!");
+            }
+            if (unitCapacity.ToString() == "")
+            {
+                throw new PropertyException("You have to input unit capacity!");
+            }
+            if (unitPrice.ToString() == "")
+            {
+                throw new PropertyException("You have to input unit price!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 context.Units.Attach(unit);
@@ -44,6 +79,11 @@ namespace AIForRentersLib
 
         public void DeleteUnit(Unit unit)
         {
+            if (unit == null)
+            {
+                throw new UnitException("You have to select a unit!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 context.Units.Attach(unit);

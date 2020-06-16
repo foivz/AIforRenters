@@ -22,8 +22,6 @@ namespace AIForRentersLib
         /// </returns>
         public static void ProcessData(List<ReceivedData> receivedData)
         {
-            List<Request> newRequests = new List<Request>();
-
             foreach (ReceivedData receivedDataItem in receivedData)
             {
                 // Client e-mail adress
@@ -47,17 +45,13 @@ namespace AIForRentersLib
                 int numberOfPeople = ExtractNumberOfPeople(emailBody);
 
                 Property selectedProperty = GetProperty(emailSubject);
-                Unit selectedUnit = GetUnit(emailSubject);
+                Unit selectedUnit = GetUnit(emailSubject, numberOfPeople);
+                double priceUponRequest = selectedUnit.Price;
                 Client newClient = new Client()
                 {
                     Name = name,
                     Surname = surname,
                     Email = emailAdress
-                };
-                EmailTemplate newTemplate = new EmailTemplate()
-                {
-                    Name = "",
-                    TemplateContent = ""
                 };
 
                 Request newRequest = new Request()
@@ -69,14 +63,15 @@ namespace AIForRentersLib
                     NumberOfPeople = numberOfPeople,
                     Client = newClient,
                     Confirmed = false,
-                    EmailTemplate = newTemplate
+                    PriceUponRequest = priceUponRequest,
+                    ResponseSubject = "",
+                    ResponseBody = ""
                 };
 
                 using (var context = new SE20E01_DBEntities())
                 {
                     context.Properties.Attach(selectedProperty);
                     context.Units.Attach(selectedUnit);
-                    context.EmailTemplates.Add(newTemplate);
 
                     context.Clients.Add(newClient);
 
@@ -93,27 +88,33 @@ namespace AIForRentersLib
 
             using (var context = new SE20E01_DBEntities())
             {
-                selectedProperty = context.Properties.First(p => p.Units.Any(u => u.Name == emailSubject));
+                //selectedProperty = context.Properties.First(p => p.Units.Any(u => u.Name == emailSubject));
                 /*
                 selectedProperty = (from p in context.Properties
                                    where p.Units.Any(u => u.Name == emailSubject)
                                    select p) as Property;
                 */
+
+                var queryProperty = from property in context.Properties
+                                where property.Name == emailSubject
+                                select property;
+
+                selectedProperty = queryProperty.Single();
             }
             return selectedProperty;
         }
 
-        private static Unit GetUnit(string emailSubject)
+        private static Unit GetUnit(string emailSubject, int numberOfPeople)
         {
             Unit selectedUnit;
 
             using (var context = new SE20E01_DBEntities())
             {
                 var queryUnit = from unit in context.Units
-                                where unit.Name == emailSubject
+                                where unit.Property.Name == emailSubject && unit.Capacity >= numberOfPeople
                                 select unit;
 
-                selectedUnit = queryUnit.Single();
+                selectedUnit = queryUnit.First();
             }
             return selectedUnit;
         }

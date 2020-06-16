@@ -32,10 +32,11 @@ namespace AIForRentersWebForm
             int numberOfPeople = int.Parse(numberOfPeopleDropDownList.SelectedItem.Text);
             DateTime fromDate = dateFromCalendar.SelectedDate;
             DateTime toDate = dateToCalendar.SelectedDate;
+            double priceUponRequest = selectedUnit.Price;
 
             Client newClient = CreateClient(clientName, clientSurname, clientEmail);
 
-            Request newRequest = CreateRequest(newClient, selectedProperty, selectedUnit, numberOfPeople, fromDate, toDate);
+            Request newRequest = CreateRequest(newClient, selectedProperty, selectedUnit, numberOfPeople, fromDate, toDate, priceUponRequest);
 
             using (var context = new SE20E01_DBEntities())
             {
@@ -199,7 +200,7 @@ namespace AIForRentersWebForm
             return selectedUnit;
         }
 
-        private Request CreateRequest(Client newClient, Property selectedProperty, AIForRentersLib.Unit selectedUnit, int numberOfPeople, DateTime fromDate, DateTime toDate)
+        private Request CreateRequest(Client newClient, Property selectedProperty, AIForRentersLib.Unit selectedUnit, int numberOfPeople, DateTime fromDate, DateTime toDate, double priceUponRequest)
         {
             Request newRequest = new Request();
 
@@ -209,12 +210,10 @@ namespace AIForRentersWebForm
             newRequest.NumberOfPeople = numberOfPeople;
             newRequest.FromDate = fromDate;
             newRequest.ToDate = toDate;
+            newRequest.PriceUponRequest = priceUponRequest;
             newRequest.Confirmed = false;
-            newRequest.EmailTemplate = new EmailTemplate
-            {
-                Name = "",
-                TemplateContent = ""
-            };
+            newRequest.ResponseSubject = "";
+            newRequest.ResponseBody = "";
 
             return newRequest;
         }
