@@ -1,4 +1,5 @@
 ﻿using AIForRentersLib;
+using AIForRentersLib.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -54,7 +55,7 @@ namespace AIForRentersApp
             }
             catch (LoginException ex)
             {
-                result = MessageBox.Show(ex.Poruka);
+                result = MessageBox.Show(ex.ExceptionMessage);
             }
 
             if (result != DialogResult.OK)

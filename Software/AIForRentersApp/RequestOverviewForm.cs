@@ -24,6 +24,9 @@ namespace AIForRentersApp
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(FormRequests_KeyDown);
 
+            buttonEditResponse.Enabled = false;
+            buttonSend.Enabled = false;
+
             DisplayRequests();
         }
 
@@ -52,15 +55,23 @@ namespace AIForRentersApp
         private void buttonSend_Click(object sender, EventArgs e)
         {
             Request selectedRequest = GetSelectedRequest();
-            EmailTemplate emailTemplate = selectedRequest.EmailTemplate;
 
-            EmailSender.SendEmail(emailTemplate, selectedRequest);
+            EmailSender.SendEmail(selectedRequest);
         }
 
         private void buttonRefreshRequests_Click(object sender, EventArgs e)
         {
             ResponseProcessor.ProcessData(EmailFetcher.ShapeReceivedData());
             DisplayRequests();
+        }
+
+        private void dataGridViewIncomingRequests_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewIncomingRequests.CurrentRow != null)
+            {
+                buttonEditResponse.Enabled = true;
+                buttonSend.Enabled = true;
+            }
         }
 
         private void FormRequests_KeyDown(object sender, KeyEventArgs e)
@@ -80,7 +91,7 @@ namespace AIForRentersApp
         private void dataGridViewIncomingRequests_SelectionChanged(object sender, EventArgs e)
         {
             Request selectedRequest = GetSelectedRequest();
-            richTextBoxResponse.Text = selectedRequest.EmailTemplate.TemplateContent;
+            richTextBoxResponse.Text = selectedRequest.ResponseBody;
         }
 
         private void DisplayRequests()
@@ -92,7 +103,7 @@ namespace AIForRentersApp
             dataGridViewIncomingRequests.Columns["PropertyID"].Visible = false;
             dataGridViewIncomingRequests.Columns["UnitID"].Visible = false;
             dataGridViewIncomingRequests.Columns["ClientID"].Visible = false;
-            dataGridViewIncomingRequests.Columns["EmailTemplateID"].Visible = false;
+            dataGridViewIncomingRequests.Columns["ResponseBody"].Visible = false;
         }
 
         public override string ToString()

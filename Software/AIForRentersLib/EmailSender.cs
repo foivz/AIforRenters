@@ -10,7 +10,7 @@ namespace AIForRentersLib
 {
     public static class EmailSender
     {
-        public static bool SendEmail(EmailTemplate emailTemplate, Request request)
+        public static bool SendEmail(Request request)
         {
             SmtpClient smtpClient = new SmtpClient();
 
@@ -20,7 +20,7 @@ namespace AIForRentersLib
 
             smtpClient.Authenticate(Sender.Email, Sender.Password);
 
-            MimeMessage generatedEmail = GenerateEmail(emailTemplate, request);
+            MimeMessage generatedEmail = GenerateEmail(request);
 
             smtpClient.Send(generatedEmail);
 
@@ -29,13 +29,13 @@ namespace AIForRentersLib
             return true;
         }
 
-        private static MimeMessage GenerateEmail(EmailTemplate emailTemplate, Request request)
+        private static MimeMessage GenerateEmail(Request request)
         {
             string senderAddress = Sender.Email;
             string clientAddress = request.Client.Email;
 
-            string messageSubject = emailTemplate.Name;
-            string messageBody = emailTemplate.TemplateContent;
+            string messageSubject = request.ResponseSubject;
+            string messageBody = request.ResponseBody;
 
             MimeMessage message = new MimeMessage();
 

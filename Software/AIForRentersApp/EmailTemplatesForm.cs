@@ -1,4 +1,5 @@
 ﻿using AIForRentersLib;
+using AIForRentersLib.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +24,10 @@ namespace AIForRentersApp
         {
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(EmailTemplatesForm_KeyDown);
+
+            buttonDeleteTemplate.Enabled = false;
+            buttonEditTemplate.Enabled = false;
+            buttonSaveChanges.Enabled = false;
 
             DisplayEmailTemplates();
         }
@@ -61,8 +66,15 @@ namespace AIForRentersApp
         {
             EmailTemplate chosenEmailTemplate = GetSelectedEmailTemplate();
 
-            chosenEmailTemplate.DeleteEmailTemplate(chosenEmailTemplate);
-
+            try
+            {
+                chosenEmailTemplate.DeleteEmailTemplate(chosenEmailTemplate);
+            }
+            catch (EmailTemplateException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
+            
             DisplayEmailTemplates();
         }
 
@@ -73,17 +85,31 @@ namespace AIForRentersApp
             string emailTemplateName = textBoxTemplateName.Text;
             string emailTemplateContent = richTextBoxEditEmailTemplate.Text;
 
-            chosenEmailTemplate.EditEmailTemplate(chosenEmailTemplate, emailTemplateName, emailTemplateContent);
+            try
+            {
+                chosenEmailTemplate.EditEmailTemplate(chosenEmailTemplate, emailTemplateName, emailTemplateContent);
+            }
+            catch (EmailTemplateException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
 
             DisplayEmailTemplates();
         }
 
         private void buttonEditTemplate_Click(object sender, EventArgs e)
         {
-            EmailTemplate chosenEmailTemplate = GetSelectedEmailTemplate();
+            try
+            {
+                EmailTemplate chosenEmailTemplate = GetSelectedEmailTemplate();
 
-            textBoxTemplateName.Text = chosenEmailTemplate.Name;
-            richTextBoxEditEmailTemplate.Text = chosenEmailTemplate.TemplateContent;
+                textBoxTemplateName.Text = chosenEmailTemplate.Name;
+                richTextBoxEditEmailTemplate.Text = chosenEmailTemplate.TemplateContent;
+            }
+            catch (EmailTemplateException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
         }
 
         private void buttonAddTemplate_Click(object sender, EventArgs e)
@@ -93,9 +119,26 @@ namespace AIForRentersApp
             string emailTemplateName = textBoxTemplateName.Text;
             string emailTemplateContent = richTextBoxEditEmailTemplate.Text;
 
-            chosenEmailTemplate.AddEmailTemplate(emailTemplateName, emailTemplateContent);
+            try
+            {
+                chosenEmailTemplate.AddEmailTemplate(emailTemplateName, emailTemplateContent);
+            }
+            catch (EmailTemplateException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
 
             DisplayEmailTemplates();
+        }
+
+        private void dataGridViewEmailTemplates_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataGridViewEmailTemplates.CurrentRow != null)
+            {
+                buttonDeleteTemplate.Enabled = true;
+                buttonEditTemplate.Enabled = true;
+                buttonSaveChanges.Enabled = true;
+            }
         }
 
         private void DisplayEmailTemplates()
@@ -104,7 +147,6 @@ namespace AIForRentersApp
 
             dataGridViewEmailTemplates.DataSource = emailTemplate.DisplayEmailTemplates();
             dataGridViewEmailTemplates.Columns["EmailTemplateID"].Visible = false;
-            dataGridViewEmailTemplates.Columns["Requests"].Visible = false;
         }
 
         private EmailTemplate GetSelectedEmailTemplate()
@@ -114,7 +156,11 @@ namespace AIForRentersApp
                 EmailTemplate chosenEmailTemplate = dataGridViewEmailTemplates.CurrentRow.DataBoundItem as EmailTemplate;
                 return chosenEmailTemplate;
             }
-            return null;
+            else
+            {
+                throw new EmailTemplateException("You have to select a template!");
+            }
+            
         }
 
         public override string ToString()

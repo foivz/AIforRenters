@@ -132,6 +132,7 @@
     <Compile Include="EmailTemplate.cs">
       <DependentUpon>AIForRentersEntityModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Exceptions\Exception.cs" />
     <Compile Include="Login.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Property.code.cs" />
@@ -162,19 +163,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="AIForRentersEntityModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>AIForRentersEntityModel.Context.cs</LastGenOutput>
       <DependentUpon>AIForRentersEntityModel.edmx</DependentUpon>
+      <LastGenOutput>AIForRentersEntityModel.Context.cs</LastGenOutput>
     </Content>
     <Content Include="AIForRentersEntityModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AIForRentersEntityModel.edmx</DependentUpon>
       <LastGenOutput>AIForRentersEntityModel.cs</LastGenOutput>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

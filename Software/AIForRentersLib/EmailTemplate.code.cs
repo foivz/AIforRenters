@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIForRentersLib.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,15 @@ namespace AIForRentersLib
     {
         public void AddEmailTemplate(string emailTemplateName, string emailTemplateContent)
         {
+            if (emailTemplateName == "")
+            {
+                throw new EmailTemplateException("You have to input template name!");
+            }
+            if (emailTemplateContent == "")
+            {
+                throw new EmailTemplateException("You have to input template content!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 EmailTemplate newEmailTemplate = new EmailTemplate
@@ -25,6 +35,19 @@ namespace AIForRentersLib
 
         public void EditEmailTemplate(EmailTemplate emailTemplate, string emailTemplateName, string emailTemplateContent)
         {
+            if (emailTemplate == null)
+            {
+                throw new EmailTemplateException("You have to select a template!");
+            }
+            if (emailTemplateName == "")
+            {
+                throw new EmailTemplateException("You have to input template name!");
+            }
+            if (emailTemplateContent == "")
+            {
+                throw new EmailTemplateException("You have to input template content!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 context.EmailTemplates.Attach(emailTemplate);
@@ -38,6 +61,11 @@ namespace AIForRentersLib
 
         public void DeleteEmailTemplate(EmailTemplate emailTemplate)
         {
+            if (emailTemplate == null)
+            {
+                throw new EmailTemplateException("You have to select a template!");
+            }
+
             using (var context = new SE20E01_DBEntities())
             {
                 context.EmailTemplates.Attach(emailTemplate);

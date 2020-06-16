@@ -46,12 +46,14 @@
           <ScalarProperty Name="RequestID" ColumnName="RequestID" />
           <ScalarProperty Name="FromDate" ColumnName="FromDate" />
           <ScalarProperty Name="ToDate" ColumnName="ToDate" />
+          <ScalarProperty Name="PriceUponRequest" ColumnName="PriceUponRequest" />
           <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
           <ScalarProperty Name="NumberOfPeople" ColumnName="NumberOfPeople" />
+          <ScalarProperty Name="ResponseSubject" ColumnName="ResponseSubject" />
+          <ScalarProperty Name="ResponseBody" ColumnName="ResponseBody" />
           <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
           <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
-          <ScalarProperty Name="EmailTemplateID" ColumnName="EmailTemplateID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
