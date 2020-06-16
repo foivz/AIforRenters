@@ -17,7 +17,6 @@ namespace AIForRentersLib
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Property()
         {
-            this.Requests = new HashSet<Request>();
             this.Units = new HashSet<Unit>();
         }
     
@@ -25,8 +24,6 @@ namespace AIForRentersLib
         public string Name { get; set; }
         public string Location { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Request> Requests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Unit> Units { get; set; }
     }

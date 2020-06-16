@@ -153,7 +153,6 @@ namespace AIForRentersApp
             dataGridViewUnits.Columns["PropertyID"].Visible = false;
             dataGridViewUnits.Columns["Availabilities"].Visible = false;
             dataGridViewUnits.Columns["Property"].Visible = false;
-            dataGridViewUnits.Columns["Requests"].Visible = false;
         }
 
         private Unit GetSelectedUnit()

@@ -18,7 +18,6 @@ namespace AIForRentersLib
         public Unit()
         {
             this.Availabilities = new HashSet<Availability>();
-            this.Requests = new HashSet<Request>();
         }
     
         public int UnitID { get; set; }
@@ -30,7 +29,5 @@ namespace AIForRentersLib
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Availability> Availabilities { get; set; }
         public virtual Property Property { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Request> Requests { get; set; }
     }
 }

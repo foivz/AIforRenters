@@ -40,9 +40,6 @@ namespace AIForRentersWebForm
 
             using (var context = new SE20E01_DBEntities())
             {
-                context.Properties.Attach(selectedProperty);
-                context.Units.Attach(selectedUnit);
-
                 context.Clients.Add(newClient);
 
                 context.Requests.Add(newRequest);
@@ -205,8 +202,8 @@ namespace AIForRentersWebForm
             Request newRequest = new Request();
 
             newRequest.Client = newClient;
-            newRequest.Property = selectedProperty;
-            newRequest.Unit = selectedUnit;
+            newRequest.Property = selectedProperty.Name;
+            newRequest.Unit = selectedUnit.Name;
             newRequest.NumberOfPeople = numberOfPeople;
             newRequest.FromDate = fromDate;
             newRequest.ToDate = toDate;
