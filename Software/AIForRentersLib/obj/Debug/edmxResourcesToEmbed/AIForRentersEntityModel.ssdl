@@ -40,6 +40,8 @@
       <PropertyRef Name="RequestID" />
     </Key>
     <Property Name="RequestID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Property" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Unit" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="FromDate" Type="date" Nullable="false" />
     <Property Name="ToDate" Type="date" Nullable="false" />
     <Property Name="PriceUponRequest" Type="float" Nullable="false" />
@@ -47,8 +49,6 @@
     <Property Name="NumberOfPeople" Type="int" Nullable="false" />
     <Property Name="ResponseSubject" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ResponseBody" Type="varchar(max)" Nullable="false" />
-    <Property Name="PropertyID" Type="int" Nullable="false" />
-    <Property Name="UnitID" Type="int" Nullable="false" />
     <Property Name="ClientID" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Unit">
@@ -85,30 +85,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_Request_Property">
-    <End Role="Property" Type="Self.Property" Multiplicity="1" />
-    <End Role="Request" Type="Self.Request" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Property">
-        <PropertyRef Name="PropertyID" />
-      </Principal>
-      <Dependent Role="Request">
-        <PropertyRef Name="PropertyID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_Request_Unit">
-    <End Role="Unit" Type="Self.Unit" Multiplicity="1" />
-    <End Role="Request" Type="Self.Request" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Unit">
-        <PropertyRef Name="UnitID" />
-      </Principal>
-      <Dependent Role="Request">
-        <PropertyRef Name="UnitID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_Unit_Property">
     <End Role="Property" Type="Self.Property" Multiplicity="1" />
     <End Role="Unit" Type="Self.Unit" Multiplicity="*" />
@@ -134,14 +110,6 @@
     </AssociationSet>
     <AssociationSet Name="FK_Request_Client" Association="Self.FK_Request_Client">
       <End Role="Client" EntitySet="Client" />
-      <End Role="Request" EntitySet="Request" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Request_Property" Association="Self.FK_Request_Property">
-      <End Role="Property" EntitySet="Property" />
-      <End Role="Request" EntitySet="Request" />
-    </AssociationSet>
-    <AssociationSet Name="FK_Request_Unit" Association="Self.FK_Request_Unit">
-      <End Role="Unit" EntitySet="Unit" />
       <End Role="Request" EntitySet="Request" />
     </AssociationSet>
     <AssociationSet Name="FK_Unit_Property" Association="Self.FK_Unit_Property">

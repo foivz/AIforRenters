@@ -104,8 +104,8 @@ namespace AIForRentersLib
 
                 Request newRequest = new Request()
                 {
-                    Property = selectedProperty,
-                    Unit = selectedUnit,
+                    Property = selectedProperty.Name,
+                    Unit = selectedUnit.Name,
                     FromDate = dateFrom,
                     ToDate = dateTo,
                     NumberOfPeople = numberOfPeople,
@@ -118,9 +118,6 @@ namespace AIForRentersLib
 
                 using (var context = new SE20E01_DBEntities())
                 {
-                    context.Properties.Attach(selectedProperty);
-                    context.Units.Attach(selectedUnit);
-
                     context.Clients.Add(newClient);
 
                     context.Requests.Add(newRequest);

@@ -133,8 +133,6 @@ namespace AIForRentersApp
 
             dataGridViewIncomingRequests.DataSource = request.DisplayRequests();
             dataGridViewIncomingRequests.Columns["RequestID"].Visible = false;
-            dataGridViewIncomingRequests.Columns["PropertyID"].Visible = false;
-            dataGridViewIncomingRequests.Columns["UnitID"].Visible = false;
             dataGridViewIncomingRequests.Columns["ClientID"].Visible = false;
             dataGridViewIncomingRequests.Columns["ResponseBody"].Visible = false;
         }

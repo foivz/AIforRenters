@@ -44,6 +44,8 @@
       <EntityTypeMapping TypeName="SE20E01_DBModel.Request">
         <MappingFragment StoreEntitySet="Request">
           <ScalarProperty Name="RequestID" ColumnName="RequestID" />
+          <ScalarProperty Name="Property" ColumnName="Property" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
           <ScalarProperty Name="FromDate" ColumnName="FromDate" />
           <ScalarProperty Name="ToDate" ColumnName="ToDate" />
           <ScalarProperty Name="PriceUponRequest" ColumnName="PriceUponRequest" />
@@ -51,8 +53,6 @@
           <ScalarProperty Name="NumberOfPeople" ColumnName="NumberOfPeople" />
           <ScalarProperty Name="ResponseSubject" ColumnName="ResponseSubject" />
           <ScalarProperty Name="ResponseBody" ColumnName="ResponseBody" />
-          <ScalarProperty Name="PropertyID" ColumnName="PropertyID" />
-          <ScalarProperty Name="UnitID" ColumnName="UnitID" />
           <ScalarProperty Name="ClientID" ColumnName="ClientID" />
         </MappingFragment>
       </EntityTypeMapping>
