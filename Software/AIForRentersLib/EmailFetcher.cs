@@ -37,7 +37,8 @@ namespace AIForRentersLib
                     string clientNameSurname = client.GetMessage(i).Headers.From.DisplayName;
                     string emailSubject = client.GetMessage(i).Headers.Subject;
                     string clientAddress = client.GetMessage(i).Headers.From.Address;
-                    string emailBody = "I want to reserve one room from 15. July until 29. July!";//client.GetMessage(i).MessagePart.GetBodyAsText();
+
+                    string emailBody = ExtractMessageBody(client.GetMessage(i));
 
                     ReceivedData newReceivedData = new ReceivedData
                     {
@@ -51,6 +52,29 @@ namespace AIForRentersLib
                 }
             }
             return listOfReceivedData;
+        }
+
+        private static string ExtractMessageBody(Message message)
+        {
+            StringBuilder builder = new StringBuilder();
+            OpenPop.Mime.MessagePart plainText = message.FindFirstPlainTextVersion();
+            if (plainText != null)
+            {
+                // We found some plaintext!
+                builder.Append(plainText.GetBodyAsText());
+            }
+            else
+            {
+                // Might include a part holding html instead
+                OpenPop.Mime.MessagePart html = message.FindFirstHtmlVersion();
+                if (html != null)
+                {
+                    // We found some html!
+                    builder.Append(html.GetBodyAsText());
+                }
+            }
+
+            return builder.ToString();
         }
     }
 }
