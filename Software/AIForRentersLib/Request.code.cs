@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AIForRentersLib.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,27 @@ namespace AIForRentersLib
             }
 
             return requests;
+        }
+
+        public void EditRequest(Request request, string responseBody)
+        {
+            if (request == null)
+            {
+                throw new RequestException("You have to select a request!");
+            }
+            if (responseBody == "")
+            {
+                throw new RequestException("You have to input response content!");
+            }
+
+            using (var context = new SE20E01_DBEntities())
+            {
+                context.Requests.Attach(request);
+
+                request.ResponseBody = responseBody;
+
+                context.SaveChanges();
+            }
         }
     }
 }

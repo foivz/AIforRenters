@@ -101,7 +101,9 @@ namespace AIForRentersApp
             {
                 MessageBox.Show(ex.ExceptionMessage);
             }
-            
+
+            buttonAddProperty.Enabled = false;
+            buttonDeleteProperty.Enabled = false;
         }
 
         private void buttonSaveChanges_Click(object sender, EventArgs e)
@@ -119,6 +121,9 @@ namespace AIForRentersApp
             {
                 MessageBox.Show(ex.ExceptionMessage);
             }
+
+            buttonAddProperty.Enabled = true;
+            buttonDeleteProperty.Enabled = true;
 
             DisplayProperties();
         }

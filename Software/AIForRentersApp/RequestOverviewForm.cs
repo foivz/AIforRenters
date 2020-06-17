@@ -1,4 +1,5 @@
 ﻿using AIForRentersLib;
+using AIForRentersLib.Exceptions;
 using OpenPop.Pop3.Exceptions;
 using System;
 using System.Collections.Generic;
@@ -28,6 +29,7 @@ namespace AIForRentersApp
 
             buttonEditResponse.Enabled = false;
             buttonSend.Enabled = false;
+            buttonSaveChanges.Enabled = false;
 
             RefreshRequests();
 
@@ -54,6 +56,8 @@ namespace AIForRentersApp
         {
             richTextBoxResponse.Enabled = true;
             richTextBoxResponse.Focus();
+
+            buttonSend.Enabled = false;
         }
 
         private void buttonSend_Click(object sender, EventArgs e)
@@ -82,12 +86,33 @@ namespace AIForRentersApp
             DisplayRequests();
         }
 
+        private void buttonSaveChanges_Click(object sender, EventArgs e)
+        {
+            Request chosenRequest = GetSelectedRequest();
+
+            string responseBody = richTextBoxResponse.Text;
+
+            try
+            {
+                chosenRequest.EditRequest(chosenRequest, responseBody);
+            }
+            catch (RequestException ex)
+            {
+                MessageBox.Show(ex.ExceptionMessage);
+            }
+
+            buttonSend.Enabled = true;
+
+            DisplayRequests();
+        }
+
         private void dataGridViewIncomingRequests_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewIncomingRequests.CurrentRow != null)
             {
                 buttonEditResponse.Enabled = true;
                 buttonSend.Enabled = true;
+                buttonSaveChanges.Enabled = true;
             }
         }
 
@@ -109,6 +134,7 @@ namespace AIForRentersApp
         {
             Request selectedRequest = GetSelectedRequest();
             richTextBoxResponse.Text = selectedRequest.ResponseBody;
+            richTextBoxResponse.Enabled = false;
         }
 
         private void RefreshRequests()

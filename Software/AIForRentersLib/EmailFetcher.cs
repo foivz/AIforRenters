@@ -1,4 +1,5 @@
-﻿using MailKit.Net.Smtp;
+﻿using HtmlAgilityPack;
+using MailKit.Net.Smtp;
 using MimeKit;
 using OpenPop.Mime;
 using OpenPop.Pop3;
@@ -67,10 +68,15 @@ namespace AIForRentersLib
             {
                 // Might include a part holding html instead
                 OpenPop.Mime.MessagePart html = message.FindFirstHtmlVersion();
+                
                 if (html != null)
                 {
                     // We found some html!
-                    builder.Append(html.GetBodyAsText());
+                    HtmlDocument doc = new HtmlDocument();
+                    doc.LoadHtml(html.GetBodyAsText());
+                    //this xpath selects all span tag having its class as hidden first
+                    var itemList = doc.DocumentNode.SelectNodes("//div[@class='WordSection1']//p[@class='MsoNormal']").Select(p => p.InnerText).ToList();
+                    builder.Append(itemList[0]);
                 }
             }
 

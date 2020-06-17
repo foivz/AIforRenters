@@ -111,6 +111,8 @@ namespace AIForRentersLib
                     NumberOfPeople = numberOfPeople,
                     Client = newClient,
                     Confirmed = false,
+                    Processed = false,
+                    Sent = false,
                     PriceUponRequest = priceUponRequest,
                     ResponseSubject = "",
                     ResponseBody = ""
