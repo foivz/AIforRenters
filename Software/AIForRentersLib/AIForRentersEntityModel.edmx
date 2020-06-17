@@ -51,6 +51,8 @@
           <Property Name="ToDate" Type="date" Nullable="false" />
           <Property Name="PriceUponRequest" Type="float" Nullable="false" />
           <Property Name="Confirmed" Type="bit" Nullable="false" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+          <Property Name="Sent" Type="bit" Nullable="false" />
           <Property Name="NumberOfPeople" Type="int" Nullable="false" />
           <Property Name="ResponseSubject" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ResponseBody" Type="varchar(max)" Nullable="false" />
@@ -176,6 +178,8 @@
           <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="PriceUponRequest" Type="Double" Nullable="false" />
           <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+          <Property Name="Processed" Type="Boolean" Nullable="false" />
+          <Property Name="Sent" Type="Boolean" Nullable="false" />
           <Property Name="NumberOfPeople" Type="Int32" Nullable="false" />
           <Property Name="ResponseSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="ResponseBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
@@ -305,6 +309,8 @@
                 <ScalarProperty Name="ToDate" ColumnName="ToDate" />
                 <ScalarProperty Name="PriceUponRequest" ColumnName="PriceUponRequest" />
                 <ScalarProperty Name="Confirmed" ColumnName="Confirmed" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="Sent" ColumnName="Sent" />
                 <ScalarProperty Name="NumberOfPeople" ColumnName="NumberOfPeople" />
                 <ScalarProperty Name="ResponseSubject" ColumnName="ResponseSubject" />
                 <ScalarProperty Name="ResponseBody" ColumnName="ResponseBody" />

@@ -49,6 +49,8 @@
     <Property Name="ToDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="PriceUponRequest" Type="Double" Nullable="false" />
     <Property Name="Confirmed" Type="Boolean" Nullable="false" />
+    <Property Name="Processed" Type="Boolean" Nullable="false" />
+    <Property Name="Sent" Type="Boolean" Nullable="false" />
     <Property Name="NumberOfPeople" Type="Int32" Nullable="false" />
     <Property Name="ResponseSubject" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="ResponseBody" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />

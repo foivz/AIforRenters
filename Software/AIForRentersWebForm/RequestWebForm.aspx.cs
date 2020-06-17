@@ -209,6 +209,8 @@ namespace AIForRentersWebForm
             newRequest.ToDate = toDate;
             newRequest.PriceUponRequest = priceUponRequest;
             newRequest.Confirmed = false;
+            newRequest.Processed = false;
+            newRequest.Sent = false;
             newRequest.ResponseSubject = "";
             newRequest.ResponseBody = "";
 
