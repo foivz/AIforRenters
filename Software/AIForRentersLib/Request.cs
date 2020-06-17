@@ -21,6 +21,8 @@ namespace AIForRentersLib
         public System.DateTime ToDate { get; set; }
         public double PriceUponRequest { get; set; }
         public bool Confirmed { get; set; }
+        public bool Processed { get; set; }
+        public bool Sent { get; set; }
         public int NumberOfPeople { get; set; }
         public string ResponseSubject { get; set; }
         public string ResponseBody { get; set; }

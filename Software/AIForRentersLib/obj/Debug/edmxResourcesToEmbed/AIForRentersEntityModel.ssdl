@@ -46,6 +46,8 @@
     <Property Name="ToDate" Type="date" Nullable="false" />
     <Property Name="PriceUponRequest" Type="float" Nullable="false" />
     <Property Name="Confirmed" Type="bit" Nullable="false" />
+    <Property Name="Processed" Type="bit" Nullable="false" />
+    <Property Name="Sent" Type="bit" Nullable="false" />
     <Property Name="NumberOfPeople" Type="int" Nullable="false" />
     <Property Name="ResponseSubject" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="ResponseBody" Type="varchar(max)" Nullable="false" />
