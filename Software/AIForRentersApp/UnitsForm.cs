@@ -109,6 +109,9 @@ namespace AIForRentersApp
                 MessageBox.Show(ex.ExceptionMessage);
             }
 
+            buttonAddUnit.Enabled = true;
+            buttonDeleteUnit.Enabled = true;
+
             DisplayUnits();
         }
 
@@ -126,6 +129,9 @@ namespace AIForRentersApp
             {
                 MessageBox.Show(ex.ExceptionMessage);
             }
+
+            buttonAddUnit.Enabled = false;
+            buttonDeleteUnit.Enabled = false;
         }
 
         private void buttonDeleteUnit_Click(object sender, EventArgs e)

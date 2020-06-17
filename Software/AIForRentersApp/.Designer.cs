@@ -37,6 +37,7 @@
             this.buttonProperties = new System.Windows.Forms.Button();
             this.buttonEmailTemplates = new System.Windows.Forms.Button();
             this.buttonRefreshRequests = new System.Windows.Forms.Button();
+            this.buttonSaveChanges = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewIncomingRequests)).BeginInit();
             this.SuspendLayout();
             // 
@@ -93,7 +94,7 @@
             // 
             // buttonEditResponse
             // 
-            this.buttonEditResponse.Location = new System.Drawing.Point(877, 480);
+            this.buttonEditResponse.Location = new System.Drawing.Point(782, 480);
             this.buttonEditResponse.Name = "buttonEditResponse";
             this.buttonEditResponse.Size = new System.Drawing.Size(97, 23);
             this.buttonEditResponse.TabIndex = 2;
@@ -131,11 +132,22 @@
             this.buttonRefreshRequests.UseVisualStyleBackColor = true;
             this.buttonRefreshRequests.Click += new System.EventHandler(this.buttonRefreshRequests_Click);
             // 
+            // buttonSaveChanges
+            // 
+            this.buttonSaveChanges.Location = new System.Drawing.Point(885, 480);
+            this.buttonSaveChanges.Name = "buttonSaveChanges";
+            this.buttonSaveChanges.Size = new System.Drawing.Size(89, 23);
+            this.buttonSaveChanges.TabIndex = 6;
+            this.buttonSaveChanges.Text = "Save changes";
+            this.buttonSaveChanges.UseVisualStyleBackColor = true;
+            this.buttonSaveChanges.Click += new System.EventHandler(this.buttonSaveChanges_Click);
+            // 
             // FormRequests
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1243, 530);
+            this.Controls.Add(this.buttonSaveChanges);
             this.Controls.Add(this.buttonEditResponse);
             this.Controls.Add(this.richTextBoxResponse);
             this.Controls.Add(this.buttonRefreshRequests);
@@ -167,6 +179,7 @@
         private System.Windows.Forms.Button buttonProperties;
         private System.Windows.Forms.Button buttonEmailTemplates;
         private System.Windows.Forms.Button buttonRefreshRequests;
+        private System.Windows.Forms.Button buttonSaveChanges;
     }
 }
 
