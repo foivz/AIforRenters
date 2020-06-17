@@ -156,6 +156,7 @@ namespace AIForRentersApp
         private void DisplayRequests()
         {
             Request request = new Request();
+            AvailabilityValidator.CheckForAvailability(request.DisplayRequests());
 
             dataGridViewIncomingRequests.DataSource = request.DisplayRequests();
             dataGridViewIncomingRequests.Columns["RequestID"].Visible = false;

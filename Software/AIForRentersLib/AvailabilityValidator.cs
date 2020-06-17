@@ -11,17 +11,35 @@ namespace AIForRentersLib
 {
     public static class AvailabilityValidator
     {
+        /// <summary>
+        /// This method checks and processes requests
+        /// </summary>
+        /// <param name="requests"></param>
         public static void CheckForAvailability(List<Request> requests)
         {
             using (SE20E01_DBEntities context = new SE20E01_DBEntities())
             {
+                // this is for testing only
+                
+               /* var query = from a in context.Availabilities
+                                where a.Available == false
+                                select a ;
+
+                List<Availability> bilities = query.ToList();
+
+              foreach (var item in bilities)
+                {
+                    item.Available = true;
+               }
+                context.SaveChanges(); */
+
                 // var queryUnProc = from r in context.Requests
                 //            //where r.Processed == false
                 //            select r;
                 List<Request> unprocessed = new List<Request>();
                 foreach (var item in requests)
                 {
-                    if (item.Processed)
+                    if (!item.Processed)
                     {
                         unprocessed.Add(item);
                     }
@@ -30,55 +48,102 @@ namespace AIForRentersLib
 
 
 
+                //handles if there is availability thats true
 
-                foreach (var req in unprocessed)
-                {
-                    var queryAvailability = (from a in context.Availabilities
-                                             from u in context.Units
-                                             where req.Unit == u.Name && a.UnitID == u.UnitID && a.Available == true && a.FromDate == req.FromDate && a.ToDate == req.ToDate
-                                             select new { a }).FirstOrDefault();
-                    Availability availabilability = queryAvailability.a;
-
-                    if (availabilability != null)
+                    foreach (var req in unprocessed)
                     {
-                        Availability resultAvailability = (from a in context.Availabilities
-                                                           where a.AvailabilityID == availabilability.AvailabilityID
-                                                           select a).SingleOrDefault();
+                    if (!req.Processed)
+                    {
 
-                        resultAvailability.Available = false;
-                        Request resultRequest = (from r in context.Requests
-                                                 where r.RequestID == req.RequestID
-                                                 select r).SingleOrDefault();
+                   
+                        Availability availability;
+                        var queryAvailability = (from a in context.Availabilities
+                                                 from u in context.Units
+                                                 where req.Unit == u.Name && req.Property == u.Property.Name && a.UnitID == u.UnitID && a.Available == true && a.FromDate == req.FromDate && a.ToDate == req.ToDate
+                                                 select new { a }).FirstOrDefault();
+                        try { availability = queryAvailability.a; }
+                        catch (NullReferenceException) { availability = null; }
 
-                        resultRequest.Processed = true;
-                        resultRequest.Confirmed = true;
-                        EmailTemplate email = FetchAndCustomizeEmailTemplate(true, req.Property, req.ToDate, req.FromDate, req.Client.Name, req.FromDate, req.FromDate);
-                        resultRequest.ResponseBody = email.TemplateContent;
-                        resultRequest.ResponseSubject = email.Name;
 
-                        context.SaveChanges();
-                        unprocessed.Remove(req);
-                        EmailSender.SendEmail(req);
+                        if (availability != null)
+                        {
+                            Availability resultAvailability = (from a in context.Availabilities
+                                                               where a.AvailabilityID == availability.AvailabilityID
+                                                               select a).SingleOrDefault();
+
+                            resultAvailability.Available = false;
+                            Request resultRequest = (from r in context.Requests
+                                                     where r.RequestID == req.RequestID
+                                                     select r).SingleOrDefault();
+                            resultRequest.Confirmed = true;
+                            resultRequest.Processed = true;
+                            EmailTemplate email = FetchAndCustomizeEmailTemplate(true, req.Property, req.ToDate, req.FromDate, req.Client.Name, req.FromDate, req.FromDate);
+                            resultRequest.ResponseBody = email.TemplateContent;
+                            resultRequest.ResponseSubject = email.Name;
+
+                            context.SaveChanges();
+                            req.Processed = true;
+                            //EmailSender.SendEmail(req);
+                        }
                     }
-                }
-                /*else {
-                    Request resultRequest = (from r in context.Requests
-                                                       where r.RequestID == req.RequestID
-                                                       select r).SingleOrDefault();
+                    }
 
-                   // resultRequest.Processed = true;
-                    resultRequest.Confirmed = false;
-                    resultRequest.ResponseBody = FetchAndCustomizeEmailTemplate().TemplateContent;
-                    resultRequest.ResponseSubject = FetchAndCustomizeEmailTemplate().TemplateName;
 
-                    context.SaveChanges();
-                    EmailSender.SendEmail(req);
+                //handles if there is not availability with false so creates new one and reserves it
+                    foreach (var req in unprocessed)
+                    {
+                    if (!req.Processed)
+                    {
 
-                }*/
+                    
+                        Availability availabilability;
+                        var queryAvailability = (from a in context.Availabilities
+                                                 from u in context.Units
+                                                 where req.Unit == u.Name && a.UnitID == u.UnitID && a.Available == false && a.FromDate == req.FromDate && a.ToDate == req.ToDate
+                                                 select new { a }).FirstOrDefault();
+                        try { availabilability = queryAvailability.a; }
+                        catch (NullReferenceException) { availabilability = null; }
 
+                        if (availabilability == null)
+                        {
+                            Unit resultUnit = (from unit in context.Units
+                                               where unit.Name == req.Unit
+                                               select unit).FirstOrDefault();
+
+                            Availability newAvailability = new Availability();
+                            newAvailability.Unit = resultUnit;
+                            newAvailability.FromDate = req.FromDate;
+                            newAvailability.ToDate = req.ToDate;
+                            newAvailability.Available = false;
+
+                            context.Availabilities.Add(newAvailability);
+                            Request resultRequest = (from r in context.Requests
+                                                     where r.RequestID == req.RequestID
+                                                     select r).SingleOrDefault();
+                            resultRequest.Confirmed = true;
+                            resultRequest.Processed = true;
+
+                            EmailTemplate email = FetchAndCustomizeEmailTemplate(true, req.Property, req.ToDate, req.FromDate, req.Client.Name, req.FromDate, req.FromDate);
+                            resultRequest.ResponseBody = email.TemplateContent;
+                            resultRequest.ResponseSubject = email.Name;
+
+                            context.SaveChanges();
+                            req.Processed = true;
+                            //EmailSender.SendEmail(req);
+                        }
+
+                    }
+
+                    }
+
+
+                //handles res aka no true availability (hopefully)finds closest before or after availability
                 foreach (var req in unprocessed)
                 {
+                    if (!req.Processed)
+                    {
 
+                    
                     //get new slot
 
                     var queryAvailabilities = from a in context.Availabilities
@@ -128,12 +193,14 @@ namespace AIForRentersLib
                     resultRequest.Processed = true;
                     resultRequest.Confirmed = false;
 
-                    EmailTemplate email = FetchAndCustomizeEmailTemplate(true, req.Property, req.ToDate, req.FromDate, req.Client.Name, totalMin.FromDate, totalMin.FromDate);
+                    EmailTemplate email = FetchAndCustomizeEmailTemplate(false, req.Property, req.ToDate, req.FromDate, req.Client.Name, totalMin.FromDate, totalMin.FromDate);
                     resultRequest.ResponseBody = email.TemplateContent;
                     resultRequest.ResponseSubject = email.Name;
 
                     context.SaveChanges();
-                    EmailSender.SendEmail(req);
+                        //EmailSender.SendEmail(req);
+                        req.Processed = true;
+                    }
 
                 }
             }
