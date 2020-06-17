@@ -17,15 +17,15 @@ namespace AIForRentersLib
             }
             if (unitName == "")
             {
-                throw new PropertyException("You have to input unit name!");
+                throw new UnitException("You have to input unit name!");
             }
             if (unitCapacity.ToString() == "")
             {
-                throw new PropertyException("You have to input unit capacity!");
+                throw new UnitException("You have to input unit capacity!");
             }
             if (unitPrice.ToString() == "")
             {
-                throw new PropertyException("You have to input unit price!");
+                throw new UnitException("You have to input unit price!");
             }
 
             using (var context = new SE20E01_DBEntities())
@@ -54,15 +54,15 @@ namespace AIForRentersLib
             }
             if (unitName == "")
             {
-                throw new PropertyException("You have to input unit name!");
+                throw new UnitException("You have to input unit name!");
             }
             if (unitCapacity.ToString() == "")
             {
-                throw new PropertyException("You have to input unit capacity!");
+                throw new UnitException("You have to input unit capacity!");
             }
             if (unitPrice.ToString() == "")
             {
-                throw new PropertyException("You have to input unit price!");
+                throw new UnitException("You have to input unit price!");
             }
 
             using (var context = new SE20E01_DBEntities())

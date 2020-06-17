@@ -56,5 +56,15 @@ namespace AIForRentersLib.Exceptions
         }
     }
 
+    public class RequestException : ApplicationException
+    {
+        public string ExceptionMessage { get; set; }
+
+        public RequestException(string exceptionMessage)
+        {
+            ExceptionMessage = exceptionMessage;
+        }
+    }
+
 
 }

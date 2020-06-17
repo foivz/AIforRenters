@@ -94,6 +94,9 @@ namespace AIForRentersApp
                 MessageBox.Show(ex.ExceptionMessage);
             }
 
+            buttonAddTemplate.Enabled = true;
+            buttonDeleteTemplate.Enabled = true;
+
             DisplayEmailTemplates();
         }
 
@@ -110,6 +113,9 @@ namespace AIForRentersApp
             {
                 MessageBox.Show(ex.ExceptionMessage);
             }
+
+            buttonAddTemplate.Enabled = false;
+            buttonDeleteTemplate.Enabled = false;
         }
 
         private void buttonAddTemplate_Click(object sender, EventArgs e)
