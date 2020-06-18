@@ -158,3 +158,8 @@ C:\Users\Zdeno\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRent
 C:\Users\Zdeno\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.csproj.CopyComplete
 C:\Users\Zdeno\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.dll
 C:\Users\Zdeno\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\obj\Debug\AIForRentersLib.pdb
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\HtmlAgilityPack.dll
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\HtmlAgilityPack.pdb
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\HtmlAgilityPack.xml
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\MailKit.pdb
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersLib\bin\Debug\MimeKit.pdb

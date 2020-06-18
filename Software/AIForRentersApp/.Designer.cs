@@ -43,29 +43,36 @@
             // 
             // buttonSend
             // 
-            this.buttonSend.Location = new System.Drawing.Point(980, 480);
+            this.buttonSend.BackColor = System.Drawing.Color.White;
+            this.buttonSend.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSend.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSend.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonSend.Location = new System.Drawing.Point(1110, 548);
             this.buttonSend.Name = "buttonSend";
-            this.buttonSend.Size = new System.Drawing.Size(108, 23);
+            this.buttonSend.Size = new System.Drawing.Size(121, 48);
             this.buttonSend.TabIndex = 3;
             this.buttonSend.Text = "Send response";
-            this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.UseVisualStyleBackColor = false;
             this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(9, 15);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(93, 13);
+            this.label2.Size = new System.Drawing.Size(149, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Incoming requests";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 259);
+            this.label1.Font = new System.Drawing.Font("Rubik", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 381);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.Size = new System.Drawing.Size(120, 20);
             this.label1.TabIndex = 5;
             this.label1.Text = "Draft response";
             // 
@@ -74,19 +81,24 @@
             this.dataGridViewIncomingRequests.AllowUserToAddRows = false;
             this.dataGridViewIncomingRequests.AllowUserToDeleteRows = false;
             this.dataGridViewIncomingRequests.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewIncomingRequests.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewIncomingRequests.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewIncomingRequests.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewIncomingRequests.Location = new System.Drawing.Point(12, 40);
             this.dataGridViewIncomingRequests.Name = "dataGridViewIncomingRequests";
             this.dataGridViewIncomingRequests.ReadOnly = true;
-            this.dataGridViewIncomingRequests.Size = new System.Drawing.Size(1076, 191);
+            this.dataGridViewIncomingRequests.Size = new System.Drawing.Size(1076, 312);
             this.dataGridViewIncomingRequests.TabIndex = 0;
             this.dataGridViewIncomingRequests.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewIncomingRequests_CellClick);
             this.dataGridViewIncomingRequests.SelectionChanged += new System.EventHandler(this.dataGridViewIncomingRequests_SelectionChanged);
             // 
             // richTextBoxResponse
             // 
+            this.richTextBoxResponse.BackColor = System.Drawing.Color.White;
+            this.richTextBoxResponse.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.richTextBoxResponse.Enabled = false;
-            this.richTextBoxResponse.Location = new System.Drawing.Point(12, 284);
+            this.richTextBoxResponse.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.richTextBoxResponse.Location = new System.Drawing.Point(12, 406);
             this.richTextBoxResponse.Name = "richTextBoxResponse";
             this.richTextBoxResponse.Size = new System.Drawing.Size(1076, 190);
             this.richTextBoxResponse.TabIndex = 1;
@@ -94,9 +106,12 @@
             // 
             // buttonEditResponse
             // 
-            this.buttonEditResponse.Location = new System.Drawing.Point(782, 480);
+            this.buttonEditResponse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEditResponse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditResponse.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditResponse.Location = new System.Drawing.Point(1110, 406);
             this.buttonEditResponse.Name = "buttonEditResponse";
-            this.buttonEditResponse.Size = new System.Drawing.Size(97, 23);
+            this.buttonEditResponse.Size = new System.Drawing.Size(121, 48);
             this.buttonEditResponse.TabIndex = 2;
             this.buttonEditResponse.Text = "Edit response";
             this.buttonEditResponse.UseVisualStyleBackColor = true;
@@ -104,6 +119,9 @@
             // 
             // buttonProperties
             // 
+            this.buttonProperties.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonProperties.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProperties.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonProperties.Location = new System.Drawing.Point(1110, 40);
             this.buttonProperties.Name = "buttonProperties";
             this.buttonProperties.Size = new System.Drawing.Size(121, 48);
@@ -114,6 +132,9 @@
             // 
             // buttonEmailTemplates
             // 
+            this.buttonEmailTemplates.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEmailTemplates.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEmailTemplates.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEmailTemplates.Location = new System.Drawing.Point(1110, 94);
             this.buttonEmailTemplates.Name = "buttonEmailTemplates";
             this.buttonEmailTemplates.Size = new System.Drawing.Size(121, 48);
@@ -124,7 +145,10 @@
             // 
             // buttonRefreshRequests
             // 
-            this.buttonRefreshRequests.Location = new System.Drawing.Point(1110, 183);
+            this.buttonRefreshRequests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRefreshRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRefreshRequests.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRefreshRequests.Location = new System.Drawing.Point(1110, 304);
             this.buttonRefreshRequests.Name = "buttonRefreshRequests";
             this.buttonRefreshRequests.Size = new System.Drawing.Size(121, 48);
             this.buttonRefreshRequests.TabIndex = 3;
@@ -134,9 +158,12 @@
             // 
             // buttonSaveChanges
             // 
-            this.buttonSaveChanges.Location = new System.Drawing.Point(885, 480);
+            this.buttonSaveChanges.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveChanges.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveChanges.Location = new System.Drawing.Point(1110, 460);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
-            this.buttonSaveChanges.Size = new System.Drawing.Size(89, 23);
+            this.buttonSaveChanges.Size = new System.Drawing.Size(121, 48);
             this.buttonSaveChanges.TabIndex = 6;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
@@ -146,7 +173,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1243, 530);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1253, 619);
             this.Controls.Add(this.buttonSaveChanges);
             this.Controls.Add(this.buttonEditResponse);
             this.Controls.Add(this.richTextBoxResponse);

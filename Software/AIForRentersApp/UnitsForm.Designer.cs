@@ -49,28 +49,29 @@
             // 
             // textBoxUnitName
             // 
-            this.textBoxUnitName.Location = new System.Drawing.Point(473, 353);
-            this.textBoxUnitName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUnitName.Location = new System.Drawing.Point(12, 340);
             this.textBoxUnitName.Name = "textBoxUnitName";
-            this.textBoxUnitName.Size = new System.Drawing.Size(132, 22);
+            this.textBoxUnitName.Size = new System.Drawing.Size(280, 20);
             this.textBoxUnitName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(392, 357);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(9, 322);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 17);
+            this.label1.Size = new System.Drawing.Size(65, 15);
             this.label1.TabIndex = 7;
             this.label1.Text = "Unit name";
             // 
             // buttonAddUnit
             // 
-            this.buttonAddUnit.Location = new System.Drawing.Point(615, 415);
-            this.buttonAddUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddUnit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddUnit.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddUnit.Location = new System.Drawing.Point(491, 362);
             this.buttonAddUnit.Name = "buttonAddUnit";
-            this.buttonAddUnit.Size = new System.Drawing.Size(133, 28);
+            this.buttonAddUnit.Size = new System.Drawing.Size(121, 48);
             this.buttonAddUnit.TabIndex = 3;
             this.buttonAddUnit.Text = "Add new unit";
             this.buttonAddUnit.UseVisualStyleBackColor = true;
@@ -78,47 +79,49 @@
             // 
             // textBoxPropertyName
             // 
+            this.textBoxPropertyName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPropertyName.Enabled = false;
-            this.textBoxPropertyName.Location = new System.Drawing.Point(124, 14);
-            this.textBoxPropertyName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxPropertyName.Location = new System.Drawing.Point(12, 42);
+            this.textBoxPropertyName.Multiline = true;
             this.textBoxPropertyName.Name = "textBoxPropertyName";
-            this.textBoxPropertyName.Size = new System.Drawing.Size(132, 22);
+            this.textBoxPropertyName.Size = new System.Drawing.Size(280, 22);
             this.textBoxPropertyName.TabIndex = 5;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 17);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(9, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 17);
+            this.label2.Size = new System.Drawing.Size(93, 15);
             this.label2.TabIndex = 6;
             this.label2.Text = "Property name";
             // 
             // textBoxUnitCapacity
             // 
-            this.textBoxUnitCapacity.Location = new System.Drawing.Point(473, 385);
-            this.textBoxUnitCapacity.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUnitCapacity.Location = new System.Drawing.Point(12, 394);
             this.textBoxUnitCapacity.Name = "textBoxUnitCapacity";
-            this.textBoxUnitCapacity.Size = new System.Drawing.Size(132, 22);
+            this.textBoxUnitCapacity.Size = new System.Drawing.Size(278, 20);
             this.textBoxUnitCapacity.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(373, 389);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(9, 376);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(89, 17);
+            this.label3.Size = new System.Drawing.Size(83, 15);
             this.label3.TabIndex = 8;
             this.label3.Text = "Unit capacity";
             // 
             // buttonDeleteUnit
             // 
-            this.buttonDeleteUnit.Location = new System.Drawing.Point(384, 314);
-            this.buttonDeleteUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteUnit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDeleteUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteUnit.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteUnit.Location = new System.Drawing.Point(491, 416);
             this.buttonDeleteUnit.Name = "buttonDeleteUnit";
-            this.buttonDeleteUnit.Size = new System.Drawing.Size(108, 28);
+            this.buttonDeleteUnit.Size = new System.Drawing.Size(121, 48);
             this.buttonDeleteUnit.TabIndex = 4;
             this.buttonDeleteUnit.Text = "Delete unit";
             this.buttonDeleteUnit.UseVisualStyleBackColor = true;
@@ -126,39 +129,42 @@
             // 
             // textBoxUnitPrice
             // 
-            this.textBoxUnitPrice.Location = new System.Drawing.Point(473, 418);
-            this.textBoxUnitPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxUnitPrice.Location = new System.Drawing.Point(12, 442);
             this.textBoxUnitPrice.Name = "textBoxUnitPrice";
-            this.textBoxUnitPrice.Size = new System.Drawing.Size(132, 22);
+            this.textBoxUnitPrice.Size = new System.Drawing.Size(278, 20);
             this.textBoxUnitPrice.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(396, 422);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(9, 424);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 17);
+            this.label4.Size = new System.Drawing.Size(62, 15);
             this.label4.TabIndex = 8;
             this.label4.Text = "Unit price";
             // 
             // buttonProperties
             // 
-            this.buttonProperties.Location = new System.Drawing.Point(804, 112);
-            this.buttonProperties.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonProperties.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonProperties.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProperties.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProperties.Location = new System.Drawing.Point(364, 14);
             this.buttonProperties.Name = "buttonProperties";
-            this.buttonProperties.Size = new System.Drawing.Size(161, 59);
+            this.buttonProperties.Size = new System.Drawing.Size(121, 48);
             this.buttonProperties.TabIndex = 10;
-            this.buttonProperties.Text = "Properties / units";
+            this.buttonProperties.Text = "Properties";
             this.buttonProperties.UseVisualStyleBackColor = true;
             this.buttonProperties.Click += new System.EventHandler(this.buttonProperties_Click);
             // 
             // buttonRequests
             // 
-            this.buttonRequests.Location = new System.Drawing.Point(804, 46);
-            this.buttonRequests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRequests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRequests.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRequests.Location = new System.Drawing.Point(618, 14);
             this.buttonRequests.Name = "buttonRequests";
-            this.buttonRequests.Size = new System.Drawing.Size(161, 59);
+            this.buttonRequests.Size = new System.Drawing.Size(121, 48);
             this.buttonRequests.TabIndex = 11;
             this.buttonRequests.Text = "Requests / responses";
             this.buttonRequests.UseVisualStyleBackColor = true;
@@ -166,10 +172,12 @@
             // 
             // buttonEmailTemplates
             // 
-            this.buttonEmailTemplates.Location = new System.Drawing.Point(804, 178);
-            this.buttonEmailTemplates.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEmailTemplates.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEmailTemplates.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEmailTemplates.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEmailTemplates.Location = new System.Drawing.Point(491, 14);
             this.buttonEmailTemplates.Name = "buttonEmailTemplates";
-            this.buttonEmailTemplates.Size = new System.Drawing.Size(161, 59);
+            this.buttonEmailTemplates.Size = new System.Drawing.Size(121, 48);
             this.buttonEmailTemplates.TabIndex = 10;
             this.buttonEmailTemplates.Text = "Email templates";
             this.buttonEmailTemplates.UseVisualStyleBackColor = true;
@@ -177,10 +185,12 @@
             // 
             // buttonEditUnit
             // 
-            this.buttonEditUnit.Location = new System.Drawing.Point(505, 314);
-            this.buttonEditUnit.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEditUnit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEditUnit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditUnit.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditUnit.Location = new System.Drawing.Point(618, 362);
             this.buttonEditUnit.Name = "buttonEditUnit";
-            this.buttonEditUnit.Size = new System.Drawing.Size(108, 28);
+            this.buttonEditUnit.Size = new System.Drawing.Size(121, 48);
             this.buttonEditUnit.TabIndex = 4;
             this.buttonEditUnit.Text = "Edit unit";
             this.buttonEditUnit.UseVisualStyleBackColor = true;
@@ -188,10 +198,12 @@
             // 
             // buttonSaveChanges
             // 
-            this.buttonSaveChanges.Location = new System.Drawing.Point(624, 314);
-            this.buttonSaveChanges.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSaveChanges.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveChanges.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveChanges.Location = new System.Drawing.Point(618, 416);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
-            this.buttonSaveChanges.Size = new System.Drawing.Size(124, 28);
+            this.buttonSaveChanges.Size = new System.Drawing.Size(121, 48);
             this.buttonSaveChanges.TabIndex = 4;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
@@ -202,20 +214,21 @@
             this.dataGridViewUnits.AllowUserToAddRows = false;
             this.dataGridViewUnits.AllowUserToDeleteRows = false;
             this.dataGridViewUnits.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewUnits.BackgroundColor = System.Drawing.Color.White;
             this.dataGridViewUnits.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewUnits.Location = new System.Drawing.Point(20, 46);
-            this.dataGridViewUnits.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewUnits.Location = new System.Drawing.Point(12, 71);
             this.dataGridViewUnits.Name = "dataGridViewUnits";
             this.dataGridViewUnits.RowHeadersWidth = 51;
-            this.dataGridViewUnits.Size = new System.Drawing.Size(728, 261);
+            this.dataGridViewUnits.Size = new System.Drawing.Size(727, 232);
             this.dataGridViewUnits.TabIndex = 12;
             this.dataGridViewUnits.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewUnits_CellClick);
             // 
             // UnitsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(981, 459);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(751, 478);
             this.Controls.Add(this.dataGridViewUnits);
             this.Controls.Add(this.buttonEmailTemplates);
             this.Controls.Add(this.buttonProperties);
@@ -232,7 +245,6 @@
             this.Controls.Add(this.buttonEditUnit);
             this.Controls.Add(this.buttonDeleteUnit);
             this.Controls.Add(this.buttonAddUnit);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "UnitsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Units ";

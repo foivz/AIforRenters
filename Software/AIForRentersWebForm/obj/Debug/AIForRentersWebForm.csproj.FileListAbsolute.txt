@@ -300,3 +300,8 @@ D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosa
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.Extensions.Primitives.xml
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
 D:\Mario Pernar\Documents\FOI\6. semestar\PI\Projekt\AIForRenters_Git\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\HtmlAgilityPack.dll
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\HtmlAgilityPack.pdb
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\HtmlAgilityPack.xml
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\MailKit.pdb
+C:\Users\jrosa\Documents\GitHub\r20--jrosandic-mpernar-lpitic\Software\AIForRentersWebForm\bin\MimeKit.pdb

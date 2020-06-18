@@ -46,21 +46,24 @@
             this.dataGridViewEmailTemplates.AllowUserToAddRows = false;
             this.dataGridViewEmailTemplates.AllowUserToDeleteRows = false;
             this.dataGridViewEmailTemplates.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewEmailTemplates.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewEmailTemplates.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataGridViewEmailTemplates.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmailTemplates.Location = new System.Drawing.Point(16, 28);
-            this.dataGridViewEmailTemplates.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridViewEmailTemplates.Location = new System.Drawing.Point(12, 77);
             this.dataGridViewEmailTemplates.Name = "dataGridViewEmailTemplates";
             this.dataGridViewEmailTemplates.RowHeadersWidth = 51;
-            this.dataGridViewEmailTemplates.Size = new System.Drawing.Size(1035, 358);
+            this.dataGridViewEmailTemplates.Size = new System.Drawing.Size(927, 180);
             this.dataGridViewEmailTemplates.TabIndex = 0;
             this.dataGridViewEmailTemplates.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewEmailTemplates_CellClick);
             // 
             // buttonEditTemplate
             // 
-            this.buttonEditTemplate.Location = new System.Drawing.Point(741, 409);
-            this.buttonEditTemplate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonEditTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonEditTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEditTemplate.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEditTemplate.Location = new System.Drawing.Point(565, 527);
             this.buttonEditTemplate.Name = "buttonEditTemplate";
-            this.buttonEditTemplate.Size = new System.Drawing.Size(145, 28);
+            this.buttonEditTemplate.Size = new System.Drawing.Size(120, 48);
             this.buttonEditTemplate.TabIndex = 4;
             this.buttonEditTemplate.Text = "Edit template";
             this.buttonEditTemplate.UseVisualStyleBackColor = true;
@@ -68,19 +71,20 @@
             // 
             // richTextBoxEditEmailTemplate
             // 
-            this.richTextBoxEditEmailTemplate.Location = new System.Drawing.Point(16, 500);
-            this.richTextBoxEditEmailTemplate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.richTextBoxEditEmailTemplate.Location = new System.Drawing.Point(12, 276);
             this.richTextBoxEditEmailTemplate.Name = "richTextBoxEditEmailTemplate";
-            this.richTextBoxEditEmailTemplate.Size = new System.Drawing.Size(1032, 326);
+            this.richTextBoxEditEmailTemplate.Size = new System.Drawing.Size(927, 230);
             this.richTextBoxEditEmailTemplate.TabIndex = 2;
             this.richTextBoxEditEmailTemplate.Text = "";
             // 
             // buttonSaveChanges
             // 
-            this.buttonSaveChanges.Location = new System.Drawing.Point(741, 444);
-            this.buttonSaveChanges.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonSaveChanges.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonSaveChanges.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonSaveChanges.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonSaveChanges.Location = new System.Drawing.Point(818, 527);
             this.buttonSaveChanges.Name = "buttonSaveChanges";
-            this.buttonSaveChanges.Size = new System.Drawing.Size(145, 28);
+            this.buttonSaveChanges.Size = new System.Drawing.Size(120, 48);
             this.buttonSaveChanges.TabIndex = 5;
             this.buttonSaveChanges.Text = "Save changes";
             this.buttonSaveChanges.UseVisualStyleBackColor = true;
@@ -88,10 +92,12 @@
             // 
             // buttonAddTemplate
             // 
-            this.buttonAddTemplate.Location = new System.Drawing.Point(895, 409);
-            this.buttonAddTemplate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonAddTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonAddTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddTemplate.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddTemplate.Location = new System.Drawing.Point(439, 527);
             this.buttonAddTemplate.Name = "buttonAddTemplate";
-            this.buttonAddTemplate.Size = new System.Drawing.Size(156, 28);
+            this.buttonAddTemplate.Size = new System.Drawing.Size(120, 48);
             this.buttonAddTemplate.TabIndex = 3;
             this.buttonAddTemplate.Text = "Add new template";
             this.buttonAddTemplate.UseVisualStyleBackColor = true;
@@ -99,28 +105,29 @@
             // 
             // textBoxTemplateName
             // 
-            this.textBoxTemplateName.Location = new System.Drawing.Point(131, 468);
-            this.textBoxTemplateName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBoxTemplateName.Location = new System.Drawing.Point(12, 555);
             this.textBoxTemplateName.Name = "textBoxTemplateName";
-            this.textBoxTemplateName.Size = new System.Drawing.Size(132, 22);
+            this.textBoxTemplateName.Size = new System.Drawing.Size(296, 20);
             this.textBoxTemplateName.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 471);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(7, 539);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 17);
+            this.label1.Size = new System.Drawing.Size(95, 15);
             this.label1.TabIndex = 6;
             this.label1.Text = "Template name";
             // 
             // buttonProperties
             // 
-            this.buttonProperties.Location = new System.Drawing.Point(1091, 95);
-            this.buttonProperties.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonProperties.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonProperties.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonProperties.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonProperties.Location = new System.Drawing.Point(691, 15);
             this.buttonProperties.Name = "buttonProperties";
-            this.buttonProperties.Size = new System.Drawing.Size(161, 59);
+            this.buttonProperties.Size = new System.Drawing.Size(121, 48);
             this.buttonProperties.TabIndex = 8;
             this.buttonProperties.Text = "Properties / units";
             this.buttonProperties.UseVisualStyleBackColor = true;
@@ -128,10 +135,12 @@
             // 
             // buttonRequests
             // 
-            this.buttonRequests.Location = new System.Drawing.Point(1091, 28);
-            this.buttonRequests.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonRequests.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonRequests.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonRequests.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRequests.Location = new System.Drawing.Point(818, 15);
             this.buttonRequests.Name = "buttonRequests";
-            this.buttonRequests.Size = new System.Drawing.Size(161, 59);
+            this.buttonRequests.Size = new System.Drawing.Size(121, 48);
             this.buttonRequests.TabIndex = 9;
             this.buttonRequests.Text = "Requests / responses";
             this.buttonRequests.UseVisualStyleBackColor = true;
@@ -139,10 +148,12 @@
             // 
             // buttonDeleteTemplate
             // 
-            this.buttonDeleteTemplate.Location = new System.Drawing.Point(588, 409);
-            this.buttonDeleteTemplate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.buttonDeleteTemplate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.buttonDeleteTemplate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteTemplate.Font = new System.Drawing.Font("Rubik", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteTemplate.Location = new System.Drawing.Point(691, 527);
             this.buttonDeleteTemplate.Name = "buttonDeleteTemplate";
-            this.buttonDeleteTemplate.Size = new System.Drawing.Size(145, 28);
+            this.buttonDeleteTemplate.Size = new System.Drawing.Size(121, 48);
             this.buttonDeleteTemplate.TabIndex = 4;
             this.buttonDeleteTemplate.Text = "Delete template";
             this.buttonDeleteTemplate.UseVisualStyleBackColor = true;
@@ -150,9 +161,10 @@
             // 
             // EmailTemplatesForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1268, 842);
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(951, 596);
             this.Controls.Add(this.buttonProperties);
             this.Controls.Add(this.buttonRequests);
             this.Controls.Add(this.label1);
@@ -163,7 +175,6 @@
             this.Controls.Add(this.buttonDeleteTemplate);
             this.Controls.Add(this.buttonEditTemplate);
             this.Controls.Add(this.dataGridViewEmailTemplates);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "EmailTemplatesForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Email templates";

@@ -3820,6 +3820,11 @@
             The server supports the <a href="https://tools.ietf.org/html/rfc8474">OBJECTID</a> extension.
             </summary>
         </member>
+        <member name="F:MailKit.Net.Imap.ImapCapabilities.Replace">
+            <summary>
+            The server supports the <a href="https://tools.ietf.org/html/rfc8508">REPLACE</a> extension.
+            </summary>
+        </member>
         <member name="F:MailKit.Net.Imap.ImapCapabilities.XList">
             <summary>
             The server supports the <a href="https://developers.google.com/gmail/imap_extensions">XLIST</a> extension (GMail).
@@ -4464,6 +4469,12 @@
             Gets the special folder containing flagged messages.
             </summary>
             <value>The flagged folder.</value>
+        </member>
+        <member name="P:MailKit.Net.Imap.ImapEngine.Important">
+            <summary>
+            Gets the special folder containing important messages.
+            </summary>
+            <value>The important folder.</value>
         </member>
         <member name="P:MailKit.Net.Imap.ImapEngine.Junk">
             <summary>
@@ -5285,6 +5296,25 @@
             <see cref="P:MailKit.Net.Imap.ImapFolder.SyncRoot"/> object for thread safety when using the synchronous methods.</para>
             </remarks>
             <value>The lock object.</value>
+        </member>
+        <member name="P:MailKit.Net.Imap.ImapFolder.ThreadingAlgorithms">
+            <summary>
+            Get the threading algorithms supported by the folder.
+            </summary>
+            <remarks>
+            Get the threading algorithms supported by the folder.
+            </remarks>
+            <value>The supported threading algorithms.</value>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.Supports(MailKit.FolderFeature)">
+            <summary>
+            Determine whether or not an <see cref="T:MailKit.Net.Imap.ImapFolder"/> supports a feature.
+            </summary>
+            <remarks>
+            Determines whether or not an <see cref="T:MailKit.Net.Imap.ImapFolder"/> supports a feature.
+            </remarks>
+            <param name="feature">The desired feature.</param>
+            <returns><c>true</c> if the feature is supported; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:MailKit.Net.Imap.ImapFolder.OnParentFolderRenamed">
             <summary>
@@ -7966,6 +7996,458 @@
             </exception>
             <exception cref="T:System.NotSupportedException">
             Internationalized formatting was requested but is not supported by the server.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.Replace(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.ReplaceAsync(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.Replace(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.ReplaceAsync(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.Replace(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.ReplaceAsync(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.Replace(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.Net.Imap.ImapCommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.Net.Imap.ImapFolder.ReplaceAsync(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.Net.Imap.ImapClient"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
             </exception>
             <exception cref="T:System.IO.IOException">
             An I/O error occurred.
@@ -14048,6 +14530,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14095,6 +14580,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14140,6 +14628,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14188,6 +14679,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14231,6 +14725,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14276,6 +14773,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14325,6 +14825,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14372,6 +14875,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14421,6 +14927,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14469,6 +14978,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14514,6 +15026,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14561,6 +15076,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14606,6 +15124,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14654,6 +15175,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14699,6 +15223,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14747,6 +15274,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14790,6 +15320,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14835,6 +15368,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14884,6 +15420,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -14931,6 +15470,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -14980,6 +15522,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -15028,6 +15573,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -15074,6 +15622,9 @@
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
             </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
+            </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
             </exception>
@@ -15119,6 +15670,9 @@
             </exception>
             <exception cref="T:MailKit.FolderNotOpenException">
             The <see cref="T:MailKit.Net.Imap.ImapFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            The IMAP server does not support the Google Mail Extensions.
             </exception>
             <exception cref="T:System.OperationCanceledException">
             The operation was canceled via the cancellation token.
@@ -16809,7 +17363,7 @@
             </summary>
             <returns>The flags list string.</returns>
             <param name="flags">The message flags.</param>
-            <param name="numUserFlags">The number of user-defined flags.</param>
+            <param name="numKeywords">The number of keywords.</param>
         </member>
         <member name="M:MailKit.Net.Imap.ImapUtils.ParseFlagsListAsync(MailKit.Net.Imap.ImapEngine,System.String,System.Collections.Generic.HashSet{System.String},System.Boolean,System.Threading.CancellationToken)">
             <summary>
@@ -30900,6 +31454,11 @@
             The folder is the special "Flagged" folder.
             </summary>
         </member>
+        <member name="F:MailKit.FolderAttributes.Important">
+            <summary>
+            The folder is the special "Important" folder.
+            </summary>
+        </member>
         <member name="F:MailKit.FolderAttributes.Inbox">
             <summary>
             The folder is the special "Inbox" folder.
@@ -30948,6 +31507,59 @@
             Gets the folder that was just created.
             </remarks>
             <value>The folder.</value>
+        </member>
+        <member name="T:MailKit.FolderFeature">
+            <summary>
+            An optional feature that an <see cref="T:MailKit.IMailFolder"/> may support.
+            </summary>
+            <remarks>
+            An optional feature that an <see cref="T:MailKit.IMailFolder"/> may support.
+            </remarks>
+        </member>
+        <member name="F:MailKit.FolderFeature.AccessRights">
+            <summary>
+            Indicates that the folder supports access rights.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.Annotations">
+            <summary>
+            Indicates that the folder allows arbitrary annotations to be set on a message.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.Metadata">
+            <summary>
+            Indicates that the folder allows arbitrary metadata to be set.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.ModSequences">
+            <summary>
+            Indicates that the folder uses modification sequences for every state change of a message.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.QuickResync">
+            <summary>
+            Indicates that the folder supports quick resynchronization when opening.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.Quotas">
+            <summary>
+            Indicates that the folder supports quotas.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.Sorting">
+            <summary>
+            Indicates that the folder supports sorting messages.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.Threading">
+            <summary>
+            Indicates that the folder supports threading messages.
+            </summary>
+        </member>
+        <member name="F:MailKit.FolderFeature.UTF8">
+            <summary>
+            Indicates that the folder supports the use of UTF-8.
+            </summary>
         </member>
         <member name="T:MailKit.FolderNamespace">
             <summary>
@@ -31580,10 +32192,11 @@
             Get whether or not the folder supports mod-sequences.
             </summary>
             <remarks>
-            If mod-sequences are not supported by the folder, then all of the APIs that take a modseq
-            argument will throw <see cref="T:System.NotSupportedException"/> and should not be used.
+            <para>Gets whether or not the folder supports mod-sequences.</para>
+            <para>If mod-sequences are not supported by the folder, then all of the APIs that take a modseq
+            argument will throw <see cref="T:System.NotSupportedException"/> and should not be used.</para>
             </remarks>
-            <value><c>true</c> if supports mod-sequences; otherwise, <c>false</c>.</value>
+            <value><c>true</c> if the folder supports mod-sequences; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:MailKit.IMailFolder.HighestModSeq">
             <summary>
@@ -31677,6 +32290,25 @@
             Gets the total number of messages in the folder.
             </remarks>
             <value>The total number of messages.</value>
+        </member>
+        <member name="P:MailKit.IMailFolder.ThreadingAlgorithms">
+            <summary>
+            Get the threading algorithms supported by the folder.
+            </summary>
+            <remarks>
+            Get the threading algorithms supported by the folder.
+            </remarks>
+            <value>The supported threading algorithms.</value>
+        </member>
+        <member name="M:MailKit.IMailFolder.Supports(MailKit.FolderFeature)">
+            <summary>
+            Determine whether or not an <see cref="T:MailKit.IMailFolder"/> supports a feature.
+            </summary>
+            <remarks>
+            Determines whether or not an <see cref="T:MailKit.IMailFolder"/> supports a feature.
+            </remarks>
+            <param name="feature">The desired feature.</param>
+            <returns><c>true</c> if the feature is supported; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:MailKit.IMailFolder.Open(MailKit.FolderAccess,System.UInt32,System.UInt64,System.Collections.Generic.IList{MailKit.UniqueId},System.Threading.CancellationToken)">
             <summary>
@@ -32680,6 +33312,246 @@
             <param name="messages">The list of messages to append to the folder.</param>
             <param name="flags">The message flags to use for each of the messages.</param>
             <param name="dates">The received dates to use for each of the messages.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>;
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.Replace(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+        </member>
+        <member name="M:MailKit.IMailFolder.ReplaceAsync(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
             <param name="cancellationToken">The cancellation token.</param>
             <param name="progress">The progress reporting mechanism.</param>
         </member>
@@ -38399,11 +39271,21 @@
             A summary of a message.
             </summary>
             <remarks>
-            A <see cref="T:MailKit.IMessageSummary"/> is returned by
-            <see cref="M:MailKit.IMailFolder.Fetch(System.Collections.Generic.IList{MailKit.UniqueId},MailKit.MessageSummaryItems,System.Threading.CancellationToken)"/>.
-            The properties of the <see cref="T:MailKit.IMessageSummary"/> that will be available
-            depend on the <see cref="T:MailKit.MessageSummaryItems"/> passed to the aformentioned method.
+            <para>The <a href="Overload_MailKit_IMailFolder_Fetch.htm">Fetch</a> and
+            <a href="Overload_MailKit_IMailFolder_FetchAsync.htm">FetchAsync</a> methods
+            return lists of <see cref="T:MailKit.IMessageSummary"/> items.</para>
+            <para>The properties of the <see cref="T:MailKit.IMessageSummary"/> that will be available
+            depend on the <see cref="T:MailKit.MessageSummaryItems"/> passed to the aformentioned method.</para>
             </remarks>
+        </member>
+        <member name="P:MailKit.IMessageSummary.Folder">
+            <summary>
+            Get the folder that the message belongs to.
+            </summary>
+            <remarks>
+            Gets the folder that the message belongs to, if available.
+            </remarks>
+            <value>The folder.</value>
         </member>
         <member name="P:MailKit.IMessageSummary.Fields">
             <summary>
@@ -39109,6 +39991,7 @@
             Get whether or not the folder supports mod-sequences.
             </summary>
             <remarks>
+            <para>Gets whether or not the folder supports mod-sequences.</para>
             <para>If mod-sequences are not supported by the folder, then all of the APIs that take a modseq
             argument will throw <see cref="T:System.NotSupportedException"/> and should not be used.</para>
             </remarks>
@@ -39208,6 +40091,25 @@
             with <see cref="F:MailKit.StatusItems.Count"/> or by opening the folder.</note>
             </remarks>
             <value>The total number of messages.</value>
+        </member>
+        <member name="P:MailKit.MailFolder.ThreadingAlgorithms">
+            <summary>
+            Get the threading algorithms supported by the folder.
+            </summary>
+            <remarks>
+            Get the threading algorithms supported by the folder.
+            </remarks>
+            <value>The supported threading algorithms.</value>
+        </member>
+        <member name="M:MailKit.MailFolder.Supports(MailKit.FolderFeature)">
+            <summary>
+            Determine whether or not a <see cref="T:MailKit.MailFolder"/> supports a feature.
+            </summary>
+            <remarks>
+            Determines whether or not a <see cref="T:MailKit.MailFolder"/> supports a feature.
+            </remarks>
+            <param name="feature">The desired feature.</param>
+            <returns><c>true</c> if the feature is supported; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:MailKit.MailFolder.Open(MailKit.FolderAccess,System.UInt32,System.UInt64,System.Collections.Generic.IList{MailKit.UniqueId},System.Threading.CancellationToken)">
             <summary>
@@ -42516,6 +43418,850 @@
             </exception>
             <exception cref="T:MailKit.CommandException">
             The command failed.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(MimeKit.FormatOptions,MailKit.UniqueId,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="uid">The UID of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="uid"/> is invalid.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.Replace(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
+            </exception>
+        </member>
+        <member name="M:MailKit.MailFolder.ReplaceAsync(MimeKit.FormatOptions,System.Int32,MimeKit.MimeMessage,MailKit.MessageFlags,System.DateTimeOffset,System.Threading.CancellationToken,MailKit.ITransferProgress)">
+            <summary>
+            Asynchronously replace a message in the folder.
+            </summary>
+            <remarks>
+            Replaces the specified message in the folder and returns the UniqueId assigned to the new message.
+            </remarks>
+            <returns>The UID of the new message, if available; otherwise, <c>null</c>.</returns>
+            <param name="options">The formatting options.</param>
+            <param name="index">The index of the message to be replaced.</param>
+            <param name="message">The message.</param>
+            <param name="flags">The message flags.</param>
+            <param name="date">The received date of the message.</param>
+            <param name="cancellationToken">The cancellation token.</param>
+            <param name="progress">The progress reporting mechanism.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <para><paramref name="options"/> is <c>null</c>.</para>
+            <para>-or-</para>
+            <para><paramref name="message"/> is <c>null</c>.</para>
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is out of range.
+            </exception>
+            <exception cref="T:System.ObjectDisposedException">
+            The <see cref="T:MailKit.IMailStore"/> has been disposed.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotConnectedException">
+            The <see cref="T:MailKit.IMailStore"/> is not connected.
+            </exception>
+            <exception cref="T:MailKit.ServiceNotAuthenticatedException">
+            The <see cref="T:MailKit.IMailStore"/> is not authenticated.
+            </exception>
+            <exception cref="T:System.InvalidOperationException">
+            Internationalized formatting was requested but has not been enabled.
+            </exception>
+            <exception cref="T:MailKit.FolderNotFoundException">
+            The <see cref="T:MailKit.MailFolder"/> does not exist.
+            </exception>
+            <exception cref="T:MailKit.FolderNotOpenException">
+            The <see cref="T:MailKit.MailFolder"/> is not currently open in read-write mode.
+            </exception>
+            <exception cref="T:System.OperationCanceledException">
+            The operation was canceled via the cancellation token.
+            </exception>
+            <exception cref="T:System.NotSupportedException">
+            <para>Internationalized formatting was requested but is not supported by the server.</para>
+            </exception>
+            <exception cref="T:System.IO.IOException">
+            An I/O error occurred.
+            </exception>
+            <exception cref="T:MailKit.ProtocolException">
+            The server's response contained unexpected tokens.
+            </exception>
+            <exception cref="T:MailKit.CommandException">
+            The server replied with a NO or BAD response.
             </exception>
         </member>
         <member name="M:MailKit.MailFolder.CopyTo(MailKit.UniqueId,MailKit.IMailFolder,System.Threading.CancellationToken)">
@@ -54073,7 +55819,21 @@
             </remarks>
             <value>The timeout in milliseconds.</value>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:MailKit.MailService.DefaultServerCertificateValidationCallback(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)" -->
+        <member name="M:MailKit.MailService.DefaultServerCertificateValidationCallback(System.Object,System.Security.Cryptography.X509Certificates.X509Certificate,System.Security.Cryptography.X509Certificates.X509Chain,System.Net.Security.SslPolicyErrors)">
+            <summary>
+            The default server certificate validation callback used when connecting via SSL or TLS.
+            </summary>
+            <remarks>
+            <para>The default server certificate validation callback recognizes and accepts the certificates
+            for a list of commonly used mail servers such as gmail.com, outlook.com, mail.me.com, yahoo.com,
+            and gmx.net.</para>
+            </remarks>
+            <returns><c>true</c> if the certificate is deemed valid; otherwise, <c>false</c>.</returns>
+            <param name="sender">The object that is connecting via SSL or TLS.</param>
+            <param name="certificate">The server's SSL certificate.</param>
+            <param name="chain">The server's SSL certificate chain.</param>
+            <param name="sslPolicyErrors">The SSL policy errors.</param>
+        </member>
         <member name="M:MailKit.MailService.Connect(System.String,System.Int32,MailKit.Security.SecureSocketOptions,System.Threading.CancellationToken)">
             <summary>
             Establish a connection to the specified mail server.
@@ -58421,10 +60181,11 @@
             A summary of a message.
             </summary>
             <remarks>
-            A <see cref="T:MailKit.MessageSummary"/> is returned by
-            <see cref="M:MailKit.IMailFolder.Fetch(System.Collections.Generic.IList{MailKit.UniqueId},MailKit.MessageSummaryItems,System.Threading.CancellationToken)"/>.
-            The properties of the <see cref="T:MailKit.MessageSummary"/> that will be available
-            depend on the <see cref="T:MailKit.MessageSummaryItems"/> passed to the aformentioned method.
+            <para>The <a href="Overload_MailKit_IMailFolder_Fetch.htm">Fetch</a> and
+            <a href="Overload_MailKit_IMailFolder_FetchAsync.htm">FetchAsync</a> methods
+            return lists of <see cref="T:MailKit.IMessageSummary"/> items.</para>
+            <para>The properties of the <see cref="T:MailKit.MessageSummary"/> that will be available
+            depend on the <see cref="T:MailKit.MessageSummaryItems"/> passed to the aformentioned method.</para>
             </remarks>
         </member>
         <member name="M:MailKit.MessageSummary.#ctor(System.Int32)">
@@ -58438,6 +60199,31 @@
             <exception cref="T:System.ArgumentOutOfRangeException">
             <paramref name="index"/> is negative.
             </exception>
+        </member>
+        <member name="M:MailKit.MessageSummary.#ctor(MailKit.IMailFolder,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MailKit.MessageSummary"/> class.
+            </summary>
+            <remarks>
+            Creates a new <see cref="T:MailKit.MessageSummary"/>.
+            </remarks>
+            <param name="folder">The folder that the message belongs to.</param>
+            <param name="index">The message index.</param>
+            <exception cref="T:System.ArgumentNullException">
+            <paramref name="folder"/> is <c>null</c>.
+            </exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            <paramref name="index"/> is negative.
+            </exception>
+        </member>
+        <member name="P:MailKit.MessageSummary.Folder">
+            <summary>
+            Get the folder that the message belongs to.
+            </summary>
+            <remarks>
+            Gets the folder that the message belongs to, if available.
+            </remarks>
+            <value>The folder.</value>
         </member>
         <member name="P:MailKit.MessageSummary.Fields">
             <summary>
@@ -59081,10 +60867,10 @@
         </member>
         <member name="P:MailKit.MessagesVanishedEventArgs.Earlier">
             <summary>
-            Gets whether the messages vanished inthe past as opposed to just now.
+            Gets whether the messages vanished in the past as opposed to just now.
             </summary>
             <remarks>
-            Gets whether the messages vanished inthe past as opposed to just now.
+            Gets whether the messages vanished in the past as opposed to just now.
             </remarks>
             <value><c>true</c> if the messages vanished earlier; otherwise, <c>false</c>.</value>
         </member>
@@ -59105,14 +60891,38 @@
             </remarks>
             <param name="uid">The unique identifier of the message.</param>
         </member>
+        <member name="M:MailKit.MessageThread.#ctor(MailKit.IMessageSummary)">
+            <summary>
+            Initializes a new instance of the <see cref="T:MailKit.MessageThread"/> class.
+            </summary>
+            <remarks>
+            Creates a new message thread node.
+            </remarks>
+            <param name="message">The message summary.</param>
+        </member>
+        <member name="P:MailKit.MessageThread.Message">
+            <summary>
+            Gets the message summary, if available.
+            </summary>
+            <remarks>
+            <para>Gets the message summary, if available.</para>
+            <note type="note">This property will only ever be set if the <see cref="T:MailKit.MessageThread"/>
+            was created by the <see cref="T:MailKit.MessageThreader"/>. <see cref="T:MailKit.MessageThread"/>s that are
+            created by any of the
+            <a href="Overload_MailKit_Net_Imap_ImapFolder_Thread.htm">Thread</a> or
+            <a href="Overload_MailKit_Net_Imap_ImapFolder_ThreadAsync.htm">ThreadAsync</a>
+            methods will always be <c>null</c>.</note>
+            </remarks>
+            <value>The message summary.</value>
+        </member>
         <member name="P:MailKit.MessageThread.UniqueId">
             <summary>
             Gets the unique identifier of the message.
             </summary>
             <remarks>
-            The unique identifier may be <c>null</c> if the message is missing
-            from the <see cref="T:MailKit.IMailFolder"/> or did not match the 
-            <see cref="T:MailKit.Search.SearchQuery"/>.
+            The unique identifier may be <c>null</c> if the message is missing from the
+            <see cref="T:MailKit.IMailFolder"/> or from the list of messages provided to the
+            <see cref="T:MailKit.MessageThreader"/>.
             </remarks>
             <value>The unique identifier.</value>
         </member>
@@ -59654,6 +61464,42 @@
             </remarks>
             <value>The log sstream.</value>
         </member>
+        <member name="P:MailKit.ProtocolLogger.DefaultClientPrefix">
+            <summary>
+            Get or set the default client prefix to use when creating new <see cref="T:MailKit.ProtocolLogger"/> instances.
+            </summary>
+            <remarks>
+            Get or set the default client prefix to use when creating new <see cref="T:MailKit.ProtocolLogger"/> instances.
+            </remarks>
+            <value>The default client prefix.</value>
+        </member>
+        <member name="P:MailKit.ProtocolLogger.DefaultServerPrefix">
+            <summary>
+            Get or set the default server prefix to use when creating new <see cref="T:MailKit.ProtocolLogger"/> instances.
+            </summary>
+            <remarks>
+            Get or set the default server prefix to use when creating new <see cref="T:MailKit.ProtocolLogger"/> instances.
+            </remarks>
+            <value>The default server prefix.</value>
+        </member>
+        <member name="P:MailKit.ProtocolLogger.ClientPrefix">
+            <summary>
+            Get or set the client prefix to use when logging client messages.
+            </summary>
+            <remarks>
+            Gets or sets the client prefix to use when logging client messages.
+            </remarks>
+            <value>The client prefix.</value>
+        </member>
+        <member name="P:MailKit.ProtocolLogger.ServerPrefix">
+            <summary>
+            Get or set the server prefix to use when logging server messages.
+            </summary>
+            <remarks>
+            Gets or sets the server prefix to use when logging server messages.
+            </remarks>
+            <value>The server prefix.</value>
+        </member>
         <member name="M:MailKit.ProtocolLogger.LogConnect(System.Uri)">
             <summary>
             Logs a connection to the specified URI.
@@ -59872,6 +61718,11 @@
             </summary>
         </member>
         <member name="F:MailKit.SpecialFolder.Flagged">
+            <summary>
+            The special folder that contains flagged messages.
+            </summary>
+        </member>
+        <member name="F:MailKit.SpecialFolder.Important">
             <summary>
             The special folder that contains important messages.
             </summary>

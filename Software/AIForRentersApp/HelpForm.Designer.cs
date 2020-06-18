@@ -36,17 +36,21 @@
             // 
             // buttonOk
             // 
-            this.buttonOk.Location = new System.Drawing.Point(391, 348);
+            this.buttonOk.BackColor = System.Drawing.Color.White;
+            this.buttonOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonOk.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.buttonOk.Location = new System.Drawing.Point(374, 348);
             this.buttonOk.Name = "buttonOk";
-            this.buttonOk.Size = new System.Drawing.Size(75, 23);
+            this.buttonOk.Size = new System.Drawing.Size(92, 22);
             this.buttonOk.TabIndex = 0;
             this.buttonOk.Text = "OK";
-            this.buttonOk.UseVisualStyleBackColor = true;
+            this.buttonOk.UseVisualStyleBackColor = false;
             this.buttonOk.Click += new System.EventHandler(this.buttonOk_Click);
             // 
             // groupBoxName
             // 
             this.groupBoxName.Controls.Add(this.labelContent);
+            this.groupBoxName.ForeColor = System.Drawing.Color.Black;
             this.groupBoxName.Location = new System.Drawing.Point(12, 12);
             this.groupBoxName.Name = "groupBoxName";
             this.groupBoxName.Size = new System.Drawing.Size(454, 330);
@@ -66,9 +70,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(480, 382);
             this.Controls.Add(this.groupBoxName);
             this.Controls.Add(this.buttonOk);
+            this.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Name = "HelpForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Help";
