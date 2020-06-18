@@ -76,7 +76,10 @@ namespace AIForRentersApp
                 }
                 return;
             }
-            
+
+            selectedRequest.MarkAsSent(selectedRequest);
+
+            DisplayRequests();
         }
 
         private void buttonRefreshRequests_Click(object sender, EventArgs e)
@@ -156,6 +159,7 @@ namespace AIForRentersApp
         private void DisplayRequests()
         {
             Request request = new Request();
+            AvailabilityValidator.CheckForAvailability(request.DisplayRequests());
 
             dataGridViewIncomingRequests.DataSource = request.DisplayRequests();
             dataGridViewIncomingRequests.Columns["RequestID"].Visible = false;
