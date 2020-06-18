@@ -76,7 +76,11 @@ namespace AIForRentersLib
                     doc.LoadHtml(html.GetBodyAsText());
                     //this xpath selects all span tag having its class as hidden first
                     var itemList = doc.DocumentNode.SelectNodes("//div[@class='WordSection1']//p[@class='MsoNormal']").Select(p => p.InnerText).ToList();
-                    builder.Append(itemList[0]);
+                    foreach (var item in itemList)
+                    {
+                        builder.Append(item);
+                    }
+                    
                 }
             }
 
