@@ -67,11 +67,12 @@ namespace AIForRentersLib
                                 resultUnit = queryUnit.Single();
                             }
 
+                            double totalPrice = CalculateTotalPrice(req);
 
                             Availability addAvailability = new Availability();
                             addAvailability.AddAvailability(resultUnit, req.FromDate, req.ToDate);
 
-                            EmailTemplate email = FetchAndCustomizeEmailTemplate(type, req.Property, req.ToDate, req.FromDate, req.Client.Name, req.FromDate, req.FromDate);
+                            EmailTemplate email = FetchAndCustomizeEmailTemplate(type, req.Property, req.ToDate, req.FromDate, req.Client.Name, req.FromDate, req.FromDate, totalPrice);
 
                             string emailBody = email.TemplateContent;
                             string emailSubject = email.Name;
@@ -133,7 +134,7 @@ namespace AIForRentersLib
             }
         }
 
-        public static EmailTemplate FetchAndCustomizeEmailTemplate(string type, string property, DateTime dateTo, DateTime dateFrom, string name, DateTime newDateTo, DateTime newDateFrom)
+        public static EmailTemplate FetchAndCustomizeEmailTemplate(string type, string property, DateTime dateTo, DateTime dateFrom, string name, DateTime newDateTo, DateTime newDateFrom, double totalPrice = 0)
         {
             using (SE20E01_DBEntities context = new SE20E01_DBEntities())
             {
@@ -145,7 +146,7 @@ namespace AIForRentersLib
                     EmailTemplate emailTemp = getAvailableTemp.t;
                     EmailTemplate email = new EmailTemplate();
                     email.Name = emailTemp.Name;
-                    email.TemplateContent = emailTemp.TemplateContent.Replace("{Name}", name).Replace("{Property}", property).Replace("{DateTo}", dateTo.ToString()).Replace("{DateFrom}", dateFrom.ToString());
+                    email.TemplateContent = emailTemp.TemplateContent.Replace("{Name}", name).Replace("{Property}", property).Replace("{DateTo}", dateTo.ToString()).Replace("{DateFrom}", dateFrom.ToString()).Replace("{Price}", totalPrice.ToString());
                     return email;
                 }
 
@@ -258,6 +259,17 @@ namespace AIForRentersLib
             }
 
             return newDates;
+        }
+
+        private static double CalculateTotalPrice(Request req)
+        {
+            double dailyPrice = req.PriceUponRequest;
+
+            int daysReserved = (req.ToDate - req.FromDate).Days;
+
+            double totalPrice = daysReserved * dailyPrice;
+
+            return totalPrice;
         }
     }
 }
