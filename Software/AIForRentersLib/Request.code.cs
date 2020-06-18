@@ -57,5 +57,17 @@ namespace AIForRentersLib
                 context.SaveChanges();
             }
         }
+
+        public void MarkAsSent(Request selectedRequest)
+        {
+            using (var context = new SE20E01_DBEntities())
+            {
+                context.Requests.Attach(selectedRequest);
+
+                selectedRequest.Sent = true;
+
+                context.SaveChanges();
+            }
+        }
     }
 }

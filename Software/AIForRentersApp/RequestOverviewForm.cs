@@ -76,7 +76,10 @@ namespace AIForRentersApp
                 }
                 return;
             }
-            
+
+            selectedRequest.MarkAsSent(selectedRequest);
+
+            DisplayRequests();
         }
 
         private void buttonRefreshRequests_Click(object sender, EventArgs e)
