@@ -60,6 +60,10 @@ namespace AIForRentersApp
                 {
                     result = MessageBox.Show(exception.ExceptionMessage);
                 }
+                else if (ex is ArgumentNullException)
+                {
+                    result = MessageBox.Show("Login unsuccessful!");
+                }
                 else if (ex is SocketException)
                 {
                     result = MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");

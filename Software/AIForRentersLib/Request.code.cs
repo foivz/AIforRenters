@@ -69,5 +69,22 @@ namespace AIForRentersLib
                 context.SaveChanges();
             }
         }
+
+        public void UpdateConfirmation(Request requestForConfirmation)
+        {
+            if (requestForConfirmation.ResponseSubject == "Available unit")
+            {
+                using (var context = new SE20E01_DBEntities())
+                {
+                    context.Requests.Attach(requestForConfirmation);
+
+                    requestForConfirmation.Confirmed = true;
+
+                    context.SaveChanges();
+
+                    EmailSender.SendEmail("Confirmation", $"Dear {requestForConfirmation.Client.Name}, \n\nYour confirmation is successfully noted! \nWe are looking forward to your arrival! \n\nSincerely, \nAIForRenters", requestForConfirmation.Client.Email);
+                }
+            }
+        }
     }
 }

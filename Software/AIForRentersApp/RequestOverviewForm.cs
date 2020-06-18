@@ -113,9 +113,16 @@ namespace AIForRentersApp
         {
             if (dataGridViewIncomingRequests.CurrentRow != null)
             {
+                Request selectedRequest = GetSelectedRequest();
+
                 buttonEditResponse.Enabled = true;
                 buttonSend.Enabled = true;
                 buttonSaveChanges.Enabled = true;
+
+                if (selectedRequest.Sent == true)
+                {
+                    buttonSend.Enabled = false;
+                }
             }
         }
 
@@ -138,22 +145,27 @@ namespace AIForRentersApp
             Request selectedRequest = GetSelectedRequest();
             richTextBoxResponse.Text = selectedRequest.ResponseBody;
             richTextBoxResponse.Enabled = false;
+
+            if (selectedRequest.Sent == true)
+            {
+                buttonSend.Enabled = false;
+            }
         }
 
         private void RefreshRequests()
         {
-            try
-            {
+            //try
+            //{
                 ResponseProcessor.ProcessData(EmailFetcher.ShapeReceivedData());
-            }
-            catch (Exception ex)
-            {
-                if (ex is PopServerNotFoundException || ex is SocketException)
-                {
-                    MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");
-                }
-                return;
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    if (ex is PopServerNotFoundException || ex is SocketException)
+            //    {
+            //        MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");
+            //    }
+            //    return;
+            //}
         }
 
         private void DisplayRequests()

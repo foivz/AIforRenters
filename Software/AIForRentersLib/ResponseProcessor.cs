@@ -33,7 +33,7 @@ namespace AIForRentersLib
 
                 // Client name and surname
                 string emailSenderNameAndSurname = receivedDataItem.ClientNameSurname;
-                var nameAndSurnameSplitted = emailSenderNameAndSurname.Split(' ');
+                string[] nameAndSurnameSplitted = emailSenderNameAndSurname.Split(' ');
                 string name = nameAndSurnameSplitted[0];
                 string surname = nameAndSurnameSplitted[1];
 
@@ -50,83 +50,127 @@ namespace AIForRentersLib
                 try
                 {
                     numberOfPeople = ExtractNumberOfPeople(emailBody);
-                    dateTo = DateTime.Parse(ExtractDateTo(emailBody, emailAddress));
-                    dateFrom = DateTime.Parse(ExtractDateFrom(emailBody, emailAddress));
+                    dateTo = CheckYear(DateTime.Parse(ExtractDateTo(emailBody, emailAddress)));
+                    dateFrom = CheckYear(DateTime.Parse(ExtractDateFrom(emailBody, emailAddress)));
                 }
                 catch (Exception ex)
                 {
                     if (ex is EmailContentException || ex is InvalidOperationException || ex is FormatException)
                     {
                         string subject = "Insufficient data";
-                        string body = "Dear customer, \n\nwe are sorry to inform you that you have provided insufficient data in your email request! \nPlease resend your request with all necessary data! \n\nSincerely, \nAIForRenters";
+                        string body = $"Dear {name}, \n\nwe are sorry to inform you that you have provided insufficient data in your email request! \nPlease resend your request with all necessary data! \n\nSincerely, \nAIForRenters";
                         EmailSender.SendEmail(subject, body, emailAddress);
                     }
                     return;
                 }
 
-                try
+                if (emailSubject == "Confirmation")
                 {
-                    selectedProperty = GetProperty(emailSubject);
+                    ConfirmationEmail(nameAndSurnameSplitted, dateTo, dateFrom);
                 }
-                catch (Exception ex)
+                else
                 {
-                    if (ex is EmailContentException || ex is InvalidOperationException)
+                    try
                     {
-                        string subject = "Invalid property";
-                        string body = "Dear customer, \n\nyou have sent invalid or nonexistent property name in email subject! \nPlease resend your request with valid property name in email subject! \n\nSincerely, \nAIForRenters";
-                        EmailSender.SendEmail(subject, body, emailAddress);
+                        selectedProperty = GetProperty(emailSubject);
                     }
-                    return;
-                }
-
-                try
-                {
-                    selectedUnit = GetUnit(emailSubject, numberOfPeople);
-                }
-                catch (Exception ex)
-                {
-                    if (ex is EmailContentException || ex is InvalidOperationException)
+                    catch (Exception ex)
                     {
-                        string subject = "Unavailable unit";
-                        string body = "Dear customer, \n\nwe are sorry to inform you that there are no available units that have a capacity for the number of people you requested! \n\nSincerely, \nAIForRenters";
-                        EmailSender.SendEmail(subject, body, emailAddress);
+                        if (ex is EmailContentException || ex is InvalidOperationException)
+                        {
+                            string subject = "Invalid property";
+                            string body = $"Dear {name}, \n\nyou have sent invalid or nonexistent property name in email subject! \nPlease resend your request with valid property name in email subject! \n\nSincerely, \nAIForRenters";
+                            EmailSender.SendEmail(subject, body, emailAddress);
+                        }
+                        return;
                     }
-                    return;
-                }
 
-                double priceUponRequest = selectedUnit.Price;
-                Client newClient = new Client()
-                {
-                    Name = name,
-                    Surname = surname,
-                    Email = emailAddress
-                };
+                    try
+                    {
+                        selectedUnit = GetUnit(emailSubject, numberOfPeople);
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex is EmailContentException || ex is InvalidOperationException)
+                        {
+                            string subject = "Unavailable unit";
+                            string body = $"Dear {name}, \n\nwe are sorry to inform you that there are no available units that have a capacity for the number of people you requested! \n\nSincerely, \nAIForRenters";
+                            EmailSender.SendEmail(subject, body, emailAddress);
+                        }
+                        return;
+                    }
 
-                Request newRequest = new Request()
-                {
-                    Property = selectedProperty.Name,
-                    Unit = selectedUnit.Name,
-                    FromDate = dateFrom,
-                    ToDate = dateTo,
-                    NumberOfPeople = numberOfPeople,
-                    Client = newClient,
-                    Confirmed = false,
-                    Processed = false,
-                    Sent = false,
-                    PriceUponRequest = priceUponRequest,
-                    ResponseSubject = "",
-                    ResponseBody = ""
-                };
+                    double priceUponRequest = selectedUnit.Price;
+                    Client newClient = new Client()
+                    {
+                        Name = name,
+                        Surname = surname,
+                        Email = emailAddress
+                    };
 
-                using (var context = new SE20E01_DBEntities())
-                {
-                    context.Clients.Add(newClient);
+                    Request newRequest = new Request()
+                    {
+                        Property = selectedProperty.Name,
+                        Unit = selectedUnit.Name,
+                        FromDate = dateFrom,
+                        ToDate = dateTo,
+                        NumberOfPeople = numberOfPeople,
+                        Client = newClient,
+                        Confirmed = false,
+                        Processed = false,
+                        Sent = false,
+                        PriceUponRequest = priceUponRequest,
+                        ResponseSubject = "",
+                        ResponseBody = ""
+                    };
 
-                    context.Requests.Add(newRequest);
+                    using (var context = new SE20E01_DBEntities())
+                    {
+                        context.Clients.Add(newClient);
 
-                    context.SaveChanges();
+                        context.Requests.Add(newRequest);
+
+                        context.SaveChanges();
+                    }
                 }
             }
+        }
+
+        private static void ConfirmationEmail(string[] nameAndSurnameSplitted, DateTime dateTo, DateTime dateFrom)
+        {
+            string name = nameAndSurnameSplitted[0];
+            string surname = nameAndSurnameSplitted[1];
+
+            Request requestForConfirmation = null;
+            using (var context = new SE20E01_DBEntities())
+            {
+                var query = from request in context.Requests
+                            where request.Client.Name == name && request.Client.Surname == surname
+                            && dateTo == request.ToDate && dateFrom == request.FromDate
+                            select request;
+
+                requestForConfirmation = query.Single();
+            }
+
+            requestForConfirmation.UpdateConfirmation(requestForConfirmation);
+        }
+
+        private static DateTime CheckYear(DateTime dateTime)
+        {
+            DateTime currentDateTime = DateTime.Now;
+
+            if (dateTime.Year < currentDateTime.Year)
+            {
+                int diff = currentDateTime.Year - dateTime.Year;
+
+                dateTime = dateTime.AddYears(diff);
+                return dateTime;
+            }
+            else
+            {
+                return dateTime;
+            }
+            
         }
 
         private static Property GetProperty(string emailSubject)

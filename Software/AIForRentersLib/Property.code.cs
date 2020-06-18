@@ -53,7 +53,7 @@ namespace AIForRentersLib
                 context.Properties.Attach(property);
 
                 property.Name = propertyName;
-                property.Location = propertyName;
+                property.Location = propertyLocation;
 
                 context.SaveChanges();
             }
