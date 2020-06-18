@@ -39,8 +39,8 @@ namespace AIForRentersLib
 
             MimeMessage message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress(senderAddress));
-            message.To.Add(new MailboxAddress(clientAddress));
+            message.From.Add(new MailboxAddress("SenderMailbox", senderAddress));
+            message.To.Add(new MailboxAddress("ReceiverMailbox", clientAddress));
             message.Subject = messageSubject;
 
             BodyBuilder body = new BodyBuilder();
