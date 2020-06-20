@@ -95,14 +95,27 @@ namespace AIForRentersLib
                                 resultUnit = queryUnit.Single();
                             }
 
+                            if (newDatesUnavailable != null)
+                            {
+                                EmailTemplate email = FetchAndCustomizeEmailTemplate(type, req.Property, req.ToDate, req.FromDate, req.Client.Name, newDatesUnavailable[0], newDatesUnavailable[1]);
 
-                            EmailTemplate email = FetchAndCustomizeEmailTemplate(type, req.Property, req.ToDate, req.FromDate, req.Client.Name, newDatesUnavailable[0], newDatesUnavailable[1]);
+                                string emailBody = email.TemplateContent;
+                                string emailSubject = email.Name;
 
-                            string emailBody = email.TemplateContent;
-                            string emailSubject = email.Name;
+                                Request request = new Request();
+                                request.UpdateRequest(req, emailBody, emailSubject);
+                            }
+                            else
+                            {
+                                type = "unavailableWeekBeforeAfter";
+                                EmailTemplate email = FetchAndCustomizeEmailTemplate(type, req.Property, req.ToDate, req.FromDate, req.Client.Name, DateTime.Now, DateTime.Now);
 
-                            Request request = new Request();
-                            request.UpdateRequest(req, emailBody, emailSubject);
+                                string emailBody = email.TemplateContent;
+                                string emailSubject = email.Name;
+
+                                Request request = new Request();
+                                request.UpdateRequest(req, emailBody, emailSubject);
+                            }
                         }
                     }
                     else
@@ -171,6 +184,18 @@ namespace AIForRentersLib
                     EmailTemplate email = new EmailTemplate();
                     email.Name = emailTemp.Name;
                     email.TemplateContent = emailTemp.TemplateContent.Replace("{Name}", name).Replace("{Property}", property).Replace("{DateTo}", dateTo.ToString()).Replace("{DateFrom}", dateFrom.ToString()).Replace("{NewDateTo}", newDateFrom.ToString()).Replace("{NewDateFrom}", newDateTo.ToString());
+                    return email;
+                }
+
+                else if (type == "unavailableWeekBeforeAfter")
+                {
+                    var getUnavailableTemp = (from t in context.EmailTemplates
+                                              where t.Name == "Unavailable unit with no recommendation"
+                                              select new { t }).FirstOrDefault();
+                    EmailTemplate emailTemp = getUnavailableTemp.t;
+                    EmailTemplate email = new EmailTemplate();
+                    email.Name = emailTemp.Name;
+                    email.TemplateContent = emailTemp.TemplateContent.Replace("{Name}", name).Replace("{Property}", property).Replace("{DateTo}", dateTo.ToString()).Replace("{DateFrom}", dateFrom.ToString());
                     return email;
                 }
                 return null;
@@ -258,7 +283,16 @@ namespace AIForRentersLib
                 }
             }
 
-            return newDates;
+            if (newDates.Count > 0)
+            {
+                return newDates;
+            }
+            else
+            {
+                return null;
+            }
+            
+            
         }
 
         private static double CalculateTotalPrice(Request req)
