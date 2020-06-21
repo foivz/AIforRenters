@@ -12,7 +12,7 @@ Josip Rosandić   |    jrosandic@foi.hr | 0016129731 | jrosandic
 Zdenko Pečeňa    |     zpecena@foi.hr  | 0016146255 | zpecena
 
 ## Domain description
-The general idea of the system is to be able to automatically respond to the requests sent through different channels (e.g. web form, e-mail, ...) and to give an answer in regards with the property availability for the requested time slot. The availability is checked in the database, and if the time slot is not free the system should propose a different time slot. The system should provide the means of defining the response template in English language.
+The general idea of the system is to be able to automatically respond to the requests sent through different channels (e.g. web form and e-mail) and to give an answer in regards with the property availability for the requested time slot. The availability is checked in the database, and if the time slot is not free the system should propose a different time slot. The system should provide the means of defining the response template in English language.
 
 **System modules:**
 #| Module|Short description
@@ -42,4 +42,8 @@ F08    | Database | Database implementation | Mario Pernar
 * Microsoft Visual Studio 2019
 * Microsoft SQL Server Studio 2018
 * Visual Paradigm Online
-* Microsoft Office Word 
+* DrawIO
+* GitHub code versioning system
+* Microsoft .NET Framework
+*	Microsoft.Recognizer.Text module
+
