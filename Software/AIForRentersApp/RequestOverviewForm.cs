@@ -31,6 +31,8 @@ namespace AIForRentersApp
             buttonSend.Enabled = false;
             buttonSaveChanges.Enabled = false;
 
+            LegendColoring();
+
             RefreshRequests();
 
             DisplayRequests();
@@ -177,6 +179,38 @@ namespace AIForRentersApp
             dataGridViewIncomingRequests.Columns["RequestID"].Visible = false;
             dataGridViewIncomingRequests.Columns["ClientID"].Visible = false;
             dataGridViewIncomingRequests.Columns["ResponseBody"].Visible = false;
+            dataGridViewIncomingRequests.Columns["Confirmed"].Visible = false;
+            dataGridViewIncomingRequests.Columns["Sent"].Visible = false;
+            dataGridViewIncomingRequests.Columns["Processed"].Visible = false;
+
+            RowsColoring();
+        }
+
+        private void RowsColoring()
+        {
+            foreach (DataGridViewRow row in dataGridViewIncomingRequests.Rows)
+            {
+                Request request = row.DataBoundItem as Request;
+                if (!request.Sent)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(255, 208, 53, 104);
+                }
+                else if (request.Sent && !request.Confirmed)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(255, 218, 135, 135);
+                }
+                else if (request.Confirmed)
+                {
+                    row.DefaultCellStyle.BackColor = Color.FromArgb(255, 101, 221, 101);
+                }
+            } 
+        }
+
+        private void LegendColoring()
+        {
+            responseSentColor.BackColor = Color.FromArgb(255, 218, 135, 135);
+            responseNotSentColor.BackColor = Color.FromArgb(255, 208, 53, 104);
+            confirmedReservationColor.BackColor = Color.FromArgb(255, 101, 221, 101);
         }
 
         public override string ToString()

@@ -1,4 +1,5 @@
 ﻿using AIForRentersLib.Exceptions;
+using Org.BouncyCastle.Ocsp;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace AIForRentersLib
             using (var context = new SE20E01_DBEntities()) 
             {
                 var query = from request in context.Requests.Include("Client")
+                            orderby request.RequestID descending
                             select request;
 
                 requests = query.ToList();

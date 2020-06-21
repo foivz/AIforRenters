@@ -33,14 +33,15 @@ namespace AIForRentersLib
         {
             string senderAddress = Sender.Email;
             string clientAddress = request.Client.Email;
+            string clientNameAndSurname = request.Client.Name + " " + request.Client.Surname;
 
             string messageSubject = request.ResponseSubject;
             string messageBody = request.ResponseBody;
 
             MimeMessage message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("SenderMailbox", senderAddress));
-            message.To.Add(new MailboxAddress("ReceiverMailbox", clientAddress));
+            message.From.Add(new MailboxAddress("AIForRenters", senderAddress));
+            message.To.Add(new MailboxAddress(clientNameAndSurname, clientAddress));
             message.Subject = messageSubject;
 
             BodyBuilder body = new BodyBuilder();
@@ -80,8 +81,8 @@ namespace AIForRentersLib
 
             MimeMessage message = new MimeMessage();
 
-            message.From.Add(new MailboxAddress("SenderMailbox", senderAddress));
-            message.To.Add(new MailboxAddress("ReceiverMailbox", clientAddress));
+            message.From.Add(new MailboxAddress("AIForRenters", senderAddress));
+            message.To.Add(new MailboxAddress("Client", clientAddress));
             message.Subject = messageSubject;
 
             BodyBuilder body = new BodyBuilder();

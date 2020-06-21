@@ -209,8 +209,23 @@ namespace AIForRentersLib
             DayOfWeek dayFrom = req.FromDate.DayOfWeek;
             DayOfWeek dayTo = req.ToDate.DayOfWeek;
 
-            int diffDayFrom = DayOfWeek.Saturday - dayFrom;
-            int diffDayTo = DayOfWeek.Saturday - dayTo;
+            int diffDayFrom = 0;
+            int diffDayTo = 0;
+            if (dayFrom != DayOfWeek.Saturday && dayTo != DayOfWeek.Saturday)
+            {
+                diffDayFrom = DayOfWeek.Saturday - dayFrom;
+                diffDayTo = DayOfWeek.Saturday - dayTo;
+            }
+            else if (dayFrom != DayOfWeek.Saturday && dayTo == DayOfWeek.Saturday)
+            {
+                diffDayFrom = DayOfWeek.Saturday - dayFrom - 7;
+                diffDayTo = 0;
+            }
+            else if (dayFrom == DayOfWeek.Saturday && dayTo != DayOfWeek.Saturday)
+            {
+                diffDayFrom = 0;
+                diffDayTo = DayOfWeek.Saturday - dayTo;
+            }
 
             DateTime newFromDate = req.FromDate.AddDays(diffDayFrom);
             DateTime newToDate = req.ToDate.AddDays(diffDayTo);
