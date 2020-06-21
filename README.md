@@ -28,7 +28,7 @@ F01    | Login   | Login with user credentials| Lidija Pitić
 F02    | Web Form | Web Form design and implementation of sending JSON data to e-mail server | Lidija Pitić
 F03    | Fetching e-mail | Fetching e-mail from e-mail server, forming ReceivedData object and forwarding object to the next module | Lidija Pitić
 F04    | [AI] Extracting data | Extracting keywords from e-mail text, forming ProcessedData object and forwarding it to the next module | Josip Rosandić
-F05    | Communication with database | Entity Framework data layer for communication with DB | Mario Pernar
+F05    | Communication with database | Entity Framework data layer for communication with DB | Zdenko Pečena
 F06    | Analisys of ProcessedData regarding database context data  | Searching database context for appropriate result according to ProcessedData and fetching result | Zdenko Pečena
 F07    | WinForms app for user | Win Forms app with CRUD for entity classes (templates, units, properties) and possibility for problems resolution | Mario Pernar
 F08    | Database | Database implementation | Mario Pernar
