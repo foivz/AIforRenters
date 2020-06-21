@@ -54,6 +54,14 @@ namespace AIForRentersApp
             this.Close();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Edit response button in FormRequests.
+        /// It enables rich text box so the user can edit the response.
+        /// It also disables Send response button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEditResponse_Click(object sender, EventArgs e)
         {
             richTextBoxResponse.Enabled = true;
@@ -62,6 +70,14 @@ namespace AIForRentersApp
             buttonSend.Enabled = false;
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Send response button in FormRequests.
+        /// It calls a method for sending response to the client
+        /// and marks request as sent.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSend_Click(object sender, EventArgs e)
         {
             Request selectedRequest = GetSelectedRequest();
@@ -84,6 +100,14 @@ namespace AIForRentersApp
             DisplayRequests();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Refresh requests button in FormRequests.
+        /// It refreshes the request in order to see are there any new ones
+        /// and displays requests.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonRefreshRequests_Click(object sender, EventArgs e)
         {
             RefreshRequests();
@@ -91,6 +115,14 @@ namespace AIForRentersApp
             DisplayRequests();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Save changes button in FormRequests.
+        /// It saves changes that user made on the response
+        /// and enables Send response button.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveChanges_Click(object sender, EventArgs e)
         {
             Request chosenRequest = GetSelectedRequest();
@@ -111,6 +143,11 @@ namespace AIForRentersApp
             DisplayRequests();
         }
 
+        /// <summary>
+        /// This method enables certain buttons when the datagridview cell is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewIncomingRequests_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewIncomingRequests.CurrentRow != null)
@@ -128,6 +165,12 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// Method that triggers on keyDown event and checks if the pressed key
+        /// is F1. If it is it opens HelpForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FormRequests_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -142,6 +185,12 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method triggers on selection changed event in dataGridViewIncomingRequests
+        /// and fills the rich text box with response body from a selected request.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewIncomingRequests_SelectionChanged(object sender, EventArgs e)
         {
             Request selectedRequest = GetSelectedRequest();
@@ -154,22 +203,28 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method calls a method to process incoming requests and create new request objects.
+        /// </summary>
         private void RefreshRequests()
         {
-            //try
-            //{
+            try
+            {
                 ResponseProcessor.ProcessData(EmailFetcher.ShapeReceivedData());
-            //}
-            //catch (Exception ex)
-            //{
-            //    if (ex is PopServerNotFoundException || ex is SocketException)
-            //    {
-            //        MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");
-            //    }
-            //    return;
-            //}
+            }
+            catch (Exception ex)
+            {
+                if (ex is PopServerNotFoundException || ex is SocketException)
+                {
+                    MessageBox.Show("Can't connect to the server. \nPlease check your internet connection!");
+                }
+                return;
+            }
         }
 
+        /// <summary>
+        /// This method displays requests from database.
+        /// </summary>
         private void DisplayRequests()
         {
             Request request = new Request();
@@ -186,6 +241,9 @@ namespace AIForRentersApp
             RowsColoring();
         }
 
+        /// <summary>
+        /// This method colors rows of dataGridViewIncomingRequests depending which request is in which state.
+        /// </summary>
         private void RowsColoring()
         {
             foreach (DataGridViewRow row in dataGridViewIncomingRequests.Rows)
@@ -206,6 +264,9 @@ namespace AIForRentersApp
             } 
         }
 
+        /// <summary>
+        /// This method colors the text boxes that inform the user about the meaning of the colors of requests.
+        /// </summary>
         private void LegendColoring()
         {
             responseSentColor.BackColor = Color.FromArgb(255, 218, 135, 135);
@@ -218,6 +279,10 @@ namespace AIForRentersApp
             return "RequestsForm";
         }
 
+        /// <summary>
+        /// This method returns selected request in the dataGridViewIncomingRequests.
+        /// </summary>
+        /// <returns>Selected Request object</returns>
         private Request GetSelectedRequest()
         {
             if (dataGridViewIncomingRequests.CurrentRow != null)

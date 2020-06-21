@@ -40,7 +40,6 @@ namespace AIForRentersLib
                 //Email body
                 string emailBody = receivedDataItem.EmailBody;
 
-                // Processed email body data (Date and number of people)
                 int numberOfPeople = 0;
                 Property selectedProperty = null;
                 Unit selectedUnit = null;
@@ -49,6 +48,7 @@ namespace AIForRentersLib
 
                 try
                 {
+                    // Processed email body data (Dates and number of people)
                     numberOfPeople = ExtractNumberOfPeople(emailBody);
                     dateTo = CheckYear(DateTime.Parse(ExtractDateTo(emailBody, emailAddress)));
                     dateFrom = CheckYear(DateTime.Parse(ExtractDateFrom(emailBody, emailAddress)));
@@ -64,6 +64,7 @@ namespace AIForRentersLib
                     return;
                 }
 
+                //sending confirmation mail
                 if (emailSubject == "Confirmation")
                 {
                     ConfirmationEmail(nameAndSurnameSplitted, dateTo, dateFrom);
@@ -72,12 +73,14 @@ namespace AIForRentersLib
                 {
                     try
                     {
+                        //method for extracting property from emailSubject
                         selectedProperty = GetProperty(emailSubject);
                     }
                     catch (Exception ex)
                     {
                         if (ex is EmailContentException || ex is InvalidOperationException)
                         {
+                            //sending email if property in subject is invalid
                             string subject = "Invalid property";
                             string body = $"Dear {name}, \n\nyou have sent invalid or nonexistent property name in email subject! \nPlease resend your request with valid property name in email subject! \n\nSincerely, \nAIForRenters";
                             EmailSender.SendEmail(subject, body, emailAddress);
@@ -87,12 +90,14 @@ namespace AIForRentersLib
 
                     try
                     {
+                        //method for extracting unit from emailSubject and numberOfPeople
                         selectedUnit = GetUnit(emailSubject, numberOfPeople);
                     }
                     catch (Exception ex)
                     {
                         if (ex is EmailContentException || ex is InvalidOperationException)
                         {
+                            //sending email if there is no unit with requested capacity
                             string subject = "Unavailable unit";
                             string body = $"Dear {name}, \n\nwe are sorry to inform you that there are no available units that have a capacity for the number of people you requested! \n\nSincerely, \nAIForRenters";
                             EmailSender.SendEmail(subject, body, emailAddress);
@@ -100,6 +105,7 @@ namespace AIForRentersLib
                         return;
                     }
 
+                    //creating of new Client object
                     double priceUponRequest = selectedUnit.Price;
                     Client newClient = new Client()
                     {
@@ -108,6 +114,7 @@ namespace AIForRentersLib
                         Email = emailAddress
                     };
 
+                    //creating of new Request object
                     Request newRequest = new Request()
                     {
                         Property = selectedProperty.Name,
@@ -124,6 +131,7 @@ namespace AIForRentersLib
                         ResponseBody = ""
                     };
 
+                    //adding new client and request to database
                     using (var context = new SE20E01_DBEntities())
                     {
                         context.Clients.Add(newClient);
@@ -136,6 +144,12 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for marking request as confirmed upon receiving confirmation email.
+        /// </summary>
+        /// <param name="nameAndSurnameSplitted"></param>
+        /// <param name="dateTo"></param>
+        /// <param name="dateFrom"></param>
         private static void ConfirmationEmail(string[] nameAndSurnameSplitted, DateTime dateTo, DateTime dateFrom)
         {
             string name = nameAndSurnameSplitted[0];
@@ -149,12 +163,19 @@ namespace AIForRentersLib
                             && dateTo == request.ToDate && dateFrom == request.FromDate
                             select request;
 
-                requestForConfirmation = query.Single();
+                requestForConfirmation = query.First();
             }
-
+            
+            //updating confirmed property
             requestForConfirmation.UpdateConfirmation(requestForConfirmation);
         }
 
+        /// <summary>
+        /// Method that receives DateTime object and checks if year is current year.
+        /// If it is not current year it updates the year to current year and returns updated DateTime object.
+        /// </summary>
+        /// <param name="dateTime"></param>
+        /// <returns>DateTime object with current year</returns>
         private static DateTime CheckYear(DateTime dateTime)
         {
             DateTime currentDateTime = DateTime.Now;
@@ -173,6 +194,11 @@ namespace AIForRentersLib
             
         }
 
+        /// <summary>
+        /// Method that receives email subject and returns a property with requested property name.
+        /// </summary>
+        /// <param name="emailSubject"></param>
+        /// <returns>Property object</returns>
         private static Property GetProperty(string emailSubject)
         {
             Property selectedProperty;
@@ -188,6 +214,13 @@ namespace AIForRentersLib
             return selectedProperty;
         }
 
+        /// <summary>
+        /// Method that receives email subject and extracted number of people and
+        /// returns a unit that has a capacity for requested number of people.
+        /// </summary>
+        /// <param name="emailSubject"></param>
+        /// <param name="numberOfPeople"></param>
+        /// <returns>Unit object</returns>
         private static Unit GetUnit(string emailSubject, int numberOfPeople)
         {
             Unit selectedUnit;
@@ -203,6 +236,11 @@ namespace AIForRentersLib
             return selectedUnit;
         }
 
+        /// <summary>
+        /// Method for extracting number of people from email body.
+        /// </summary>
+        /// <param name="testEmailString"></param>
+        /// <returns>Number of people for request</returns>
         private static int ExtractNumberOfPeople(string testEmailString)
         {
             var result = NumberRecognizer.RecognizeNumber(testEmailString, Culture.English);
@@ -216,6 +254,12 @@ namespace AIForRentersLib
             return value;
         }
 
+        /// <summary>
+        /// Method for extracting check in date from email body.
+        /// </summary>
+        /// <param name="emailBody"></param>
+        /// <param name="emailAddress"></param>
+        /// <returns>DateTime object representing check in date</returns>
         public static string ExtractDateFrom(string emailBody, string emailAddress)
         {
             string dateFrom = ExtractDates(emailBody).ToList<string>().ToArray()[2];
@@ -227,6 +271,12 @@ namespace AIForRentersLib
             return dateFrom;
         }
 
+        /// <summary>
+        /// Method for extracting check out date from email body.
+        /// </summary>
+        /// <param name="emailBody"></param>
+        /// <param name="emailAddress"></param>
+        /// <returns>DateTime object representing check out date</returns>
         public static string ExtractDateTo(string emailBody, string emailAddress)
         {
             string dateTo = ExtractDates(emailBody).ToList<string>().ToArray()[3];
@@ -238,6 +288,11 @@ namespace AIForRentersLib
             return dateTo;
         }
 
+        /// <summary>
+        /// Method for extracting dates from email body.
+        /// </summary>
+        /// <param name="emailBody"></param>
+        /// <returns>List of dates</returns>
         public static Dictionary<string, string>.ValueCollection ExtractDates(string emailBody)
         {
             if (emailBody == null)

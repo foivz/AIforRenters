@@ -9,6 +9,11 @@ namespace AIForRentersLib
 {
     public partial class EmailTemplate
     {
+        /// <summary>
+        /// Method for adding new email template to the database
+        /// </summary>
+        /// <param name="emailTemplateName"></param>
+        /// <param name="emailTemplateContent"></param>
         public void AddEmailTemplate(string emailTemplateName, string emailTemplateContent)
         {
             if (emailTemplateName == "")
@@ -33,6 +38,12 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for updating existing email template in database.
+        /// </summary>
+        /// <param name="emailTemplate"></param>
+        /// <param name="emailTemplateName"></param>
+        /// <param name="emailTemplateContent"></param>
         public void EditEmailTemplate(EmailTemplate emailTemplate, string emailTemplateName, string emailTemplateContent)
         {
             if (emailTemplate == null)
@@ -59,6 +70,10 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for deleting existing email template from database.
+        /// </summary>
+        /// <param name="emailTemplate"></param>
         public void DeleteEmailTemplate(EmailTemplate emailTemplate)
         {
             if (emailTemplate == null)
@@ -75,6 +90,11 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for displaying email templates.
+        /// It gets all email templates and stores them in the list.
+        /// </summary>
+        /// <returns>List of email templates</returns>
         public List<EmailTemplate> DisplayEmailTemplates()
         {
             List<EmailTemplate> emailTemplates = new List<EmailTemplate>();

@@ -11,11 +11,13 @@ namespace AIForRentersLib
 {
     public static class AvailabilityValidator
     {
+        /// <summary>
+        /// Method receives a list of Request objects and checks for availabilitty of the requestetd property
+        /// </summary>
+        /// <param name="requests"></param>
         public static void CheckForAvailability(List<Request> requests)
         {
-            // var queryUnProc = from r in context.Requests
-            //            where r.Processed == false
-            //            select r;
+            //storing unprocessed requests to a list
             List<Request> unprocessed = new List<Request>();
             foreach (var item in requests)
             {
@@ -27,7 +29,7 @@ namespace AIForRentersLib
 
             foreach (var req in unprocessed)
             {
-
+                //method to check if the interval is from Saturday to Saturday
                 List<DateTime> newDatesDays = CheckDays(req);
 
                 Availability availability = null;
@@ -36,9 +38,9 @@ namespace AIForRentersLib
 
                 using (var context = new SE20E01_DBEntities())
                 {
+                    //if newDatesDays list is empty the interval is from Saturday to Saturday
                     if (newDatesDays == null)
                     {
-                        type = "available";
                         var queryAvailability = from a in context.Availabilities
                                                 from u in context.Units
                                                 where req.Unit == u.Name && a.UnitID == u.UnitID && a.FromDate == req.FromDate && a.ToDate == req.ToDate
@@ -53,8 +55,10 @@ namespace AIForRentersLib
 
                         }
 
+                        //if availability is null then the slot is available
                         if (availability == null)
                         {
+                            type = "available";
                             Unit resultUnit = null;
                             using (var context1 = new SE20E01_DBEntities())
                             {
@@ -67,21 +71,27 @@ namespace AIForRentersLib
                                 resultUnit = queryUnit.Single();
                             }
 
+                            //method for calculating total price
                             double totalPrice = CalculateTotalPrice(req);
 
+                            //adding availability to database
                             Availability addAvailability = new Availability();
                             addAvailability.AddAvailability(resultUnit, req.FromDate, req.ToDate);
 
+                            //fetching email template
                             EmailTemplate email = FetchAndCustomizeEmailTemplate(type, req.Property, req.ToDate, req.FromDate, req.Client.Name, req.FromDate, req.FromDate, totalPrice);
 
                             string emailBody = email.TemplateContent;
                             string emailSubject = email.Name;
 
+                            //updating request response
                             Request request = new Request();
                             request.UpdateRequest(req, emailBody, emailSubject);
                         }
+                        //if availability is not null the slot is not available
                         else
                         {
+                            //method for checking new availability
                             List<DateTime> newDatesUnavailable = CheckAnotherAvailability(req);
 
                             type = "unavailable";
@@ -95,6 +105,7 @@ namespace AIForRentersLib
                                 resultUnit = queryUnit.Single();
                             }
 
+                            //if newDatesUnavailable list is not empty we are fetching template with suggestion
                             if (newDatesUnavailable != null)
                             {
                                 EmailTemplate email = FetchAndCustomizeEmailTemplate(type, req.Property, req.ToDate, req.FromDate, req.Client.Name, newDatesUnavailable[0], newDatesUnavailable[1]);
@@ -105,6 +116,7 @@ namespace AIForRentersLib
                                 Request request = new Request();
                                 request.UpdateRequest(req, emailBody, emailSubject);
                             }
+                            //if newDatesUnavailable list is empty we are fetching template with no suggestion
                             else
                             {
                                 type = "unavailableWeekBeforeAfter";
@@ -118,6 +130,8 @@ namespace AIForRentersLib
                             }
                         }
                     }
+                    //if days are not from Saturday until Saturday we fetch template 
+                    //that suggest nearest Saturday-Saturday interval
                     else
                     {
                         type = "daysError";
@@ -147,10 +161,23 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method that fetches and customizes email template
+        /// </summary>
+        /// <param name="type"></param>
+        /// <param name="property"></param>
+        /// <param name="dateTo"></param>
+        /// <param name="dateFrom"></param>
+        /// <param name="name"></param>
+        /// <param name="newDateTo"></param>
+        /// <param name="newDateFrom"></param>
+        /// <param name="totalPrice"></param>
+        /// <returns>EmailTemplate object</returns>
         public static EmailTemplate FetchAndCustomizeEmailTemplate(string type, string property, DateTime dateTo, DateTime dateFrom, string name, DateTime newDateTo, DateTime newDateFrom, double totalPrice = 0)
         {
             using (SE20E01_DBEntities context = new SE20E01_DBEntities())
             {
+                //unit is available
                 if (type == "available")
                 {
                     var getAvailableTemp = (from t in context.EmailTemplates
@@ -162,7 +189,7 @@ namespace AIForRentersLib
                     email.TemplateContent = emailTemp.TemplateContent.Replace("{Name}", name).Replace("{Property}", property).Replace("{DateTo}", dateTo.ToString()).Replace("{DateFrom}", dateFrom.ToString()).Replace("{Price}", totalPrice.ToString());
                     return email;
                 }
-
+                //unit is not available
                 else if (type == "unavailable")
                 {
                     var getUnavailableTemp = (from t in context.EmailTemplates
@@ -174,7 +201,7 @@ namespace AIForRentersLib
                     email.TemplateContent = emailTemp.TemplateContent.Replace("{Name}", name).Replace("{Property}", property).Replace("{DateTo}", dateTo.ToString()).Replace("{DateFrom}", dateFrom.ToString()).Replace("{NewDateTo}", newDateFrom.ToString()).Replace("{NewDateFrom}", newDateTo.ToString());
                     return email;
                 }
-
+                //the desired time slot is not from Saturday until Saturday
                 else if (type == "daysError")
                 {
                     var getUnavailableTemp = (from t in context.EmailTemplates
@@ -186,7 +213,7 @@ namespace AIForRentersLib
                     email.TemplateContent = emailTemp.TemplateContent.Replace("{Name}", name).Replace("{Property}", property).Replace("{DateTo}", dateTo.ToString()).Replace("{DateFrom}", dateFrom.ToString()).Replace("{NewDateTo}", newDateFrom.ToString()).Replace("{NewDateFrom}", newDateTo.ToString());
                     return email;
                 }
-
+                //there are na available time units in the desired time or week before or week later
                 else if (type == "unavailableWeekBeforeAfter")
                 {
                     var getUnavailableTemp = (from t in context.EmailTemplates
@@ -202,6 +229,11 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method that receives Request object and checks if the dates are from Saturday until Saturday
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns>List of DateTime objects representing new check in and check out dates</returns>
         private static List<DateTime> CheckDays(Request req)
         {
             List<DateTime> newDates = new List<DateTime>(2);
@@ -209,18 +241,26 @@ namespace AIForRentersLib
             DayOfWeek dayFrom = req.FromDate.DayOfWeek;
             DayOfWeek dayTo = req.ToDate.DayOfWeek;
 
+            if (dayFrom == DayOfWeek.Saturday && dayTo == DayOfWeek.Saturday)
+            {
+                return null;
+            }
+
             int diffDayFrom = 0;
             int diffDayTo = 0;
+            //both starting date and ending date are not Saturday
             if (dayFrom != DayOfWeek.Saturday && dayTo != DayOfWeek.Saturday)
             {
                 diffDayFrom = DayOfWeek.Saturday - dayFrom;
                 diffDayTo = DayOfWeek.Saturday - dayTo;
             }
+            //starting date is not Saturday
             else if (dayFrom != DayOfWeek.Saturday && dayTo == DayOfWeek.Saturday)
             {
                 diffDayFrom = DayOfWeek.Saturday - dayFrom - 7;
                 diffDayTo = 0;
             }
+            //ending date is not Saturday
             else if (dayFrom == DayOfWeek.Saturday && dayTo != DayOfWeek.Saturday)
             {
                 diffDayFrom = 0;
@@ -233,13 +273,14 @@ namespace AIForRentersLib
             newDates.Add(newFromDate);
             newDates.Add(newToDate);
 
-            if (dayFrom == DayOfWeek.Saturday && dayTo == DayOfWeek.Saturday)
-            {
-                return null;
-            }
             return newDates;
         }
 
+        /// <summary>
+        /// Method that checks if there are available slots before or after the desired time slot
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns>List of DateTime objects representing new check in and check out dates</returns>
         private static List<DateTime> CheckAnotherAvailability(Request req)
         {
             List<DateTime> newDates = new List<DateTime>(2);
@@ -310,6 +351,11 @@ namespace AIForRentersLib
             
         }
 
+        /// <summary>
+        /// Method that calculates total price of reservation
+        /// </summary>
+        /// <param name="req"></param>
+        /// <returns>Total price of reservation</returns>
         private static double CalculateTotalPrice(Request req)
         {
             double dailyPrice = req.PriceUponRequest;

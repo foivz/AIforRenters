@@ -58,6 +58,12 @@ namespace AIForRentersApp
             this.Close();
         }
 
+        /// <summary>
+        /// Method that triggers on keyDown event and checks if the pressed key
+        /// is F1. If it is it opens HelpForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UnitsForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -72,6 +78,14 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Add unit button in UnitsForm.
+        /// It collects all necessary data from the UnitsForm to create
+        /// new unit object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddUnit_Click(object sender, EventArgs e)
         {
             Unit unit = new Unit();
@@ -92,6 +106,14 @@ namespace AIForRentersApp
             DisplayUnits();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Save changes button in UnitsForm.
+        /// It collects all necessary data from the UnitsForm to update
+        /// selected unit object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveChanges_Click(object sender, EventArgs e)
         {
             Unit chosenUnit = GetSelectedUnit();
@@ -115,6 +137,14 @@ namespace AIForRentersApp
             DisplayUnits();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Edit unit button in UnitsForm.
+        /// It collects all necessary data from the selected unit and fills
+        /// textboxes on the UnitsForm with that data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEditUnit_Click(object sender, EventArgs e)
         {
             try
@@ -134,6 +164,13 @@ namespace AIForRentersApp
             buttonDeleteUnit.Enabled = false;
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Delete unit button in UnitsForm.
+        /// It deletes selected unit from database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDeleteUnit_Click(object sender, EventArgs e)
         {
             Unit chosenUnit = GetSelectedUnit();
@@ -150,6 +187,9 @@ namespace AIForRentersApp
             DisplayUnits();
         }
 
+        /// <summary>
+        /// This method displays units of a chosen property from database.
+        /// </summary>
         private void DisplayUnits()
         {
             Unit unit = new Unit();
@@ -161,6 +201,10 @@ namespace AIForRentersApp
             dataGridViewUnits.Columns["Property"].Visible = false;
         }
 
+        /// <summary>
+        /// This method returns selected unit in the datagridviewUnits.
+        /// </summary>
+        /// <returns>Selected Unit object</returns>
         private Unit GetSelectedUnit()
         {
             if (dataGridViewUnits.CurrentRow != null)
@@ -179,6 +223,11 @@ namespace AIForRentersApp
             return "UnitsForm";
         }
 
+        /// <summary>
+        /// This method enables certain buttons when the datagridview cell is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewUnits_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewUnits.CurrentRow != null)

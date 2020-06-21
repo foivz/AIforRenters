@@ -26,6 +26,12 @@ namespace AIForRentersApp
             this.KeyDown += new KeyEventHandler(LoginForm_KeyDown);
         }
 
+        /// <summary>
+        /// Method that triggers on keyDown event and checks if the pressed key
+        /// is F1. If it is it opens HelpForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LoginForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -40,16 +46,27 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Log in button in LoginForm.
+        /// It collects the user input from text boxes and forward it to the
+        /// Authentication method.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonLogIn_Click(object sender, EventArgs e)
         {
+            //collecting user input
             string emailAddress = textBoxEmail.Text;
             string password = textBoxPassword.Text;
 
+            //assigning emailAddress and password to Sender class for later reuse
             Sender.Email = emailAddress;
             Sender.Password = password;
 
             DialogResult result = 0;
 
+            //Authentication of user
             try
             {
                 Login.Authentication(emailAddress, password);

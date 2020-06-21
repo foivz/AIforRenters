@@ -48,6 +48,12 @@ namespace AIForRentersApp
             this.Close();
         }
 
+        /// <summary>
+        /// Method that triggers on keyDown event and checks if the pressed key
+        /// is F1. If it is it opens HelpForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EmailTemplatesForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -62,6 +68,13 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Delete template button in EmailTemplatesForm.
+        /// It deletes selected email template from database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDeleteTemplate_Click(object sender, EventArgs e)
         {
             EmailTemplate chosenEmailTemplate = GetSelectedEmailTemplate();
@@ -78,6 +91,14 @@ namespace AIForRentersApp
             DisplayEmailTemplates();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Save changes button in EmailTemplatesForm.
+        /// It collects all necessary data from the EmailTemplatesForm to update
+        /// selected email template object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveChanges_Click(object sender, EventArgs e)
         {
             EmailTemplate chosenEmailTemplate = GetSelectedEmailTemplate();
@@ -100,6 +121,14 @@ namespace AIForRentersApp
             DisplayEmailTemplates();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Edit template button in EmailTemplatesForm.
+        /// It collects all necessary data from the selected email template and fills
+        /// textboxes on the EmailTemplatesForm with that data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEditTemplate_Click(object sender, EventArgs e)
         {
             try
@@ -118,6 +147,14 @@ namespace AIForRentersApp
             buttonDeleteTemplate.Enabled = false;
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Add template button in EmailTemplatesForm.
+        /// It collects all necessary data from the EmailTemplatesForm to create
+        /// new email template object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddTemplate_Click(object sender, EventArgs e)
         {
             EmailTemplate chosenEmailTemplate = GetSelectedEmailTemplate();
@@ -137,6 +174,11 @@ namespace AIForRentersApp
             DisplayEmailTemplates();
         }
 
+        /// <summary>
+        /// This method enables certain buttons when the datagridview cell is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewEmailTemplates_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewEmailTemplates.CurrentRow != null)
@@ -147,6 +189,9 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method displays email templates from database.
+        /// </summary>
         private void DisplayEmailTemplates()
         {
             EmailTemplate emailTemplate = new EmailTemplate();
@@ -155,6 +200,10 @@ namespace AIForRentersApp
             dataGridViewEmailTemplates.Columns["EmailTemplateID"].Visible = false;
         }
 
+        /// <summary>
+        /// This method returns selected email template in the dataGridViewEmailTemplates.
+        /// </summary>
+        /// <returns>Selected EmailTemplate object</returns>
         private EmailTemplate GetSelectedEmailTemplate()
         {
             if (dataGridViewEmailTemplates.CurrentRow != null)

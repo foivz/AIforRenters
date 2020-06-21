@@ -27,15 +27,21 @@ namespace AIForRentersApp
             this.Close();
         }
 
+        /// <summary>
+        /// Method that checks from which form was this HelpForm opened.
+        /// Depending which form opened this form it shows the text describing that form.
+        /// </summary>
         private void FillData()
         {
             foreach (var item in Application.OpenForms)
             {
+                //Login
                 if (item.ToString() == "LoginForm")
                 {
                     groupBoxName.Text = "Login";
                     labelContent.Text = "You must enter your email and password in the given text boxes and \nthen click the 'Log in' button.";
                 }
+                //Requests
                 else if (item.ToString() == "RequestsForm")
                 {
                     groupBoxName.Text = "Requests";
@@ -45,6 +51,7 @@ namespace AIForRentersApp
                         " 'Properties / units' button and see your properties \nand units. Also you can click on 'Email templates' button " +
                         " to see your templates.";
                 }
+                //Properties
                 else if (item.ToString() == "PropertiesForm")
                 {
                     groupBoxName.Text = "Properties";
@@ -57,6 +64,7 @@ namespace AIForRentersApp
                         " your incoming requests and automatic \nresponses. Also you can click on 'Email templates' button to see your" +
                         " templates.";
                 }
+                //Units
                 else if (item.ToString() == "UnitsForm")
                 {
                     groupBoxName.Text = "Units";
@@ -70,6 +78,7 @@ namespace AIForRentersApp
                         " and \nautomatic responses. Also you can click on 'Email templates' button to see your templates or \nyou can click" +
                         " on the 'Properties / units' button to return to your properties.";
                 }
+                //EmailTemplates
                 else if (item.ToString() == "EmailTemplatesForm")
                 {
                     groupBoxName.Text = "Email templates";

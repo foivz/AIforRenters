@@ -10,6 +10,11 @@ namespace AIForRentersLib
 {
     public partial class Request
     {
+        /// <summary>
+        /// Method for displaying requests.
+        /// It gets all requests and stores them in the list.
+        /// </summary>
+        /// <returns>List of requests</returns>
         public List<Request> DisplayRequests()
         {
             List<Request> requests = new List<Request>();
@@ -25,6 +30,12 @@ namespace AIForRentersLib
             return requests;
         }
 
+        /// <summary>
+        /// Method for updating existing request in database.
+        /// It updates response body in database.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="responseBody"></param>
         public void EditRequest(Request request, string responseBody)
         {
             if (request == null)
@@ -45,6 +56,13 @@ namespace AIForRentersLib
                 context.SaveChanges();
             }
         }
+        /// <summary>
+        /// Method for updating existing request in database.
+        /// It updates response body and response subject in the database.
+        /// </summary>
+        /// <param name="request"></param>
+        /// <param name="content"></param>
+        /// <param name="subject"></param>
         public void UpdateRequest(Request request, string content, string subject)
         {
             using (var context = new SE20E01_DBEntities())
@@ -60,6 +78,10 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for updating the Sent prop of the request object in database.
+        /// </summary>
+        /// <param name="selectedRequest"></param>
         public void MarkAsSent(Request selectedRequest)
         {
             using (var context = new SE20E01_DBEntities())
@@ -72,9 +94,13 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for updating the Confirmed prop of the request object in database.
+        /// </summary>
+        /// <param name="requestForConfirmation"></param>
         public void UpdateConfirmation(Request requestForConfirmation)
         {
-            if (requestForConfirmation.ResponseSubject == "Available unit")
+            if (requestForConfirmation.ResponseSubject == "Available unit" && requestForConfirmation.Sent)
             {
                 using (var context = new SE20E01_DBEntities())
                 {

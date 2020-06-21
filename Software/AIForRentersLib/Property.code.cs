@@ -9,6 +9,11 @@ namespace AIForRentersLib
 {
     public partial class Property
     {
+        /// <summary>
+        /// Method for adding new property to the database
+        /// </summary>
+        /// <param name="propertyName"></param>
+        /// <param name="propertyLocation"></param>
         public void AddProperty(string propertyName, string propertyLocation)
         {
             if (propertyName == "")
@@ -33,6 +38,12 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for updating existing property in database.
+        /// </summary>
+        /// <param name="property"></param>
+        /// <param name="propertyName"></param>
+        /// <param name="propertyLocation"></param>
         public void EditProperty(Property property, string propertyName, string propertyLocation)
         {
             if (property == null)
@@ -59,6 +70,10 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for deleting existing property from database.
+        /// </summary>
+        /// <param name="property"></param>
         public void DeleteProperty(Property property)
         {
             if (property == null)
@@ -83,6 +98,11 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for displaying properties.
+        /// It gets all properties and stores them in the list.
+        /// </summary>
+        /// <returns>List of properties</returns>
         public List<Property> DisplayProperties()
         {
             List<Property> properties = new List<Property>();

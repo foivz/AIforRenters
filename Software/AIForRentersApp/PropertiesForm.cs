@@ -58,6 +58,12 @@ namespace AIForRentersApp
             this.Close();
         }
 
+        /// <summary>
+        /// Method that triggers on keyDown event and checks if the pressed key
+        /// is F1. If it is it opens HelpForm.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void PropertiesForm_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1)
@@ -72,6 +78,13 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Delete property button in PropertiesForm.
+        /// It deletes selected property from database.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonDeleteProperty_Click(object sender, EventArgs e)
         {
             Property chosenProperty = GetSelectedProperty();
@@ -88,6 +101,14 @@ namespace AIForRentersApp
             DisplayProperties();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Edit property button in PropertiesForm.
+        /// It collects all necessary data from the selected property and fills
+        /// textboxes on the PropertiesForm with that data.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEditProperty_Click(object sender, EventArgs e)
         {
             try
@@ -106,6 +127,14 @@ namespace AIForRentersApp
             buttonDeleteProperty.Enabled = false;
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Save changes button in PropertiesForm.
+        /// It collects all necessary data from the PropertiesForm to update
+        /// selected property object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonSaveChanges_Click(object sender, EventArgs e)
         {
             Property chosenProperty = GetSelectedProperty();
@@ -128,6 +157,14 @@ namespace AIForRentersApp
             DisplayProperties();
         }
 
+        /// <summary>
+        /// This method is triggered by a click event on the
+        /// Add property button in PropertiesForm.
+        /// It collects all necessary data from the PropertiesForm to create
+        /// new property object.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAddProperty_Click(object sender, EventArgs e)
         {
             Property property = new Property();
@@ -147,6 +184,11 @@ namespace AIForRentersApp
             DisplayProperties();
         }
 
+        /// <summary>
+        /// This method enables certain buttons when the datagridview cell is clicked.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void dataGridViewProperties_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (dataGridViewProperties.CurrentRow != null)
@@ -158,6 +200,9 @@ namespace AIForRentersApp
             }
         }
 
+        /// <summary>
+        /// This method displays properties from database.
+        /// </summary>
         private void DisplayProperties()
         {
             Property property = new Property();
@@ -167,6 +212,10 @@ namespace AIForRentersApp
             dataGridViewProperties.Columns["Units"].Visible = false;
         }
 
+        /// <summary>
+        /// This method returns selected property in the datagridviewProperties.
+        /// </summary>
+        /// <returns>Selected Property object</returns>
         private Property GetSelectedProperty()
         {
             if (dataGridViewProperties.CurrentRow != null)

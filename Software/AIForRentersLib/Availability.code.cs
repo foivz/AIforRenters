@@ -12,6 +12,12 @@ namespace AIForRentersLib
         {
             return Available.ToString();
         }
+        /// <summary>
+        /// Method for adding new availability to the database
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="fromDate"></param>
+        /// <param name="toDate"></param>
         public void AddAvailability(Unit unit, DateTime fromDate, DateTime toDate)
         {
             using (var context = new SE20E01_DBEntities())

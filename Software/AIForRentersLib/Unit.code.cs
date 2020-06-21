@@ -9,6 +9,13 @@ namespace AIForRentersLib
 {
     public partial class Unit
     {
+        /// <summary>
+        /// Method for adding new unit to the database
+        /// </summary>
+        /// <param name="chosenProperty"></param>
+        /// <param name="unitName"></param>
+        /// <param name="unitCapacity"></param>
+        /// <param name="unitPrice"></param>
         public void AddUnit(Property chosenProperty, string unitName, int unitCapacity, double unitPrice)
         {
             if (chosenProperty == null)
@@ -46,6 +53,13 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for updating existing unit in database.
+        /// </summary>
+        /// <param name="unit"></param>
+        /// <param name="unitName"></param>
+        /// <param name="unitCapacity"></param>
+        /// <param name="unitPrice"></param>
         public void EditUnit(Unit unit, string unitName, int unitCapacity, double unitPrice)
         {
             if (unit == null)
@@ -77,6 +91,10 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for deleting existing unit from database.
+        /// </summary>
+        /// <param name="unit"></param>
         public void DeleteUnit(Unit unit)
         {
             if (unit == null)
@@ -93,6 +111,12 @@ namespace AIForRentersLib
             }
         }
 
+        /// <summary>
+        /// Method for displaying units of a chosen property.
+        /// It gets all units of a chosen property and stores them in the list.
+        /// </summary>
+        /// <param name="chosenProperty"></param>
+        /// <returns>List of units</returns>
         public List<Unit> DisplayUnits(Property chosenProperty)
         {
             List<Unit> units = new List<Unit>();

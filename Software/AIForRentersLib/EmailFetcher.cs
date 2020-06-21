@@ -13,6 +13,11 @@ namespace AIForRentersLib
 {
     public static class EmailFetcher
     {
+        /// <summary>
+        /// Method fetches all new incoming emails from user's mailbox and shapes them into
+        /// ReceivedData objects.
+        /// </summary>
+        /// <returns>List of ReceivedData objects</returns>
         public static List<ReceivedData> ShapeReceivedData()
         {
             List<ReceivedData> listOfReceivedData = new List<ReceivedData>();
@@ -55,6 +60,11 @@ namespace AIForRentersLib
             return listOfReceivedData;
         }
 
+        /// <summary>
+        /// This method receives Message object and extract message body from it.
+        /// </summary>
+        /// <param name="message"></param>
+        /// <returns>String that represents message body</returns>
         private static string ExtractMessageBody(Message message)
         {
             StringBuilder builder = new StringBuilder();
@@ -74,16 +84,14 @@ namespace AIForRentersLib
                     // We found some html!
                     HtmlDocument doc = new HtmlDocument();
                     doc.LoadHtml(html.GetBodyAsText());
-                    //this xpath selects all span tag having its class as hidden first
+                    //this xpath selects all p tags having its class as MsoNormal
                     var itemList = doc.DocumentNode.SelectNodes("//div[@class='WordSection1']//p[@class='MsoNormal']").Select(p => p.InnerText).ToList();
                     foreach (var item in itemList)
                     {
                         builder.Append(item);
                     }
-                    
                 }
             }
-
             return builder.ToString();
         }
     }
