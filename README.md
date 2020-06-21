@@ -9,7 +9,7 @@ Name and surname | E-mail adress (FOI) | Student ID | Github username
 Mario Pernar     |    mpernar@foi.hr   | 0016131362 | mpernar
 Lidija Pitić     |    lpitic@foi.hr    | 0016132354 | lpitic
 Josip Rosandić   |    jrosandic@foi.hr | 0016129731 | jrosandic
-Zdenko Pečeňa    |     zpecena@foi.hr  |            | zpecena
+Zdenko Pečeňa    |     zpecena@foi.hr  | 0016146255 | zpecena
 
 ## Domain description
 The general idea of the system is to be able to automatically respond to the requests sent through different channels (e.g. web form, e-mail, ...) and to give an answer in regards with the property availability for the requested time slot. The availability is checked in the database, and if the time slot is not free the system should propose a different time slot. The system should provide the means of defining the response template in English language.
