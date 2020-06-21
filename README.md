@@ -14,12 +14,17 @@ Zdenko Pečeňa    |     zpecena@foi.hr  |            | zpecena
 ## Domain description
 The general idea of the system is to be able to automatically respond to the requests sent through different channels (e.g. web form, e-mail, ...) and to give an answer in regards with the property availability for the requested time slot. The availability is checked in the database, and if the time slot is not free the system should propose a different time slot. The system should provide the means of defining the response template in English language.
 
-## Project specification
-* Centralized database
-* Module/s to receive requests from users
-* Module/s to process user data
-* AI module to send responses
-* Desktop app to monitor the status and health of the system and requests made by users
+**System modules:**
+#| Module|Short description
+-----|-----|-----
+1    | ASP.NET web Form | Web UI for reserving rooms
+2    | Email fetcher | Fetching emails from the server 
+3    | Response processor | Processing emails and shaping requests
+4    | Availability validator | Searching for optimal solution in the database and fetching appropriate template
+5    | WinForms app | Contains GUI for interaction with the application and database ORM layer
+6    | Database | MS SQL Server database with all needed entities
+
+
 
 
 Symbol | Name | Short description | Responsible 
